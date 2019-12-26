@@ -1,4 +1,6 @@
-package foodchain;
+package foodchain.states;
+
+import foodchain.products.Product;
 
 public class ProcessedState extends State {
     

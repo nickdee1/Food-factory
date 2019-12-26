@@ -1,5 +1,6 @@
-package foodchain;
+package foodchain.transactions;
 
+import foodchain.products.Product;
 import foodchain.parties.Party;
 import java.util.Date;
 

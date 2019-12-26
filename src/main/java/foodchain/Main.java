@@ -1,5 +1,6 @@
 package foodchain;
 
+import foodchain.transactions.Transaction;
 import foodchain.parties.*;
 import foodchain.reporters.PartiesReporter;
 import foodchain.reporters.TransactionReporter;

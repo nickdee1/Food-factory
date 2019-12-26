@@ -1,8 +1,8 @@
 package foodchain.reporters;
 
-import foodchain.MoneyTransaction;
-import foodchain.ProductTransaction;
-import foodchain.Transaction;
+import foodchain.transactions.MoneyTransaction;
+import foodchain.transactions.ProductTransaction;
+import foodchain.transactions.Transaction;
 import org.json.simple.JSONObject;
 
 import java.io.File;
@@ -12,7 +12,7 @@ import java.util.*;
 
 public class TransactionReporter implements Visitor {
 
-    private List<Transaction> transactionList;
+    private final List<Transaction> transactionList;
 
     public TransactionReporter(List<Transaction> transactions) {
         this.transactionList = transactions;

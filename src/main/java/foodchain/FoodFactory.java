@@ -1,5 +1,13 @@
 package foodchain;
 
+import foodchain.states.GrowingState;
+import foodchain.states.State;
+import foodchain.states.AliveState;
+import foodchain.products.Apple;
+import foodchain.products.Milk;
+import foodchain.products.Product;
+import foodchain.products.Pork;
+
 public class FoodFactory {
 
     public Product makeProduct(String productName) {

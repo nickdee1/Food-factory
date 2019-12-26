@@ -1,7 +1,7 @@
 package foodchain.reporters.report;
 
-import foodchain.Product;
-import foodchain.Transaction;
+import foodchain.products.Product;
+import foodchain.transactions.Transaction;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package foodchain.channels;
 
-import foodchain.Transaction;
+import foodchain.transactions.Transaction;
 
 public interface Channel {
     Transaction makeTransmission(Transaction transaction);

@@ -1,7 +1,7 @@
 package foodchain.channels;
 
-import foodchain.MoneyTransaction;
-import foodchain.Transaction;
+import foodchain.transactions.MoneyTransaction;
+import foodchain.transactions.Transaction;
 import foodchain.parties.Party;
 
 public class PaymentChannel implements Channel {
@@ -13,7 +13,7 @@ public class PaymentChannel implements Channel {
     }
 
     public MoneyTransaction makeTransmission(Transaction transaction) {
-        System.out.println("Money transaction is being made to "+transaction.getReceiver().getName());
+        System.out.println("Money transaction is being made to "+transaction.getReceiver().getPartyName());
         MoneyTransaction moneyTransaction = (MoneyTransaction)transaction;
         receiver.receiveMoney(moneyTransaction);
         return moneyTransaction;

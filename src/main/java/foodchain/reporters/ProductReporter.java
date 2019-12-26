@@ -1,6 +1,6 @@
 package foodchain.reporters;
 
-import foodchain.Product;
+import foodchain.products.Product;
 import org.json.simple.JSONObject;
 
 import java.io.File;

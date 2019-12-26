@@ -1,5 +1,9 @@
 package foodchain.parties;
 
+import foodchain.transactions.MoneyTransaction;
+import foodchain.transactions.ProductTransaction;
+import foodchain.transactions.Transaction;
+import foodchain.products.Product;
 import foodchain.*;
 import foodchain.reporters.PartiesReporter;
 import java.util.ArrayList;

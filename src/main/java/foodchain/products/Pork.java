@@ -1,16 +1,18 @@
-package foodchain;
+package foodchain.products;
 
+import foodchain.states.AliveState;
 import java.util.HashMap;
 
-public class Milk extends Product {
-    
-    public Milk() {
-        this.state = new CollectedState();
-        price = 45;
-        name = "Milk";
+public class Pork extends Product {
+
+    public Pork() {
+        this.state = new AliveState();
+        price = 80;
+        name = "Pork";
         storageParametres = new HashMap<String, Integer>();
         processorParametres = new HashMap<String, Integer>();
         distributionTime = 0;
         sellerParametres = new HashMap<String, String>();
     }
+
 }

@@ -1,4 +1,4 @@
-package foodchain;
+package foodchain.transactions;
 
 import foodchain.parties.Party;
 

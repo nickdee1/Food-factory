@@ -1,7 +1,7 @@
 package foodchain.channels;
 
-import foodchain.ProductTransaction;
-import foodchain.Transaction;
+import foodchain.transactions.ProductTransaction;
+import foodchain.transactions.Transaction;
 import foodchain.parties.Party;
 
 public class SellingChannel implements Channel {

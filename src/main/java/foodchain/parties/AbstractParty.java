@@ -1,11 +1,11 @@
 package foodchain.parties;
 
 import foodchain.FoodFactory;
-import foodchain.MoneyTransaction;
-import foodchain.Product;
-import foodchain.ProductTransaction;
-import foodchain.State;
-import foodchain.Transaction;
+import foodchain.transactions.MoneyTransaction;
+import foodchain.products.Product;
+import foodchain.transactions.ProductTransaction;
+import foodchain.states.State;
+import foodchain.transactions.Transaction;
 import foodchain.channels.PaymentChannel;
 import foodchain.channels.SellingChannel;
 import java.util.List;

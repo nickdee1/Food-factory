@@ -1,5 +1,6 @@
-package foodchain;
+package foodchain.products;
 
+import foodchain.states.State;
 import foodchain.reporters.ProductReporter;
 import java.util.Map;
 
