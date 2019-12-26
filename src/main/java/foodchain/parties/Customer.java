@@ -22,6 +22,7 @@ public class Customer extends AbstractParty {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in customer is "+product.getState().getStateName());
         System.out.println("CONGRATULATIONS, FOOD CHAIN IS COMPLETED");
+        productsList.add(product);
     }
 
     @Override

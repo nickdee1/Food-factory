@@ -8,6 +8,8 @@ import foodchain.reporters.PartiesReporter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import static foodchain.parties.Data.*;
+
 
 public class Processor extends AbstractParty {
 
@@ -21,7 +23,9 @@ public class Processor extends AbstractParty {
     public void processProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in processor is "+product.getState().getStateName());
-        // TODO
+        initProcessorParametres(product);
+        System.out.println("Product processor parametres: "+product.getProcessorParametres().toString());
+        productsList.add(product);
     }
 
     @Override
@@ -54,6 +58,19 @@ public class Processor extends AbstractParty {
             makeTransaction(currentRequestingParty, product);
             currentRequestedProduct = null;
             currentRequestingParty = null;
+        }
+    }
+    
+    private void initProcessorParametres(Product product) {
+        if ((product.getName()).equalsIgnoreCase("apple")) {
+            System.out.println("Apple processor parametres: "+product.getProcessorParametres().toString());
+            System.out.println("Process apple...");
+            product.setProcessorParametres(APPLE_PROCESSING_TEMPERATURE, APPLE_CHEMICAL_PROCESSING_DEGREE);
+        }
+        else if ((product.getName()).equalsIgnoreCase("pork")) {
+            System.out.println("Pork processor parametres: "+product.getProcessorParametres().toString());
+            System.out.println("Process pork...");
+            product.setProcessorParametres(PORK_PROCESSING_TEMPERATURE, PORK_CHEMICAL_PROCESSING_DEGREE);
         }
     }
 

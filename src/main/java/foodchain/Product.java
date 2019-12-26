@@ -43,8 +43,10 @@ public abstract class Product {
         return storageParametres;
     }
     
-    public void setProcessorParametres() {
-        
+    public void setProcessorParametres(Integer processorTemperature, Integer
+            chemicalDegree) {
+        processorParametres.put("Processing Temperature", processorTemperature);
+        processorParametres.put("Chemical Processing Degree", chemicalDegree);
     }
 
     public Map<String, Integer> getProcessorParametres() {

@@ -22,6 +22,7 @@ public class Seller extends AbstractParty {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in seller is "+product.getState().getStateName());
         // TODO
+        productsList.add(product);
     }
 
     @Override

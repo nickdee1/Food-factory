@@ -38,7 +38,7 @@ public abstract class AbstractParty implements Party {
         if (receivedMoney.equals(currentRequestedProduct.getPrice())) {
             moneyReceived = true;
             transaction.setSuccessful(true);
-            System.out.println(transaction.getReceiver().getClass()+
+            System.out.println(transaction.getReceiver().getName()+
                     " has received money: "+receivedMoney);
         }
         else {
@@ -57,6 +57,7 @@ public abstract class AbstractParty implements Party {
         for (Product p : productsList) {
             if (p.getName().equalsIgnoreCase(productName)) {
                 makeTransaction(currentRequestingParty, p);
+                productsList.remove(p);
                 // TO CHECK
                 return;
             }

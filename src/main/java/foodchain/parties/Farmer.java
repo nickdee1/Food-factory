@@ -48,9 +48,9 @@ public class Farmer extends AbstractParty {
         Integer receivedMoney = transaction.getMoneyAmount();
         if (receivedMoney.equals(currentRequestedProduct.getPrice())) {
             balance += receivedMoney;
-            System.out.println("Farmer's balance: "+balance);
         }
         super.receiveMoney(transaction);
+        System.out.println("Farmer's balance: "+balance);
         makeTransaction(transaction.getSender(), currentRequestedProduct);
     }
 

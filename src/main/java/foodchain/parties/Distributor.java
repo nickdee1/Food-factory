@@ -22,6 +22,7 @@ public class Distributor extends AbstractParty {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in distributor is "+product.getState().getStateName());
         // TODO
+        productsList.add(product);
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {

@@ -26,6 +26,7 @@ public class Storage extends AbstractParty {
         System.out.println("Product state in storage is "+product.getState().getStateName());
         initStorageParametres(product);
         System.out.println("Product storage parametres: "+product.getStorageParametres().toString());
+        productsList.add(product);
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {
