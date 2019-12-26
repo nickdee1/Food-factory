@@ -16,6 +16,7 @@ public abstract class Transaction implements Observable {
     private boolean successful;
     private final Set<Party> observingParties;
 
+
     public Transaction(Party receiver, Party sender, Date timestamp) {
         this.receiver = receiver;
         this.sender = sender;
@@ -57,5 +58,7 @@ public abstract class Transaction implements Observable {
             p.updateTransactions(this);
         }
     }
-    
+
+    public abstract String getTransactionFlag();
+
 }

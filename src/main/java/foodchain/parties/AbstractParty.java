@@ -19,6 +19,7 @@ public abstract class AbstractParty implements Party {
     protected Product currentRequestedProduct;
     protected Party nextParty;
     protected Party currentRequestingParty;
+    protected String partyName;
     
     public void setNext(Party next) {
         nextParty = next;
@@ -104,5 +105,34 @@ public abstract class AbstractParty implements Party {
             System.out.println("I did something wrong!");
         }
         ownTransactionsList.add(transaction);
+    }
+
+
+    public String getPartyName() {
+        return partyName;
+    }
+
+    public List<Transaction> getTransactionsList() {
+        return transactionsList;
+    }
+
+    public void setTransactionsList(List<Transaction> transactionsList) {
+        this.transactionsList = transactionsList;
+    }
+
+    public List<Transaction> getOwnTransactionsList() {
+        return ownTransactionsList;
+    }
+
+    public void setOwnTransactionsList(List<Transaction> ownTransactionsList) {
+        this.ownTransactionsList = ownTransactionsList;
+    }
+
+    public List<Product> getProductsList() {
+        return productsList;
+    }
+
+    public void setProductsList(List<Product> productsList) {
+        this.productsList = productsList;
     }
 }

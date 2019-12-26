@@ -15,6 +15,7 @@ public class Processor extends AbstractParty {
         transactionsList = new LinkedList<Transaction>();
         ownTransactionsList = new LinkedList<Transaction>();
         productsList = new ArrayList<Product>();
+        partyName = "Processor";
     }
 
     public void processProduct(Product product) {
@@ -23,7 +24,7 @@ public class Processor extends AbstractParty {
         // TODO
     }
 
-    @Override
+
     public void acceptReporter(PartiesReporter partiesReporter) {
         partiesReporter.generateReportForProcessor(this);
     }

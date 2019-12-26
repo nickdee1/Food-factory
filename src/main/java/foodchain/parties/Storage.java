@@ -16,6 +16,7 @@ public class Storage extends AbstractParty {
         ownTransactionsList = new LinkedList<Transaction>();
         productsList = new ArrayList<Product>();
         moneyReceived = false;
+        partyName = "Storage";
     }
 
     public void store(Product product) {

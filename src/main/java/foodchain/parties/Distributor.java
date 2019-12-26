@@ -15,6 +15,7 @@ public class Distributor extends AbstractParty {
         transactionsList = new LinkedList<Transaction>();
         ownTransactionsList = new LinkedList<Transaction>();
         productsList = new ArrayList<Product>();
+        partyName = "Distributor";
     }
 
     public void deliverProduct(Product product) {

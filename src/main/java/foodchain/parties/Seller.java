@@ -15,6 +15,7 @@ public class Seller extends AbstractParty {
         transactionsList = new LinkedList<Transaction>();
         ownTransactionsList = new LinkedList<Transaction>();
         productsList = new ArrayList<Product>();
+        partyName = "Seller";
     }
 
     public void sellProduct(Product product) {
@@ -23,7 +24,6 @@ public class Seller extends AbstractParty {
         // TODO
     }
 
-    @Override
     public void acceptReporter(PartiesReporter partiesReporter) {
         partiesReporter.generateReportForSeller(this);
     }

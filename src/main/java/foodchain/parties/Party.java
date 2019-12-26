@@ -19,4 +19,6 @@ public interface Party {
     void setNext(Party party); 
     void makeRequest(String productName);
     void getRequest(String productName, Party sender);
+
+    String getPartyName();
 }

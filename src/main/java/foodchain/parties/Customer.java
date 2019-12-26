@@ -15,6 +15,7 @@ public class Customer extends AbstractParty {
         transactionsList = new LinkedList<Transaction>();
         ownTransactionsList = new LinkedList<Transaction>();
         productsList = new ArrayList<Product>();
+        partyName = "Customer";
     }
     
     public void buyProduct(Product product) {
@@ -23,7 +24,7 @@ public class Customer extends AbstractParty {
         System.out.println("CONGRATULATIONS, FOOD CHAIN IS COMPLETED");
     }
 
-    @Override
+
     public void acceptReporter(PartiesReporter partiesReporter) {
         partiesReporter.generateReportForCustomer(this);
     }
