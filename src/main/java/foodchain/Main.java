@@ -8,6 +8,9 @@ import foodchain.states.StoredState;
 =======
 import foodchain.reporters.PartiesReporter;
 import foodchain.reporters.TransactionReporter;;
+<<<<<<< HEAD
+>>>>>>> d3ea9f8005fe44ba142b28856c1f31b144c56d19
+=======
 >>>>>>> d3ea9f8005fe44ba142b28856c1f31b144c56d19
 
 

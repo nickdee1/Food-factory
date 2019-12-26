@@ -76,6 +76,9 @@ public class PartiesReporter implements Visitor {
     }
 
 
+<<<<<<< HEAD
+>>>>>>> d3ea9f8005fe44ba142b28856c1f31b144c56d19
+=======
 >>>>>>> d3ea9f8005fe44ba142b28856c1f31b144c56d19
     private Map<String, Object> generateMapForParty(AbstractParty party) {
         Map<String, Object> outputMap = new LinkedHashMap<String, Object>();
