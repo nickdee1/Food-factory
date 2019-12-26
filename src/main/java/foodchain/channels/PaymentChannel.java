@@ -6,11 +6,9 @@ import foodchain.parties.Party;
 
 public class PaymentChannel implements Channel {
 
-    private final Party sender; // maybe not needed
     private final Party receiver;
 
-    public PaymentChannel(Party sender, Party receiver) {
-        this.sender = sender;
+    public PaymentChannel(Party receiver) {
         this.receiver = receiver;
     }
 

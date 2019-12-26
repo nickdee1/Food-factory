@@ -11,6 +11,8 @@ public abstract class Product {
     
     protected Map<String, Integer> storageParametres;
     protected Map<String, Integer> processorParametres;
+    protected Integer distributionTime;
+    protected Map<String, String> sellerParametres;
     
     public void accept(ProductReporter reporter) {
         
@@ -53,4 +55,21 @@ public abstract class Product {
         return processorParametres;
     }
     
+    public void setSellerParametres(String packaging, String sellingPlace) {
+        sellerParametres.put("Type of packaging", packaging);
+        sellerParametres.put("Selling Place", sellingPlace);
+    }
+
+    public Map<String, String> getSellerParametres() {
+        return sellerParametres;
+    }
+    
+    public void increaseDistributionTime() {
+        
+        distributionTime++;
+    }
+
+    public Integer getDistributionTime() {
+        return distributionTime;
+    }
 }

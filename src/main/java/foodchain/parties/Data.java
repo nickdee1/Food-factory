@@ -18,5 +18,14 @@ public class Data {
     static final Integer PORK_PROCESSING_TEMPERATURE = 10;
     static final Integer PORK_CHEMICAL_PROCESSING_DEGREE = 27;
     
+    // DISTRIBUTOR DATA
+    static final Integer PRODUCTS_DISTRIBUTION_TIME = 3;
+    
+    // SELLER DATA
+    static final String APPLE_PACKAGING = "POLYETHYLENE";
+    static final String APPLE_SELLING_PLACE = "FRUIT_SECTION";
+    
+    static final String PORK_PACKAGING = "VACUUM";
+    static final String PORK_SELLING_PLACE = "FRIDGE";
     
 }

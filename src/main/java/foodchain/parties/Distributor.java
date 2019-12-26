@@ -8,6 +8,8 @@ import foodchain.reporters.PartiesReporter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import static foodchain.parties.Data.*;
+
 
 public class Distributor extends AbstractParty {
 
@@ -54,6 +56,17 @@ public class Distributor extends AbstractParty {
             makeTransaction(currentRequestingParty, product);
             currentRequestedProduct = null;
             currentRequestingParty = null;
+        }
+    }
+    
+    // TO USE IN SIMULATION
+    public boolean increaseCurrentDistributionTime(Product product) {
+        if (product.getDistributionTime() == PRODUCTS_DISTRIBUTION_TIME) {
+            return false;
+        }
+        else {
+            product.increaseDistributionTime();
+            return true;
         }
     }
 

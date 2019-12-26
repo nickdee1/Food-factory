@@ -8,6 +8,8 @@ import foodchain.reporters.PartiesReporter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import static foodchain.parties.Data.*;
+
 
 public class Seller extends AbstractParty {
 
@@ -21,7 +23,8 @@ public class Seller extends AbstractParty {
     public void sellProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in seller is "+product.getState().getStateName());
-        // TODO
+        initSellerParametres(product);
+        System.out.println("Product seller parametres: "+product.getSellerParametres().toString());
         productsList.add(product);
     }
 
@@ -55,6 +58,19 @@ public class Seller extends AbstractParty {
             makeTransaction(currentRequestingParty, product);
             currentRequestedProduct = null;
             currentRequestingParty = null;
+        }
+    }
+    
+    private void initSellerParametres(Product product) {
+        if ((product.getName()).equalsIgnoreCase("apple")) {
+            System.out.println("Apple seller parametres: "+product.getSellerParametres().toString());
+            System.out.println("Sell apple...");
+            product.setSellerParametres(APPLE_PACKAGING, APPLE_SELLING_PLACE);
+        }
+        else if ((product.getName()).equalsIgnoreCase("pork")) {
+            System.out.println("Pork seller parametres: "+product.getStorageParametres().toString());
+            System.out.println("Sell pork...");
+            product.setSellerParametres(PORK_PACKAGING, PORK_SELLING_PLACE);
         }
     }
 
