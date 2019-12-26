@@ -8,34 +8,66 @@ import org.json.simple.JSONObject;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.*;
 
 public class TransactionReporter implements Visitor {
 
+    private List<Transaction> transactionList;
 
-    public void generateForMoneyTransaction(MoneyTransaction transaction) {
-        JSONObject jsonOut = new JSONObject();
-        jsonOut.put("receiver", transaction.getReceiver().getPartyName());
-        jsonOut.put("sender", transaction.getSender().getPartyName());
-        jsonOut.put("timestamp", "01/01/1970"); // TODO: - Change it
-        jsonOut.put("hashcode", transaction.getHashCode());
-        jsonOut.put("price", transaction.getMoneyAmount());
-
-        generateJSON(jsonOut, transaction.getHashCode());
+    public TransactionReporter(List<Transaction> transactions) {
+        this.transactionList = transactions;
     }
 
-    public void generateForProductTransaction(ProductTransaction transaction) {
-        JSONObject jsonOut = new JSONObject();
-        jsonOut.put("receiver", transaction.getReceiver().getPartyName());
-        jsonOut.put("sender", transaction.getSender().getPartyName());
-        jsonOut.put("timestamp", "01/01/1970"); // TODO: - Change it
-        jsonOut.put("hashcode", transaction.getHashCode());
-        jsonOut.put("product", transaction.getProduct().getName());
-
-        generateJSON(jsonOut, transaction.getHashCode());
-    }
 
     public void generateForAll() {
+        Map<String, List> outputMap = new LinkedHashMap<String, List>();
+        String output_file = "transactions";
 
+        List<Map> allTransactionsReport = generateMapsForAll();
+        outputMap.put("transactions", allTransactionsReport);
+
+        generateJSON(new JSONObject(outputMap), output_file);
+    }
+
+
+    protected List<Map> generateMapsForAll() {
+        List<Map> arrayOfTransactions = new ArrayList<Map>();
+        for (Transaction t : transactionList) {
+            if (t.getTransactionFlag().equals("MONEY")) {
+                Map moneyTransaction = generateMapForMoneyTransaction( (MoneyTransaction) t );
+                arrayOfTransactions.add(moneyTransaction);
+            } else {
+                Map productTransaction = generateMapProductTransaction( (ProductTransaction) t);
+                arrayOfTransactions.add(productTransaction);
+            }
+        }
+
+        return arrayOfTransactions;
+    }
+
+
+    protected Map<String, Object> generateMapForMoneyTransaction(MoneyTransaction transaction) {
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        map.put("receiver", transaction.getReceiver().getPartyName());
+        map.put("sender", transaction.getSender().getPartyName());
+        map.put("timestamp", "01/01/1970"); // TODO: - Change it
+        map.put("hashcode", transaction.getHashCode());
+        map.put("successful", transaction.isSuccessful());
+        map.put("price", transaction.getMoneyAmount());
+
+        return map;
+    }
+
+    protected Map<String, Object> generateMapProductTransaction(ProductTransaction transaction) {
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        map.put("receiver", transaction.getReceiver().getPartyName());
+        map.put("sender", transaction.getSender().getPartyName());
+        map.put("timestamp", "01/01/1970"); // TODO: - Change it
+        map.put("hashcode", transaction.getHashCode());
+        map.put("successful", transaction.isSuccessful());
+        map.put("product", transaction.getProduct().getName());
+
+        return map;
     }
 
     private void generateJSON(JSONObject object, String name) {

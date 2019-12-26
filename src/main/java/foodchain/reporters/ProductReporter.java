@@ -6,26 +6,50 @@ import org.json.simple.JSONObject;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.*;
 
 public class ProductReporter implements Visitor {
 
-    public void generateReportForProduct(Product pork) {
-        String name = pork.getName();
-        String state = pork.getState().getStateName();
-        Integer price = pork.getPrice();
+    private List<Product> productList;
 
-        JSONObject jsonOut = new JSONObject();
-        jsonOut.put("name", name);
-        jsonOut.put("current_state", state);
-        jsonOut.put("price", price);
+    public ProductReporter(List<Product> productList) {
+        this.productList = productList;
+    }
 
-        generateJSON(jsonOut, name);
+    public void generateForAll() {
+        Map<String, List> outputMap = new LinkedHashMap<String, List>();
+        String output_file = "products";
+
+        List<Map> allProductsReport = generateMapsForAll();
+        outputMap.put("products", allProductsReport);
+
+        generateJSON(new JSONObject(outputMap), output_file);
     }
 
 
-    // TODO: - Generate report for all products
-    public void generateForAll() {
+    protected List<Map> generateMapsForAll() {
+        List<Map> arrayOfProducts = new ArrayList<Map>();
 
+        for (Product p : productList) {
+            Map productMap = generateMapReportForProduct(p);
+            arrayOfProducts.add(productMap);
+        }
+
+        return arrayOfProducts;
+    }
+
+
+    protected Map<String, Object> generateMapReportForProduct(Product product) {
+        String name = product.getName();
+        String state = product.getState().getStateName();
+        Integer price = product.getPrice();
+
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        map.put("name", name);
+        map.put("current_state", state);
+        map.put("price", price);
+
+        return map;
     }
 
     private void generateJSON(JSONObject object, String name) {

@@ -1,6 +1,12 @@
 package foodchain;
 
 import foodchain.parties.*;
+import foodchain.reporters.PartiesReporter;
+import foodchain.reporters.TransactionReporter;
+import foodchain.reporters.report.TransactionReport;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     
@@ -23,5 +29,19 @@ public class Main {
         // TEST COMMUNICATION BETWEEN CUSTOMER AND SELLER
         customer.makeRequest(productName);
         customer.makeTransaction(moneyForProduct);
+
+
+        List<AbstractParty> parties = new ArrayList<AbstractParty>();
+        List<Transaction> tr = new ArrayList<Transaction>();
+        parties.add(customer);
+        parties.add(seller);
+        parties.add(distributor);
+        parties.add(processor);
+        parties.add(storage);
+        parties.add(farmer);
+
+        PartiesReporter pr = new PartiesReporter(parties);
+        pr.generateForAll();
+
     }
 }

@@ -1,91 +1,86 @@
 package foodchain.reporters;
 
-import foodchain.MoneyTransaction;
-import foodchain.Product;
-import foodchain.ProductTransaction;
-import foodchain.Transaction;
 import foodchain.parties.*;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class PartiesReporter implements Visitor {
 
+    private List<AbstractParty> parties;
+
+    public PartiesReporter(List<AbstractParty> parties) {
+        this.parties = parties;
+    }
+
     public void generateReportForFarmer(Farmer farmer) {
-        JSONObject jsonOut = json4party(farmer);
-        generateJSON(jsonOut, "farmer");
+        Map jsonOut = generateMapForParty(farmer);
+        generateJSON(new JSONObject(jsonOut), "farmer");
     }
 
     public void generateReportForDistributor(Distributor distributor) {
-        JSONObject jsonOut = json4party(distributor);
-        generateJSON(jsonOut, "distributor");
+        Map jsonOut = generateMapForParty(distributor);
+        generateJSON(new JSONObject(jsonOut), "distributor");
     }
 
     public void generateReportForCustomer(Customer customer) {
-        JSONObject jsonOut = json4party(customer);
-        generateJSON(jsonOut, "customer");
+        Map jsonOut = generateMapForParty(customer);
+        generateJSON(new JSONObject(jsonOut), "customer");
     }
 
     public void generateReportForProcessor(Processor processor) {
-        JSONObject jsonOut = json4party(processor);
-        generateJSON(jsonOut, "processor");
+        Map jsonOut = generateMapForParty(processor);
+        generateJSON(new JSONObject(jsonOut), "processor");
     }
 
     public void generateReportForSeller(Seller seller) {
-        JSONObject jsonOut = json4party(seller);
-        generateJSON(jsonOut, "seller");
+        Map jsonOut = generateMapForParty(seller);
+        generateJSON(new JSONObject(jsonOut), "seller");
     }
 
     public void generateReportForStorage(Storage storage) {
-        JSONObject jsonOut = json4party(storage);
-        generateJSON(jsonOut, "storage");
+        Map jsonOut = generateMapForParty(storage);
+        generateJSON(new JSONObject(jsonOut), "storage");
     }
 
 
     public void generateForAll() {
+        String output_file = "parties";
+        Map<String, Object> outputMap = new LinkedHashMap<String, Object>();
 
+        List<Map> arrayOfParties = new ArrayList<Map>();
+        for (AbstractParty p : parties) {
+            Map partyMap = generateMapForParty(p);
+            arrayOfParties.add(partyMap);
+        }
+
+        outputMap.put("parties", arrayOfParties);
+        generateJSON(new JSONObject(outputMap), output_file);
     }
 
 
-    private JSONObject json4party(AbstractParty party) {
-        JSONObject jsonOut = new JSONObject();
-        jsonOut.put("name", party.getPartyName());
+    private Map<String, Object> generateMapForParty(AbstractParty party) {
+        Map<String, Object> outputMap = new LinkedHashMap<String, Object>();
+        outputMap.put("name", party.getPartyName());
 
-        JSONArray products = new JSONArray();
-        for (Product p : party.getProductsList()) {
-            JSONObject prod = new JSONObject();
-            prod.put("product", p.getName());
-            prod.put("price", p.getPrice());
-            prod.put("state", p.getState().getStateName());
-            products.add(prod);
-        }
+        ProductReporter productReporter = new ProductReporter(party.getProductsList());
+        TransactionReporter transactionReporter = new TransactionReporter(party.getOwnTransactionsList());
 
-        JSONArray transactions = new JSONArray();
-        for (Transaction t : party.getOwnTransactionsList()) {
-            JSONObject trans = new JSONObject();
-            trans.put("receiver", t.getReceiver().getPartyName());
-            trans.put("sender", t.getSender().getPartyName());
-            trans.put("hash", t.getHashCode());
-
-            if (t.getTransactionFlag().equals("PRODUCT")) {
-                Product p = ((ProductTransaction) t).getProduct();
-                trans.put("name", p.getName());
-            }
-            else {
-                Integer m = ((MoneyTransaction) t).getMoneyAmount();
-                trans.put("money_amount", m);
-            }
-            transactions.add(trans);
-        }
+        List<Map> productMaps = productReporter.generateMapsForAll();
+        List<Map> transactionMaps = transactionReporter.generateMapsForAll();
 
 
-        jsonOut.put("products", products);
-        jsonOut.put("transactions", transactions);
+        outputMap.put("products", productMaps);
+        outputMap.put("transactions", transactionMaps);
 
-        return jsonOut;
+
+        return outputMap;
     }
 
     private void generateJSON(JSONObject object, String name) {
