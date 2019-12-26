@@ -7,6 +7,6 @@ public class PackedState extends State {
     }
 
     public void prepare(Product productContext) {
-        System.out.println("Product is already prepared!\n");
+        productContext.setState(new SoldState());
     }
 }

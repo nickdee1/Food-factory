@@ -7,6 +7,6 @@ public class DeliveredState extends State {
     }
     
     public void prepare(Product productContext) {
-        //productContext.setState(new CollectedState());
+        productContext.setState(new PackedState());
     }
 }

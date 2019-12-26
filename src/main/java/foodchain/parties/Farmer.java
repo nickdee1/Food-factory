@@ -36,6 +36,7 @@ public class Farmer extends AbstractParty {
         partiesReporter.generateReportForFarmer(this);
     }
 
+    @Override
     public void receiveProduct(ProductTransaction transaction) {
         System.out.println("Farmer does not receive, but produces!");
     }

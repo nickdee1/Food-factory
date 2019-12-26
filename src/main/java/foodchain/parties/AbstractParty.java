@@ -60,8 +60,8 @@ public abstract class AbstractParty implements Party {
         System.out.println("Current requested party: "+currentRequestingParty.getClass());
         for (Product p : productsList) {
             if (p.getName().equalsIgnoreCase(productName)) {
-                currentRequestedProduct = p;
-                // TODO
+                makeTransaction(currentRequestingParty, p);
+                // TO CHECK
                 return;
             }
         }
@@ -85,5 +85,13 @@ public abstract class AbstractParty implements Party {
         State storedState = product.getState();
         storedState.prepare(product);
         productsList.add(product);
+    }
+    
+    public void receiveProduct(ProductTransaction transaction) {
+        transaction.setSuccessful(true);
+        ownTransactionsList.add(transaction);
+        transaction.addParty(transaction.getSender());
+        transaction.addParty(this);
+        transaction.notifyAllParties();
     }
 }

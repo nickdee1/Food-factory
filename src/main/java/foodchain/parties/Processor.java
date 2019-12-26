@@ -39,14 +39,11 @@ public class Processor extends AbstractParty {
         ownTransactionsList.add(transaction);
     }
 
+    @Override
     public void receiveProduct(ProductTransaction transaction) {
-        transaction.setSuccessful(true);
-        ownTransactionsList.add(transaction);
+        super.receiveProduct(transaction);
         Product product = transaction.getProduct();
         System.out.println("Processor has received "+product.getName());
-        transaction.addParty(transaction.getSender());
-        transaction.addParty(this);
-        transaction.notifyAllParties();
         processProduct(product);
         if (currentRequestedProduct != null) {
             makeTransaction(currentRequestingParty, product);
