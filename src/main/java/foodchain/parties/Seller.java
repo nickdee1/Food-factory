@@ -28,7 +28,6 @@ public class Seller extends AbstractParty {
         productsList.add(product);
     }
 
-    @Override
     public void acceptReporter(PartiesReporter partiesReporter) {
         partiesReporter.generateReportForSeller(this);
     }

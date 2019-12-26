@@ -25,7 +25,7 @@ public class Customer extends AbstractParty {
         productsList.add(product);
     }
 
-    @Override
+
     public void acceptReporter(PartiesReporter partiesReporter) {
         partiesReporter.generateReportForCustomer(this);
     }
