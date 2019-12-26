@@ -102,7 +102,7 @@ public abstract class AbstractParty implements Party {
         ownTransactionsList.add(transaction);
     }
 
-    
+
 
     public String getPartyName() {
         return partyName;

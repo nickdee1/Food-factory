@@ -19,36 +19,6 @@ public class PartiesReporter implements Visitor {
         this.parties = parties;
     }
 
-    public void generateReportForFarmer(Farmer farmer) {
-        Map jsonOut = generateMapForParty(farmer);
-        generateJSON(new JSONObject(jsonOut), "farmer");
-    }
-
-    public void generateReportForDistributor(Distributor distributor) {
-        Map jsonOut = generateMapForParty(distributor);
-        generateJSON(new JSONObject(jsonOut), "distributor");
-    }
-
-    public void generateReportForCustomer(Customer customer) {
-        Map jsonOut = generateMapForParty(customer);
-        generateJSON(new JSONObject(jsonOut), "customer");
-    }
-
-    public void generateReportForProcessor(Processor processor) {
-        Map jsonOut = generateMapForParty(processor);
-        generateJSON(new JSONObject(jsonOut), "processor");
-    }
-
-    public void generateReportForSeller(Seller seller) {
-        Map jsonOut = generateMapForParty(seller);
-        generateJSON(new JSONObject(jsonOut), "seller");
-    }
-
-    public void generateReportForStorage(Storage storage) {
-        Map jsonOut = generateMapForParty(storage);
-        generateJSON(new JSONObject(jsonOut), "storage");
-    }
-
 
     public void generateForAll() {
         String output_file = "parties";
@@ -64,6 +34,12 @@ public class PartiesReporter implements Visitor {
         generateJSON(new JSONObject(outputMap), output_file);
     }
 
+
+    public void generateReportForParty(AbstractParty party) {
+        String name = party.getPartyName().toLowerCase();
+        Map output = generateMapForParty(party);
+        generateJSON(new JSONObject(output), name);
+    }
 
     private Map<String, Object> generateMapForParty(AbstractParty party) {
         Map<String, Object> outputMap = new LinkedHashMap<String, Object>();
