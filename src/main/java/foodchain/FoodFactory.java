@@ -3,7 +3,11 @@ package foodchain;
 public class FoodFactory {
 
     public Product makeProduct(String productName) {
-        if (productName.equalsIgnoreCase("milk")) return null; // TODO add milk
+        if (productName.equalsIgnoreCase("milk")) {
+            Product milk = new Milk();
+            // milk doesn't need to be prepared on this stage
+            return milk;
+        }
         else if (productName.equalsIgnoreCase("pork")) {
             Product pork = new Pork();
             State alive = new AliveState();

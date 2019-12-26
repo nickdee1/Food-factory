@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-// must be ABSTRACT to avoid being instantiated directly
 public abstract class Transaction implements Observable {
 
     private final Party receiver;

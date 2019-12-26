@@ -6,16 +6,14 @@ import foodchain.parties.Party;
 
 public class PaymentChannel implements Channel {
 
-    private final Party sender; // maybe not needed
     private final Party receiver;
 
-    public PaymentChannel(Party sender, Party receiver) {
-        this.sender = sender;
+    public PaymentChannel(Party receiver) {
         this.receiver = receiver;
     }
 
     public MoneyTransaction makeTransmission(Transaction transaction) {
-        System.out.println("Money transaction is being made to "+transaction.getReceiver().getClass());
+        System.out.println("Money transaction is being made to "+transaction.getReceiver().getName());
         MoneyTransaction moneyTransaction = (MoneyTransaction)transaction;
         receiver.receiveMoney(moneyTransaction);
         return moneyTransaction;

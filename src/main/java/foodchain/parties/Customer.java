@@ -22,9 +22,10 @@ public class Customer extends AbstractParty {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in customer is "+product.getState().getStateName());
         System.out.println("CONGRATULATIONS, FOOD CHAIN IS COMPLETED");
+        productsList.add(product);
     }
 
-
+    @Override
     public void acceptReporter(PartiesReporter partiesReporter) {
         partiesReporter.generateReportForCustomer(this);
     }
@@ -40,6 +41,16 @@ public class Customer extends AbstractParty {
     @Override
     public void receiveMoney(MoneyTransaction transaction) {
         System.out.println("Customer doesn't receive money, but pays!");
+    }
+
+    @Override
+    public void getRequest(String productName, Party sender) {
+        System.out.println("Customer doesn't get any requests!");
+    }
+
+    @Override
+    public void makeTransaction(Party receiver, Product product) {
+        System.out.println("Customer doesn't send any products!");
     }
 
 }

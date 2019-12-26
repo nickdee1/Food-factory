@@ -6,11 +6,10 @@ import foodchain.parties.Party;
 
 public class SellingChannel implements Channel {
 
-    private final Party sender; // maybe not needed
     private final Party receiver;
 
-    public SellingChannel(Party sender, Party receiver) {
-        this.sender = sender;
+    public SellingChannel(Party receiver) {
+   
         this.receiver = receiver;
     }
 

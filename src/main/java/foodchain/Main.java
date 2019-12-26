@@ -23,8 +23,8 @@ public class Main {
         seller.setNext(distributor);
         Customer customer = new Customer();
         customer.setNext(seller);
-        String productName = "Apple";
-        Integer moneyForProduct = 20;
+        String productName = "mIlK";
+        Integer moneyForProduct = 45;
 
         // TEST COMMUNICATION BETWEEN CUSTOMER AND SELLER
         customer.makeRequest(productName);

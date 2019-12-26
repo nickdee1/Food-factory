@@ -14,13 +14,13 @@ import java.util.List;
 public abstract class AbstractParty implements Party {
     protected List<Transaction> transactionsList;
     protected List<Transaction> ownTransactionsList;
-    public List<Product> productsList;
+    protected List<Product> productsList;
     protected boolean moneyReceived;
     protected Product currentRequestedProduct;
     protected Party nextParty;
     protected Party currentRequestingParty;
     protected String partyName;
-    
+
     public void setNext(Party next) {
         nextParty = next;
     }
@@ -32,19 +32,13 @@ public abstract class AbstractParty implements Party {
     public void makeRequest(String productName) {
         nextParty.getRequest(productName, this);
     }
-    
-    // for tests
-    public Product getLast() {
-        int index = productsList.size() - 1;
-        return productsList.get(index);
-    }
-    
+
     public void receiveMoney(MoneyTransaction transaction) {
         Integer receivedMoney = transaction.getMoneyAmount();
         if (receivedMoney.equals(currentRequestedProduct.getPrice())) {
             moneyReceived = true;
             transaction.setSuccessful(true);
-            System.out.println(transaction.getReceiver().getClass()+
+            System.out.println(transaction.getReceiver().getPartyName()+
                     " has received money: "+receivedMoney);
         }
         else {
@@ -59,10 +53,11 @@ public abstract class AbstractParty implements Party {
     
     public void getRequest(String productName, Party sender) {
         currentRequestingParty = sender;
-        System.out.println("Current requested party: "+currentRequestingParty.getClass());
+        System.out.println("Current requested party: "+currentRequestingParty.getPartyName());
         for (Product p : productsList) {
             if (p.getName().equalsIgnoreCase(productName)) {
                 makeTransaction(currentRequestingParty, p);
+                productsList.remove(p);
                 // TO CHECK
                 return;
             }
@@ -74,7 +69,7 @@ public abstract class AbstractParty implements Party {
     public void makeTransaction(Party receiver, Product product) {
         if (moneyReceived) {
             Transaction transaction = new ProductTransaction(receiver, this, null, product);
-            SellingChannel channel = new SellingChannel(this, receiver);
+            SellingChannel channel = new SellingChannel(receiver);
             channel.makeTransmission(transaction);
             productsList.remove(product);
             moneyReceived = false;
@@ -99,13 +94,16 @@ public abstract class AbstractParty implements Party {
     
     public void makeTransaction(Integer money) {
         Transaction transaction = new MoneyTransaction(nextParty, this, null, money);
-        PaymentChannel channel = new PaymentChannel(this, nextParty);
+        PaymentChannel channel = new PaymentChannel(nextParty);
         transaction = channel.makeTransmission(transaction);
         if (!transaction.isSuccessful()) {
             System.out.println("I did something wrong!");
         }
         ownTransactionsList.add(transaction);
     }
+
+
+
 
 
     public String getPartyName() {
