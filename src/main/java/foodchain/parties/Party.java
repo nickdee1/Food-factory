@@ -17,6 +17,6 @@ public interface Party {
     void acceptReporter(PartiesReporter partiesReporter);
     // chain of responsibility
     void setNext(Party party); 
-    void makeRequest(String productName, Party sender);
+    void makeRequest(String productName);
     void getRequest(String productName, Party sender);
 }

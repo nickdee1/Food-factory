@@ -27,8 +27,8 @@ public abstract class AbstractParty implements Party {
         transactionsList.add(transaction);
     }
     
-    public void makeRequest(String productName, Party sender) {
-        nextParty.getRequest(productName, sender);
+    public void makeRequest(String productName) {
+        nextParty.getRequest(productName, this);
     }
     
     // for tests

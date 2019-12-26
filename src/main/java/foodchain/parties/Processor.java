@@ -21,7 +21,7 @@ public class Processor extends AbstractParty {
     public void processProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in processor is "+product.getState().getStateName());
-        // TODO ELSE
+        // TODO
     }
 
     @Override
@@ -45,11 +45,7 @@ public class Processor extends AbstractParty {
         Product product = transaction.getProduct();
         System.out.println("Processor has received "+product.getName());
         processProduct(product);
-        if (currentRequestedProduct != null) {
-            makeTransaction(currentRequestingParty, product);
-            currentRequestedProduct = null;
-            currentRequestingParty = null;
-        }
+        sendProduct(product);
     }
 
     @Override
@@ -58,8 +54,16 @@ public class Processor extends AbstractParty {
         Integer receivedMoney = transaction.getMoneyAmount();
         if (currentRequestedProduct != null &&
                 receivedMoney.equals(currentRequestedProduct.getPrice())) {
-            makeRequest(currentRequestedProduct.getName(), this);
+            makeRequest(currentRequestedProduct.getName());
             makeTransaction(receivedMoney);
+        }
+    }
+    
+    private void sendProduct(Product product) {
+        if (currentRequestedProduct != null) {
+            makeTransaction(currentRequestingParty, product);
+            currentRequestedProduct = null;
+            currentRequestingParty = null;
         }
     }
 

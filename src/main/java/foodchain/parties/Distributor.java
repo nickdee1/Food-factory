@@ -21,6 +21,7 @@ public class Distributor extends AbstractParty {
     public void deliverProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in distributor is "+product.getState().getStateName());
+        // TODO
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {
@@ -43,18 +44,26 @@ public class Distributor extends AbstractParty {
         Product product = transaction.getProduct();
         System.out.println("Distributor has received "+product.getName());
         deliverProduct(product);
+        sendProduct(product);
     }
 
-    public void makeTransaction(Party receiver, String productName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    @Override
     public void receiveMoney(MoneyTransaction transaction) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.receiveMoney(transaction);
+        Integer receivedMoney = transaction.getMoneyAmount();
+        if (currentRequestedProduct != null &&
+                receivedMoney.equals(currentRequestedProduct.getPrice())) {
+            makeRequest(currentRequestedProduct.getName());
+            makeTransaction(receivedMoney);
+        }
     }
-
-    public void getRequest(String productName, Party sender) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    private void sendProduct(Product product) {
+        if (currentRequestedProduct != null) {
+            makeTransaction(currentRequestingParty, product);
+            currentRequestedProduct = null;
+            currentRequestingParty = null;
+        }
     }
 
 }

@@ -22,7 +22,7 @@ public class Storage extends AbstractParty {
     public void store(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in storage is "+product.getState().getStateName());
-        // TODO ELSE
+        // TODO
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {
@@ -45,11 +45,7 @@ public class Storage extends AbstractParty {
         Product product = transaction.getProduct();
         System.out.println("Storage has received "+product.getName());
         store(product);
-        if (currentRequestedProduct != null) {
-            makeTransaction(currentRequestingParty, product);
-            currentRequestedProduct = null;
-            currentRequestingParty = null;
-        }
+        sendProduct(product);
     }
     
     @Override
@@ -57,8 +53,16 @@ public class Storage extends AbstractParty {
         super.receiveMoney(transaction);
         Integer receivedMoney = transaction.getMoneyAmount();
         if (receivedMoney.equals(currentRequestedProduct.getPrice())) {
-            makeRequest(currentRequestedProduct.getName(), this);
+            makeRequest(currentRequestedProduct.getName());
             makeTransaction(receivedMoney);
+        }
+    }
+    
+    private void sendProduct(Product product) {
+        if (currentRequestedProduct != null) {
+            makeTransaction(currentRequestingParty, product);
+            currentRequestedProduct = null;
+            currentRequestingParty = null;
         }
     }
 
