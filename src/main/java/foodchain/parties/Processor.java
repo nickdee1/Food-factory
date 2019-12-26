@@ -29,7 +29,7 @@ public class Processor extends AbstractParty {
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {
-        partiesReporter.generateReportForProcessor(this);
+        partiesReporter.generateReportForParty(this);
     }
 
     @Override

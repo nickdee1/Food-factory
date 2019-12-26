@@ -3,7 +3,7 @@ package foodchain.reporters;
 import foodchain.transactions.MoneyTransaction;
 import foodchain.transactions.ProductTransaction;
 import foodchain.transactions.Transaction;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -75,7 +75,8 @@ public class TransactionReporter implements Visitor {
 
         try {
             FileWriter file = new FileWriter(new File(filepath));
-            file.write(object.toJSONString());
+            file.write(object.toString(2));
+            file.flush();
             file.close();
         } catch (IOException e) {
             e.printStackTrace();

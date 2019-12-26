@@ -37,7 +37,7 @@ public class Farmer extends AbstractParty {
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {
-        partiesReporter.generateReportForFarmer(this);
+        partiesReporter.generateReportForParty(this);
     }
 
     @Override

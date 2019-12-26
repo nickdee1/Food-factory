@@ -1,9 +1,14 @@
 package foodchain;
 
 import foodchain.parties.*;
+<<<<<<< HEAD
 import foodchain.products.Milk;
 import foodchain.products.Product;
 import foodchain.states.StoredState;
+=======
+import foodchain.reporters.PartiesReporter;
+import foodchain.reporters.TransactionReporter;;
+>>>>>>> d3ea9f8005fe44ba142b28856c1f31b144c56d19
 
 
 public class Main {
