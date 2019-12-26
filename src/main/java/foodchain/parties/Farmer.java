@@ -12,21 +12,19 @@ import java.util.LinkedList;
 
 public class Farmer extends AbstractParty {
 
-    private final FoodFactory factory;
     private Integer balance;
 
     public Farmer() {
         transactionsList = new LinkedList<Transaction>();
         ownTransactionsList = new LinkedList<Transaction>();
         productsList = new ArrayList<Product>();
-        factory = new FoodFactory();
         balance = 0;
         moneyReceived = false;
         partyName = "Farmer";
     }
 
     public Product makeProduct(String productName) {
-        Product product = factory.makeProduct(productName);
+        Product product = FoodFactory.makeProduct(productName);
         if (product != null) {
             productsList.add(product);
         }

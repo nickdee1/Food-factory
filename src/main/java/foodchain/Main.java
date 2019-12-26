@@ -1,13 +1,10 @@
 package foodchain;
 
-import foodchain.transactions.Transaction;
 import foodchain.parties.*;
-import foodchain.reporters.PartiesReporter;
-import foodchain.reporters.TransactionReporter;
-import foodchain.reporters.report.TransactionReport;
+import foodchain.products.Milk;
+import foodchain.products.Product;
+import foodchain.states.StoredState;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     
@@ -26,13 +23,17 @@ public class Main {
         customer.setNext(seller);
         String productName = "mIlK";
         Integer moneyForProduct = 45;
+        
+        Product alreadyExistingMilk = new Milk();
+        alreadyExistingMilk.setState(new StoredState());
+        storage.addProductToList(alreadyExistingMilk);
 
         // TEST COMMUNICATION BETWEEN CUSTOMER AND SELLER
         customer.makeRequest(productName);
         customer.makeTransaction(moneyForProduct);
 
 
-        List<AbstractParty> parties = new ArrayList<AbstractParty>();
+        /*List<AbstractParty> parties = new ArrayList<AbstractParty>();
         List<Transaction> tr = new ArrayList<Transaction>();
         parties.add(customer);
         parties.add(seller);
@@ -42,7 +43,7 @@ public class Main {
         parties.add(farmer);
 
         PartiesReporter pr = new PartiesReporter(parties);
-        pr.generateForAll();
+        pr.generateForAll();*/
 
     }
 }

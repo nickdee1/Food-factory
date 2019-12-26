@@ -44,10 +44,14 @@ public class Distributor extends AbstractParty {
     public void receiveMoney(MoneyTransaction transaction) {
         super.receiveMoney(transaction);
         Integer receivedMoney = transaction.getMoneyAmount();
-        if (currentRequestedProduct != null &&
-                receivedMoney.equals(currentRequestedProduct.getPrice())) {
-            makeRequest(currentRequestedProduct.getName());
-            makeTransaction(receivedMoney);
+        if (receivedMoney.equals(currentRequestedProduct.getPrice())) {
+            if (!currentRequestedProduct.isIsReadyToTransmit()) {
+                makeRequest(currentRequestedProduct.getName());
+                makeTransaction(receivedMoney);
+            }
+            else {
+                sendProduct(currentRequestedProduct);
+            }
         }
     }
     

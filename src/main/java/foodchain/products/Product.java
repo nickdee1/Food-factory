@@ -9,6 +9,7 @@ public abstract class Product {
     protected State state;
     protected Integer price;
     protected String name;
+    protected boolean isReadyToTransmit;
     
     protected Map<String, Integer> storageParametres;
     protected Map<String, Integer> processorParametres;
@@ -33,6 +34,14 @@ public abstract class Product {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isIsReadyToTransmit() {
+        return isReadyToTransmit;
+    }
+
+    public void setIsReadyToTransmit(boolean isReadyToTransmit) {
+        this.isReadyToTransmit = isReadyToTransmit;
     }
     
     public void setStorageParametres(Integer storageTime, Integer storageTemperature,

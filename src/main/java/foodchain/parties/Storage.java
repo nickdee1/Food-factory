@@ -47,8 +47,13 @@ public class Storage extends AbstractParty {
         super.receiveMoney(transaction);
         Integer receivedMoney = transaction.getMoneyAmount();
         if (receivedMoney.equals(currentRequestedProduct.getPrice())) {
-            makeRequest(currentRequestedProduct.getName());
-            makeTransaction(receivedMoney);
+            if (!currentRequestedProduct.isIsReadyToTransmit()) {
+                makeRequest(currentRequestedProduct.getName());
+                makeTransaction(receivedMoney);
+            }
+            else {
+                sendProduct(currentRequestedProduct);
+            }
         }
     }
     

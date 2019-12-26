@@ -56,14 +56,14 @@ public abstract class AbstractParty implements Party {
         System.out.println("Current requested party: "+currentRequestingParty.getPartyName());
         for (Product p : productsList) {
             if (p.getName().equalsIgnoreCase(productName)) {
-                makeTransaction(currentRequestingParty, p);
-                productsList.remove(p);
                 // TO CHECK
+                System.out.println(this.getPartyName()+" already has "+p.getName());
+                currentRequestedProduct = p;
+                currentRequestedProduct.setIsReadyToTransmit(true);
                 return;
             }
         }
-        FoodFactory factory = new FoodFactory();
-        currentRequestedProduct = factory.makeProduct(productName);
+        currentRequestedProduct = FoodFactory.makeProduct(productName);
     }
     
     public void makeTransaction(Party receiver, Product product) {
@@ -102,7 +102,7 @@ public abstract class AbstractParty implements Party {
         ownTransactionsList.add(transaction);
     }
 
-
+    
 
     public String getPartyName() {
         return partyName;
@@ -130,5 +130,10 @@ public abstract class AbstractParty implements Party {
 
     public void setProductsList(List<Product> productsList) {
         this.productsList = productsList;
+    }
+    
+    // for simulation
+    public void addProductToList(Product product) {
+        productsList.add(product);
     }
 }

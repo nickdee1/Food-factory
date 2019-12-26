@@ -10,7 +10,7 @@ import foodchain.products.Pork;
 
 public class FoodFactory {
 
-    public Product makeProduct(String productName) {
+    public static Product makeProduct(String productName) {
         if (productName.equalsIgnoreCase("milk")) {
             Product milk = new Milk();
             // milk doesn't need to be prepared on this stage
