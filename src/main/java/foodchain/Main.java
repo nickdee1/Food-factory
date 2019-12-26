@@ -3,8 +3,7 @@ package foodchain;
 import foodchain.transactions.Transaction;
 import foodchain.parties.*;
 import foodchain.reporters.PartiesReporter;
-import foodchain.reporters.TransactionReporter;
-import foodchain.reporters.report.TransactionReport;
+import foodchain.reporters.TransactionReporter;;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,11 +1,13 @@
 package foodchain.reporters;
 
 import foodchain.parties.*;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
+
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -41,6 +43,7 @@ public class PartiesReporter implements Visitor {
         generateJSON(new JSONObject(output), name);
     }
 
+
     private Map<String, Object> generateMapForParty(AbstractParty party) {
         Map<String, Object> outputMap = new LinkedHashMap<String, Object>();
         outputMap.put("name", party.getPartyName());
@@ -51,10 +54,8 @@ public class PartiesReporter implements Visitor {
         List<Map> productMaps = productReporter.generateMapsForAll();
         List<Map> transactionMaps = transactionReporter.generateMapsForAll();
 
-
         outputMap.put("products", productMaps);
         outputMap.put("transactions", transactionMaps);
-
 
         return outputMap;
     }
@@ -64,7 +65,8 @@ public class PartiesReporter implements Visitor {
 
         try {
             FileWriter file = new FileWriter(new File(filepath));
-            file.write(object.toJSONString());
+            file.write(object.toString(2));
+            file.flush();
             file.close();
         } catch (IOException e) {
             e.printStackTrace();
