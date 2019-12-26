@@ -55,7 +55,7 @@ public class Farmer extends AbstractParty {
 
     @Override
     public void makeRequest(String productName) {
-        System.out.println("Farmer do not make requests!");
+        System.out.println("Farmer does not make requests!");
     }
 
  

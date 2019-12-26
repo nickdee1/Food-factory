@@ -10,7 +10,15 @@ import java.util.ArrayList;
 
 
 public class Storage extends AbstractParty {
-
+    
+    private final Integer APPLE_STORAGE_TIME = 1;
+    private final Integer APPLE_STORAGE_TEMPERATURE = 15;
+    private final Integer APPLE_STORAGE_HUMIDITY = 40;
+    
+    private final Integer PORK_STORAGE_TIME = 3;
+    private final Integer PORK_STORAGE_TEMPERATURE = -5;
+    private final Integer PORK_STORAGE_HUMIDITY = 13;
+    
     public Storage() {
         transactionsList = new LinkedList<Transaction>();
         ownTransactionsList = new LinkedList<Transaction>();
@@ -21,7 +29,8 @@ public class Storage extends AbstractParty {
     public void store(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in storage is "+product.getState().getStateName());
-        // TODO
+        initStorageParametres(product);
+        System.out.println("Product storage parametres: "+product.getStorageParametres().toString());
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {
@@ -52,6 +61,21 @@ public class Storage extends AbstractParty {
             makeTransaction(currentRequestingParty, product);
             currentRequestedProduct = null;
             currentRequestingParty = null;
+        }
+    }
+    
+    private void initStorageParametres(Product product) {
+        if ((product.getName()).equalsIgnoreCase("apple")) {
+            System.out.println("Apple storage parametres: "+product.getStorageParametres().toString());
+            System.out.println("Store apple...");
+            product.setStorageParametres(APPLE_STORAGE_TIME, APPLE_STORAGE_TEMPERATURE,
+                    APPLE_STORAGE_HUMIDITY);
+        }
+        else if ((product.getName()).equalsIgnoreCase("pork")) {
+            System.out.println("Pork storage parametres: "+product.getStorageParametres().toString());
+            System.out.println("Store pork...");
+            product.setStorageParametres(PORK_STORAGE_TIME, PORK_STORAGE_TEMPERATURE,
+                    PORK_STORAGE_HUMIDITY);
         }
     }
 

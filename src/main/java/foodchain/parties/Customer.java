@@ -40,5 +40,15 @@ public class Customer extends AbstractParty {
     public void receiveMoney(MoneyTransaction transaction) {
         System.out.println("Customer doesn't receive money, but pays!");
     }
+    
+    @Override
+    public void getRequest(String productName, Party sender) {
+        System.out.println("Customer doesn't get any requests!");
+    }
+    
+    @Override
+    public void makeTransaction(Party receiver, Product product) {
+        System.out.println("Customer doesn't send any products!");
+    }
 
 }

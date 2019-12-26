@@ -32,12 +32,6 @@ public abstract class AbstractParty implements Party {
         nextParty.getRequest(productName, this);
     }
     
-    // for tests
-    public Product getLast() {
-        int index = productsList.size() - 1;
-        return productsList.get(index);
-    }
-    
     public void receiveMoney(MoneyTransaction transaction) {
         Integer receivedMoney = transaction.getMoneyAmount();
         if (receivedMoney.equals(currentRequestedProduct.getPrice())) {
@@ -105,4 +99,5 @@ public abstract class AbstractParty implements Party {
         }
         ownTransactionsList.add(transaction);
     }
+    
 }
