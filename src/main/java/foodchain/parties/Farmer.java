@@ -28,6 +28,7 @@ public class Farmer extends AbstractParty {
         return product;
     }
 
+    @Override
     public void makeTransaction(Integer money) {
         System.out.println("Farmer does not pay for anything!");
     }

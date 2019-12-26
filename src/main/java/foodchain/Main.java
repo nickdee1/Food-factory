@@ -22,5 +22,6 @@ public class Main {
 
         // TEST COMMUNICATION BETWEEN CUSTOMER AND SELLER
         customer.makeRequest(productName);
+        customer.makeTransaction(moneyForProduct);
     }
 }

@@ -6,6 +6,7 @@ import foodchain.Product;
 import foodchain.ProductTransaction;
 import foodchain.State;
 import foodchain.Transaction;
+import foodchain.channels.PaymentChannel;
 import foodchain.channels.SellingChannel;
 import java.util.List;
 
@@ -93,5 +94,15 @@ public abstract class AbstractParty implements Party {
         transaction.addParty(transaction.getSender());
         transaction.addParty(this);
         transaction.notifyAllParties();
+    }
+    
+    public void makeTransaction(Integer money) {
+        Transaction transaction = new MoneyTransaction(nextParty, this, null, money);
+        PaymentChannel channel = new PaymentChannel(this, nextParty);
+        transaction = channel.makeTransmission(transaction);
+        if (!transaction.isSuccessful()) {
+            System.out.println("I did something wrong!");
+        }
+        ownTransactionsList.add(transaction);
     }
 }

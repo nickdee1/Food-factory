@@ -4,7 +4,6 @@ import foodchain.MoneyTransaction;
 import foodchain.Product;
 import foodchain.ProductTransaction;
 import foodchain.Transaction;
-import foodchain.channels.PaymentChannel;
 import foodchain.reporters.PartiesReporter;
 import java.util.LinkedList;
 import java.util.ArrayList;
@@ -27,16 +26,6 @@ public class Storage extends AbstractParty {
 
     public void acceptReporter(PartiesReporter partiesReporter) {
         partiesReporter.generateReportForStorage(this);
-    }
-
-    public void makeTransaction(Integer money) {
-        Transaction transaction = new MoneyTransaction(nextParty, this, null, money);
-        PaymentChannel channel = new PaymentChannel(this, nextParty);
-        transaction = channel.makeTransmission(transaction);
-        if (!transaction.isSuccessful()) {
-            System.out.println("I did something wrong!");
-        }
-        ownTransactionsList.add(transaction);
     }
 
     @Override

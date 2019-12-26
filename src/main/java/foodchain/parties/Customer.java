@@ -18,7 +18,9 @@ public class Customer extends AbstractParty {
     }
     
     public void buyProduct(Product product) {
-
+        super.prepareProductToNextStage(product);
+        System.out.println("Product state in customer is "+product.getState().getStateName());
+        System.out.println("CONGRATULATIONS, FOOD CHAIN IS COMPLETED");
     }
 
     @Override
@@ -26,22 +28,17 @@ public class Customer extends AbstractParty {
         partiesReporter.generateReportForCustomer(this);
     }
 
-
-    public void makeTransaction(Integer money) {
-
-    }
-
+    @Override
     public void receiveProduct(ProductTransaction transaction) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.receiveProduct(transaction);
+        Product product = transaction.getProduct();
+        System.out.println("Customer has received "+product.getName());
+        buyProduct(product);
     }
 
     @Override
     public void receiveMoney(MoneyTransaction transaction) {
         System.out.println("Customer doesn't receive money, but pays!");
-    }
-
-    public void getRequest(String productName, Party sender) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
