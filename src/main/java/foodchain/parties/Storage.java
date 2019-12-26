@@ -8,22 +8,17 @@ import foodchain.reporters.PartiesReporter;
 import java.util.LinkedList;
 import java.util.ArrayList;
 
+import static foodchain.parties.Data.*;
 
 public class Storage extends AbstractParty {
-    
-    private final Integer APPLE_STORAGE_TIME = 1;
-    private final Integer APPLE_STORAGE_TEMPERATURE = 15;
-    private final Integer APPLE_STORAGE_HUMIDITY = 40;
-    
-    private final Integer PORK_STORAGE_TIME = 3;
-    private final Integer PORK_STORAGE_TEMPERATURE = -5;
-    private final Integer PORK_STORAGE_HUMIDITY = 13;
+
     
     public Storage() {
         transactionsList = new LinkedList<Transaction>();
         ownTransactionsList = new LinkedList<Transaction>();
         productsList = new ArrayList<Product>();
         moneyReceived = false;
+        name = "Storage";
     }
 
     public void store(Product product) {

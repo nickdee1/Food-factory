@@ -15,7 +15,7 @@ public class PaymentChannel implements Channel {
     }
 
     public MoneyTransaction makeTransmission(Transaction transaction) {
-        System.out.println("Money transaction is being made to "+transaction.getReceiver().getClass());
+        System.out.println("Money transaction is being made to "+transaction.getReceiver().getName());
         MoneyTransaction moneyTransaction = (MoneyTransaction)transaction;
         receiver.receiveMoney(moneyTransaction);
         return moneyTransaction;

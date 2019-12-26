@@ -14,11 +14,12 @@ import java.util.List;
 public abstract class AbstractParty implements Party {
     protected List<Transaction> transactionsList;
     protected List<Transaction> ownTransactionsList;
-    public List<Product> productsList;
+    protected List<Product> productsList;
     protected boolean moneyReceived;
     protected Product currentRequestedProduct;
     protected Party nextParty;
     protected Party currentRequestingParty;
+    protected String name;
     
     public void setNext(Party next) {
         nextParty = next;
@@ -52,7 +53,7 @@ public abstract class AbstractParty implements Party {
     
     public void getRequest(String productName, Party sender) {
         currentRequestingParty = sender;
-        System.out.println("Current requested party: "+currentRequestingParty.getClass());
+        System.out.println("Current requested party: "+currentRequestingParty.getName());
         for (Product p : productsList) {
             if (p.getName().equalsIgnoreCase(productName)) {
                 makeTransaction(currentRequestingParty, p);
@@ -99,5 +100,9 @@ public abstract class AbstractParty implements Party {
         }
         ownTransactionsList.add(transaction);
     }
-    
+
+    public String getName() {
+        return name;
+    }
+
 }

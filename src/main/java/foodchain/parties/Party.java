@@ -7,6 +7,7 @@ import foodchain.Transaction;
 import foodchain.reporters.PartiesReporter;
 
 public interface Party {
+    String getName();
     void makeTransaction(Party receiver, Product product);
     void makeTransaction(Integer money);
     void receiveProduct(ProductTransaction transaction);

@@ -9,6 +9,7 @@ public class Apple extends Product {
         price = 20;
         name = "apple";
         storageParametres = new HashMap<String, Integer>();
+        processorParametres = new HashMap<String, Integer>();
     }
 
 }

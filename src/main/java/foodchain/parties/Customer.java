@@ -15,6 +15,7 @@ public class Customer extends AbstractParty {
         transactionsList = new LinkedList<Transaction>();
         ownTransactionsList = new LinkedList<Transaction>();
         productsList = new ArrayList<Product>();
+        name = "Customer";
     }
     
     public void buyProduct(Product product) {

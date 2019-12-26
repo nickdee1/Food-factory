@@ -15,6 +15,7 @@ public class Processor extends AbstractParty {
         transactionsList = new LinkedList<Transaction>();
         ownTransactionsList = new LinkedList<Transaction>();
         productsList = new ArrayList<Product>();
+        name = "Processor";
     }
 
     public void processProduct(Product product) {

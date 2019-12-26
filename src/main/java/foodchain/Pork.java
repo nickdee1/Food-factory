@@ -9,6 +9,7 @@ public class Pork extends Product {
         price = 80;
         name = "pork";
         storageParametres = new HashMap<String, Integer>();
+        processorParametres = new HashMap<String, Integer>();
     }
 
 }

@@ -10,6 +10,7 @@ public abstract class Product {
     protected String name;
     
     protected Map<String, Integer> storageParametres;
+    protected Map<String, Integer> processorParametres;
     
     public void accept(ProductReporter reporter) {
         
@@ -40,6 +41,14 @@ public abstract class Product {
 
     public Map<String, Integer> getStorageParametres() {
         return storageParametres;
+    }
+    
+    public void setProcessorParametres() {
+        
+    }
+
+    public Map<String, Integer> getProcessorParametres() {
+        return processorParametres;
     }
     
 }

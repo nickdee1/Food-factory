@@ -18,6 +18,7 @@ public class Farmer extends AbstractParty {
         factory = new FoodFactory();
         balance = 0;
         moneyReceived = false;
+        name = "Farmer";
     }
 
     public Product makeProduct(String productName) {
