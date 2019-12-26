@@ -24,7 +24,7 @@ public class Processor extends AbstractParty {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in processor is "+product.getState().getStateName());
         initProcessorParametres(product);
-        System.out.println("Product processor parametres: "+product.getProcessorParametres().toString());
+        System.out.println(product.getName()+" processor parametres: "+product.getProcessorParametres().toString());
         productsList.add(product);
     }
 
@@ -66,6 +66,11 @@ public class Processor extends AbstractParty {
             System.out.println("Apple processor parametres: "+product.getProcessorParametres().toString());
             System.out.println("Process apple...");
             product.setProcessorParametres(APPLE_PROCESSING_TEMPERATURE, APPLE_CHEMICAL_PROCESSING_DEGREE);
+        }
+        else if ((product.getName()).equalsIgnoreCase("milk")) {
+            System.out.println("Milk processor parametres: "+product.getProcessorParametres().toString());
+            System.out.println("Process milk...");
+            product.setProcessorParametres(MILK_PROCESSING_TEMPERATURE, MILK_CHEMICAL_PROCESSING_DEGREE);
         }
         else if ((product.getName()).equalsIgnoreCase("pork")) {
             System.out.println("Pork processor parametres: "+product.getProcessorParametres().toString());

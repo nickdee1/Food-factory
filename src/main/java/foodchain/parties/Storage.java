@@ -25,7 +25,7 @@ public class Storage extends AbstractParty {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in storage is "+product.getState().getStateName());
         initStorageParametres(product);
-        System.out.println("Product storage parametres: "+product.getStorageParametres().toString());
+        System.out.println(product.getName()+" storage parametres: "+product.getStorageParametres().toString());
         productsList.add(product);
     }
 
@@ -72,6 +72,12 @@ public class Storage extends AbstractParty {
             System.out.println("Store pork...");
             product.setStorageParametres(PORK_STORAGE_TIME, PORK_STORAGE_TEMPERATURE,
                     PORK_STORAGE_HUMIDITY);
+        }
+        else if ((product.getName()).equalsIgnoreCase("milk")) {
+            System.out.println("Milk storage parametres: "+product.getStorageParametres().toString());
+            System.out.println("Store milk...");
+            product.setStorageParametres(MILK_STORAGE_TIME, MILK_STORAGE_TEMPERATURE,
+                    MILK_STORAGE_HUMIDITY);
         }
     }
 

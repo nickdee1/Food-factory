@@ -56,7 +56,7 @@ public abstract class Product {
     }
     
     public void setSellerParametres(String packaging, String sellingPlace) {
-        sellerParametres.put("Type of packaging", packaging);
+        sellerParametres.put("Type of Packaging", packaging);
         sellerParametres.put("Selling Place", sellingPlace);
     }
 

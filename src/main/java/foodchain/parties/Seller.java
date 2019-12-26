@@ -24,7 +24,7 @@ public class Seller extends AbstractParty {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in seller is "+product.getState().getStateName());
         initSellerParametres(product);
-        System.out.println("Product seller parametres: "+product.getSellerParametres().toString());
+        System.out.println(product.getName()+" seller parametres: "+product.getSellerParametres().toString());
         productsList.add(product);
     }
 
@@ -68,9 +68,14 @@ public class Seller extends AbstractParty {
             product.setSellerParametres(APPLE_PACKAGING, APPLE_SELLING_PLACE);
         }
         else if ((product.getName()).equalsIgnoreCase("pork")) {
-            System.out.println("Pork seller parametres: "+product.getStorageParametres().toString());
+            System.out.println("Pork seller parametres: "+product.getSellerParametres().toString());
             System.out.println("Sell pork...");
             product.setSellerParametres(PORK_PACKAGING, PORK_SELLING_PLACE);
+        }
+        else if ((product.getName()).equalsIgnoreCase("milk")) {
+            System.out.println("Milk seller parametres: "+product.getSellerParametres().toString());
+            System.out.println("Sell milk...");
+            product.setSellerParametres(MILK_PACKAGING, MILK_SELLING_PLACE);
         }
     }
 
