@@ -19,36 +19,12 @@ public class PartiesReporter implements Visitor {
         this.parties = parties;
     }
 
-    public void generateReportForFarmer(Farmer farmer) {
-        Map jsonOut = generateMapForParty(farmer);
-        generateJSON(new JSONObject(jsonOut), "farmer");
-    }
+    public void generateReportForParty(AbstractParty party) {
+        String name = party.getPartyName();
+        Map outputMap = generateMapForParty(party);
 
-    public void generateReportForDistributor(Distributor distributor) {
-        Map jsonOut = generateMapForParty(distributor);
-        generateJSON(new JSONObject(jsonOut), "distributor");
+        generateJSON(new JSONObject(outputMap), name);
     }
-
-    public void generateReportForCustomer(Customer customer) {
-        Map jsonOut = generateMapForParty(customer);
-        generateJSON(new JSONObject(jsonOut), "customer");
-    }
-
-    public void generateReportForProcessor(Processor processor) {
-        Map jsonOut = generateMapForParty(processor);
-        generateJSON(new JSONObject(jsonOut), "processor");
-    }
-
-    public void generateReportForSeller(Seller seller) {
-        Map jsonOut = generateMapForParty(seller);
-        generateJSON(new JSONObject(jsonOut), "seller");
-    }
-
-    public void generateReportForStorage(Storage storage) {
-        Map jsonOut = generateMapForParty(storage);
-        generateJSON(new JSONObject(jsonOut), "storage");
-    }
-
 
     public void generateForAll() {
         String output_file = "parties";
@@ -72,13 +48,24 @@ public class PartiesReporter implements Visitor {
         ProductReporter productReporter = new ProductReporter(party.getProductsList());
         TransactionReporter transactionReporter = new TransactionReporter(party.getOwnTransactionsList());
 
-        List<Map> productMaps = productReporter.generateMapsForAll();
-        List<Map> transactionMaps = transactionReporter.generateMapsForAll();
+        List<Map> productMaps;
+        List<Map> transactionMaps;
+
+        try {
+            productMaps = productReporter.generateMapsForAll();
+        } catch (NullPointerException e) {
+            productMaps = new ArrayList<Map>();
+        }
+
+        try {
+            transactionMaps = transactionReporter.generateMapsForAll();
+        } catch (NullPointerException e) {
+            transactionMaps = new ArrayList<Map>();
+        }
 
 
         outputMap.put("products", productMaps);
         outputMap.put("transactions", transactionMaps);
-
 
         return outputMap;
     }

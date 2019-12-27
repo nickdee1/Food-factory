@@ -6,16 +6,16 @@
         "product": "Milk",
         "receiver": "Customer",
         "sender": "Seller",
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "1839522743",
         "successful": true
       },
       {
         "receiver": "Seller",
         "sender": "Customer",
         "price": 45,
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "1969540342",
         "successful": true
       }
     ],
@@ -23,11 +23,33 @@
       {
         "name": "Milk",
         "current_state": "Sold",
+        "params": [
+          null,
+          {
+            "Chemical Processing Degree": 11,
+            "Processing Temperature": 4
+          },
+          {
+            "Selling Place": "MILK SECTION",
+            "Type of Packaging": "TETRAPACK"
+          }
+        ],
         "price": 45
       },
       {
         "name": "Milk",
         "current_state": "Sold",
+        "params": [
+          null,
+          {
+            "Chemical Processing Degree": 11,
+            "Processing Temperature": 4
+          },
+          {
+            "Selling Place": "MILK SECTION",
+            "Type of Packaging": "TETRAPACK"
+          }
+        ],
         "price": 45
       }
     ]
@@ -39,38 +61,49 @@
         "receiver": "Seller",
         "sender": "Customer",
         "price": 45,
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "1969540342",
         "successful": true
       },
       {
         "product": "Milk",
         "receiver": "Seller",
         "sender": "Distributor",
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "-896671605",
         "successful": true
       },
       {
         "product": "Milk",
         "receiver": "Customer",
         "sender": "Seller",
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "1839522743",
         "successful": true
       },
       {
         "receiver": "Distributor",
         "sender": "Seller",
         "price": 45,
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "-19892996",
         "successful": true
       }
     ],
     "products": [{
       "name": "Milk",
       "current_state": "Sold",
+      "params": [
+        null,
+        {
+          "Chemical Processing Degree": 11,
+          "Processing Temperature": 4
+        },
+        {
+          "Selling Place": "MILK SECTION",
+          "Type of Packaging": "TETRAPACK"
+        }
+      ],
       "price": 45
     }]
   },
@@ -81,38 +114,49 @@
         "receiver": "Distributor",
         "sender": "Seller",
         "price": 45,
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "-19892996",
         "successful": true
       },
       {
         "product": "Milk",
         "receiver": "Distributor",
         "sender": "Processor",
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "-425552524",
         "successful": true
       },
       {
         "product": "Milk",
         "receiver": "Seller",
         "sender": "Distributor",
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "-896671605",
         "successful": true
       },
       {
         "receiver": "Processor",
         "sender": "Distributor",
         "price": 45,
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "-1785047562",
         "successful": true
       }
     ],
     "products": [{
       "name": "Milk",
       "current_state": "Sold",
+      "params": [
+        null,
+        {
+          "Chemical Processing Degree": 11,
+          "Processing Temperature": 4
+        },
+        {
+          "Selling Place": "MILK SECTION",
+          "Type of Packaging": "TETRAPACK"
+        }
+      ],
       "price": 45
     }]
   },
@@ -123,38 +167,49 @@
         "receiver": "Processor",
         "sender": "Distributor",
         "price": 45,
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "-1785047562",
         "successful": true
       },
       {
         "product": "Milk",
         "receiver": "Processor",
         "sender": "Storage",
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "1142482794",
         "successful": true
       },
       {
         "product": "Milk",
         "receiver": "Distributor",
         "sender": "Processor",
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "-425552524",
         "successful": true
       },
       {
         "receiver": "Storage",
         "sender": "Processor",
         "price": 45,
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "2089167843",
         "successful": true
       }
     ],
     "products": [{
       "name": "Milk",
       "current_state": "Sold",
+      "params": [
+        null,
+        {
+          "Chemical Processing Degree": 11,
+          "Processing Temperature": 4
+        },
+        {
+          "Selling Place": "MILK SECTION",
+          "Type of Packaging": "TETRAPACK"
+        }
+      ],
       "price": 45
     }]
   },
@@ -165,61 +220,24 @@
         "receiver": "Storage",
         "sender": "Processor",
         "price": 45,
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
-        "successful": true
-      },
-      {
-        "product": "Milk",
-        "receiver": "Storage",
-        "sender": "Farmer",
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "2089167843",
         "successful": true
       },
       {
         "product": "Milk",
         "receiver": "Processor",
         "sender": "Storage",
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
-        "successful": true
-      },
-      {
-        "receiver": "Farmer",
-        "sender": "Storage",
-        "price": 45,
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
+        "timestamp": "27/12/2019 14:19:36",
+        "hashcode": "1142482794",
         "successful": true
       }
     ],
-    "products": [{
-      "name": "Milk",
-      "current_state": "Sold",
-      "price": 45
-    }]
+    "products": []
   },
   {
     "name": "Farmer",
-    "transactions": [
-      {
-        "receiver": "Farmer",
-        "sender": "Storage",
-        "price": 45,
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
-        "successful": true
-      },
-      {
-        "product": "Milk",
-        "receiver": "Storage",
-        "sender": "Farmer",
-        "timestamp": "01/01/1970",
-        "hashcode": "228",
-        "successful": true
-      }
-    ],
+    "transactions": [],
     "products": []
   }
 ]}

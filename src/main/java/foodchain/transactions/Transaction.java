@@ -14,6 +14,7 @@ public abstract class Transaction implements Observable {
     private final Party sender;
     private final String timestamp;
     private String hashCode;
+    private String previousHashCode;
     private boolean successful;
     private final Set<Party> observingParties;
     private Transaction previousTransaction;
@@ -74,6 +75,11 @@ public abstract class Transaction implements Observable {
 
     public void setPreviousTransaction(Transaction previousTransaction) {
         this.previousTransaction = previousTransaction;
+        try {
+            this.previousHashCode = previousTransaction.getHashCode();
+        } catch (NullPointerException e) {
+            this.previousHashCode = null;
+        }
     }
     
     public abstract String getTransactionFlag();
