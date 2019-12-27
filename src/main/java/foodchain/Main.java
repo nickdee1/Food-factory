@@ -39,7 +39,7 @@ public class Main {
 
 
         // TEST REPORTS
-        /*List<AbstractParty> parties = new ArrayList<AbstractParty>();
+        List<AbstractParty> parties = new ArrayList<AbstractParty>();
         List<Transaction> tr = new ArrayList<Transaction>();
         parties.add(customer);
         parties.add(seller);
@@ -49,7 +49,7 @@ public class Main {
         parties.add(farmer);
 
         PartiesReporter pr = new PartiesReporter(parties);
-        pr.generateForAll();*/
+        pr.generateForAll();
 
     }
 }

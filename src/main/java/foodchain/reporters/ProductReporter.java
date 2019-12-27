@@ -27,7 +27,7 @@ public class ProductReporter implements Visitor {
     }
 
 
-    protected List<Map> generateMapsForAll() {
+    protected List<Map> generateMapsForAll() throws NullPointerException {
         List<Map> arrayOfProducts = new ArrayList<Map>();
 
         for (Product p : productList) {
@@ -43,11 +43,19 @@ public class ProductReporter implements Visitor {
         String name = product.getName();
         String state = product.getState().getStateName();
         Integer price = product.getPrice();
+        List<Map> params = new ArrayList<Map>();
+
+
+        // TODO: - Refactor params (null state, json formatting)
+        params.add(product.getStorageParametres());
+        params.add(product.getProcessorParametres());
+        params.add(product.getSellerParametres());
 
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         map.put("name", name);
         map.put("current_state", state);
         map.put("price", price);
+        map.put("params", params);
 
         return map;
     }

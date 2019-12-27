@@ -29,7 +29,7 @@ public class Storage extends AbstractParty {
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {
-        partiesReporter.generateReportForStorage(this);
+        partiesReporter.generateReportForParty(this);
     }
 
     @Override

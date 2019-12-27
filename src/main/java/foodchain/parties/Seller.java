@@ -28,7 +28,7 @@ public class Seller extends AbstractParty {
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {
-        partiesReporter.generateReportForSeller(this);
+        partiesReporter.generateReportForParty(this);
     }
 
     @Override
