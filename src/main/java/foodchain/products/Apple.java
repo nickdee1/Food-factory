@@ -1,6 +1,8 @@
 package foodchain.products;
 
+import foodchain.parties.Party;
 import foodchain.states.GrowingState;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Apple extends Product {
@@ -11,8 +13,8 @@ public class Apple extends Product {
         name = "Apple";
         demoStorageParametres = new HashMap<String, Integer>();
         demoProcessorParametres = new HashMap<String, Integer>();
+        currentlyProcessingParties = new ArrayList<Party>();
         distributionTime = 0;
         demoSellerParametres = new HashMap<String, String>();
     }
-
 }
