@@ -38,6 +38,7 @@ public class Main {
         customer.makeTransaction(moneyForProduct);
 
 
+        // TEST REPORTS
         /*List<AbstractParty> parties = new ArrayList<AbstractParty>();
         List<Transaction> tr = new ArrayList<Transaction>();
         parties.add(customer);

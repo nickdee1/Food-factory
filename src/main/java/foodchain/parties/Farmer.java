@@ -7,7 +7,6 @@ import foodchain.products.Product;
 import foodchain.*;
 import foodchain.reporters.PartiesReporter;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 
 public class Farmer extends AbstractParty {
@@ -15,8 +14,8 @@ public class Farmer extends AbstractParty {
     private Integer balance;
 
     public Farmer() {
-        transactionsList = new LinkedList<Transaction>();
-        ownTransactionsList = new LinkedList<Transaction>();
+        demoTransactionsList = new ArrayList<Transaction>();
+        demoOwnTransactionsList = new ArrayList<Transaction>();
         productsList = new ArrayList<Product>();
         balance = 0;
         moneyReceived = false;

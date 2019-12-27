@@ -14,6 +14,7 @@ public abstract class Transaction implements Observable {
     private String hashCode;
     private boolean successful;
     private final Set<Party> observingParties;
+    private Transaction previousTransaction;
 
 
     public Transaction(Party receiver, Party sender, Date timestamp) {
@@ -58,6 +59,10 @@ public abstract class Transaction implements Observable {
         }
     }
 
+    public void setPreviousTransaction(Transaction previousTransaction) {
+        this.previousTransaction = previousTransaction;
+    }
+    
     public abstract String getTransactionFlag();
 
 }

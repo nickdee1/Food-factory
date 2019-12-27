@@ -5,7 +5,6 @@ import foodchain.products.Product;
 import foodchain.transactions.ProductTransaction;
 import foodchain.transactions.Transaction;
 import foodchain.reporters.PartiesReporter;
-import java.util.LinkedList;
 import java.util.ArrayList;
 
 import static foodchain.parties.Data.*;
@@ -14,8 +13,8 @@ public class Storage extends AbstractParty {
 
 
     public Storage() {
-        transactionsList = new LinkedList<Transaction>();
-        ownTransactionsList = new LinkedList<Transaction>();
+        demoTransactionsList = new ArrayList<Transaction>();
+        demoOwnTransactionsList = new ArrayList<Transaction>();
         productsList = new ArrayList<Product>();
         moneyReceived = false;
         partyName = "Storage";

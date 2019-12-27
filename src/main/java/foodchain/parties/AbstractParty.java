@@ -9,11 +9,16 @@ import foodchain.transactions.Transaction;
 import foodchain.channels.PaymentChannel;
 import foodchain.channels.SellingChannel;
 import java.util.List;
+import com.google.common.collect.ImmutableList; 
 
 // must be ABSTRACT to avoid being instantiated directly
 public abstract class AbstractParty implements Party {
-    protected List<Transaction> transactionsList;
-    protected List<Transaction> ownTransactionsList;
+    protected List<Transaction> demoTransactionsList;
+    protected ImmutableList<Transaction> transactionsList;
+    
+    protected List<Transaction> demoOwnTransactionsList;
+    protected ImmutableList<Transaction> ownTransactionsList;
+    
     protected List<Product> productsList;
     protected boolean moneyReceived;
     protected Product currentRequestedProduct;
@@ -26,7 +31,15 @@ public abstract class AbstractParty implements Party {
     }
     
     public void updateTransactions(Transaction transaction) {
-        transactionsList.add(transaction);
+        int size = demoTransactionsList.size();
+        if (size == 0) {
+            transaction.setPreviousTransaction(null);
+        }
+        else {
+            transaction.setPreviousTransaction(demoTransactionsList.get(size-1));
+        }
+        demoTransactionsList.add(transaction);
+        transactionsList = ImmutableList.copyOf(demoTransactionsList);
     }
     
     public void makeRequest(String productName) {
@@ -45,7 +58,7 @@ public abstract class AbstractParty implements Party {
             System.out.println("Not enough money!");
             transaction.setSuccessful(false);
         }
-        ownTransactionsList.add(transaction);
+        addOwnTransaction(transaction);
         transaction.addParty(transaction.getSender());
         transaction.addParty(this);
         transaction.notifyAllParties();
@@ -74,7 +87,7 @@ public abstract class AbstractParty implements Party {
             productsList.remove(product);
             moneyReceived = false;
             transaction.setSuccessful(true);
-            ownTransactionsList.add(transaction);
+            addOwnTransaction(transaction);
         }
     }
     
@@ -86,7 +99,7 @@ public abstract class AbstractParty implements Party {
     
     public void receiveProduct(ProductTransaction transaction) {
         transaction.setSuccessful(true);
-        ownTransactionsList.add(transaction);
+        addOwnTransaction(transaction);
         transaction.addParty(transaction.getSender());
         transaction.addParty(this);
         transaction.notifyAllParties();
@@ -99,37 +112,35 @@ public abstract class AbstractParty implements Party {
         if (!transaction.isSuccessful()) {
             System.out.println("I did something wrong!");
         }
-        ownTransactionsList.add(transaction);
+        addOwnTransaction(transaction);
     }
-
     
+    private void addOwnTransaction(Transaction transaction) {
+        int size = demoOwnTransactionsList.size();
+        if (size == 0) {
+            transaction.setPreviousTransaction(null);
+        }
+        else {
+            transaction.setPreviousTransaction(demoOwnTransactionsList.get(size-1));
+        }
+        demoOwnTransactionsList.add(transaction);
+        ownTransactionsList = ImmutableList.copyOf(demoOwnTransactionsList);
+    }
 
     public String getPartyName() {
         return partyName;
     }
 
-    public List<Transaction> getTransactionsList() {
+    public ImmutableList<Transaction> getTransactionsList() {
         return transactionsList;
     }
 
-    public void setTransactionsList(List<Transaction> transactionsList) {
-        this.transactionsList = transactionsList;
-    }
-
-    public List<Transaction> getOwnTransactionsList() {
+    public ImmutableList<Transaction> getOwnTransactionsList() {
         return ownTransactionsList;
-    }
-
-    public void setOwnTransactionsList(List<Transaction> ownTransactionsList) {
-        this.ownTransactionsList = ownTransactionsList;
     }
 
     public List<Product> getProductsList() {
         return productsList;
-    }
-
-    public void setProductsList(List<Product> productsList) {
-        this.productsList = productsList;
     }
     
     // for simulation

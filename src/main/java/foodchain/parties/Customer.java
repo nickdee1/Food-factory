@@ -7,13 +7,11 @@ import foodchain.transactions.Transaction;
 import foodchain.reporters.PartiesReporter;
 import java.util.ArrayList;
 
-import java.util.LinkedList;
-
 public class Customer extends AbstractParty {
 
     public Customer() {
-        transactionsList = new LinkedList<Transaction>();
-        ownTransactionsList = new LinkedList<Transaction>();
+        demoTransactionsList = new ArrayList<Transaction>();
+        demoOwnTransactionsList = new ArrayList<Transaction>();
         productsList = new ArrayList<Product>();
         partyName = "Customer";
     }
