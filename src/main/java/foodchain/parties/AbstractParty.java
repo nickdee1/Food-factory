@@ -105,12 +105,18 @@ public abstract class AbstractParty implements Party {
             if (transaction == null) {
                 System.out.println("Something went wrong!");
                 tmpTransaction.setSuccessful(false);
+                tmpTransaction.addParty(this);
+                tmpTransaction.addParty(receiver);
                 addOwnTransaction(tmpTransaction);
+                tmpTransaction.notifyAllParties();
             }
             else {
                 product.setIsCurrentlyProcessed(true);
                 transaction.setSuccessful(true);
+                transaction.addParty(this);
+                transaction.addParty(receiver);
                 addOwnTransaction(transaction);
+                transaction.notifyAllParties();
             }
             moneyReceived = false;
         }
@@ -125,11 +131,6 @@ public abstract class AbstractParty implements Party {
     public void receiveProduct(ProductTransaction transaction) {
         Product product = transaction.getProduct();
         product.addCurrentlyProcessingParties(this);
-        transaction.setSuccessful(true);
-        addOwnTransaction(transaction);
-        transaction.addParty(transaction.getSender());
-        transaction.addParty(this);
-        transaction.notifyAllParties();
     }
     
     public void makeTransaction(Integer money) {
