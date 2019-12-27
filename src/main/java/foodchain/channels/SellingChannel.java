@@ -1,9 +1,14 @@
 package foodchain.channels;
 
+import foodchain.reporters.report.SecurityMessage;
 import foodchain.transactions.ProductTransaction;
 import foodchain.transactions.Transaction;
 import foodchain.parties.Party;
 import foodchain.products.Product;
+import sun.plugin2.message.Message;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class SellingChannel implements Channel {
 
@@ -29,6 +34,20 @@ public class SellingChannel implements Channel {
                 p.removeProduct(product);
             }
             product.clearPartyList();
+
+            // TODO: - Refactor
+            Date currentDate = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+            SecurityMessage message = new SecurityMessage();
+            message.message = "Attempt to commit double spending";
+            message.sender = transaction.getSender().getPartyName();
+            message.receiver = transaction.getReceiver().getPartyName();
+            message.product = product;
+            message.timestamp = dateFormat.format(currentDate);
+
+            SecurityHistory sh = SecurityHistory.getInstance();
+            sh.addMessage(message);
             return null;
         }
         receiver.receiveProduct(productTransaction);
