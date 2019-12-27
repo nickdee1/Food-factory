@@ -33,7 +33,13 @@ public class Main {
         alreadyExistingMilk.setState(new StoredState());
         storage.addProductToList(alreadyExistingMilk);
 
-        // TEST COMMUNICATION BETWEEN CUSTOMER AND SELLER
+        // TEST COMMUNICATION BETWEEN CUSTOMER AND SELLER 
+        customer.makeRequest(productName);
+        customer.makeTransaction(moneyForProduct);
+        // WITH DOUBLE SPENDING
+        customer.makeRequest(productName);
+        customer.makeTransaction(moneyForProduct);
+        // TRY AGAIN AND SUCCEED
         customer.makeRequest(productName);
         customer.makeTransaction(moneyForProduct);
 

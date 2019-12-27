@@ -20,9 +20,15 @@ public class SellingChannel implements Channel {
         Product product = productTransaction.getProduct();
         if (product.isIsCurrentlyProcessed()) {
             System.out.println("ATTEMPT TO COMMIT DOUBLE SPENDING");
+            System.out.println("--------------------------------------------------");
             Party sender = transaction.getSender();
             sender.setDoubleSpending();
             sender.increaseAttempts();
+            // reset
+            for (Party p : product.getCurrentlyProcessingParties()) {
+                p.removeProduct(product);
+            }
+            product.clearPartyList();
             return null;
         }
         receiver.receiveProduct(productTransaction);

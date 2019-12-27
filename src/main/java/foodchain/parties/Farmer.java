@@ -58,11 +58,5 @@ public class Farmer extends AbstractParty {
     public void makeRequest(String productName) {
         System.out.println("Farmer does not make requests!");
     }
-    
-    @Override
-    public void makeTransaction(Party receiver, Product product) {
-        product.setIsCurrentlyProcessed(true);
-        super.makeTransaction(receiver, product);
-    }
  
 }

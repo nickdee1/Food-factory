@@ -11,10 +11,11 @@ public class PackedState extends State {
 
     public void prepare(Product productContext) {
         productContext.setState(new SoldState());
+        // mark product as a sold one and remove it
+        // from all parties' product lists
         productContext.setIsCurrentlyProcessed(false);
         for (Party p : productContext.getCurrentlyProcessingParties()) {
             p.removeProduct(productContext);
         }
-        productContext.clearPartyList();
     }
 }

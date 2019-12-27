@@ -23,6 +23,7 @@ public class Customer extends AbstractParty {
         System.out.println("PRODUCT IS CURRENTLY PROCESSED: "+
                             product.isIsCurrentlyProcessed());
         System.out.println("CONGRATULATIONS, FOOD CHAIN IS COMPLETED");
+        System.out.println("--------------------------------------------------");
         addProduct(product);
     }
 

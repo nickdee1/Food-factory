@@ -83,12 +83,12 @@ public abstract class AbstractParty implements Party {
         if (productsList != null) {
             for (Product p : productsList) {
                 if (p.getName().equalsIgnoreCase(productName)) {
+                    if (!p.getCurrentlyProcessingParties().contains(this)) {
+                        p.addCurrentlyProcessingParties(this);
+                    }
                     System.out.println(this.getPartyName()+" already has "+p.getName());
                     currentRequestedProduct = p;
-                    System.out.println("PRODUCT IS CURRENTLY PROCESSED: "+
-                            currentRequestedProduct.isIsCurrentlyProcessed());
                     currentRequestedProduct.setIsReadyToTransmit(true);
-                    currentRequestedProduct.setIsCurrentlyProcessed(true);
                     return;
                 }
             }
@@ -97,7 +97,6 @@ public abstract class AbstractParty implements Party {
     }
     
     public void makeTransaction(Party receiver, Product product) {
-        System.out.println("PRODUCT IS CURRENTLY PROCESSED: "+product.isIsCurrentlyProcessed());
         if (moneyReceived) {
             Transaction transaction = new ProductTransaction(receiver, this, product);
             Transaction tmpTransaction = transaction;
@@ -109,6 +108,7 @@ public abstract class AbstractParty implements Party {
                 addOwnTransaction(tmpTransaction);
             }
             else {
+                product.setIsCurrentlyProcessed(true);
                 transaction.setSuccessful(true);
                 addOwnTransaction(transaction);
             }
