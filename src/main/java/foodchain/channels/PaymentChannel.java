@@ -13,6 +13,10 @@ public class PaymentChannel implements Channel {
     }
 
     public MoneyTransaction makeTransmission(Transaction transaction) {
+        if ((transaction.getSender().getPartyName()).equalsIgnoreCase("farmer")) {
+            System.out.println("Farmer doesn't send money!");
+            return null;
+        }
         System.out.println("Money transaction is being made to "+transaction.getReceiver().getPartyName());
         MoneyTransaction moneyTransaction = (MoneyTransaction)transaction;
         receiver.receiveMoney(moneyTransaction);

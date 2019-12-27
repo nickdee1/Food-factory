@@ -14,6 +14,7 @@ public class Customer extends AbstractParty {
         demoOwnTransactionsList = new ArrayList<Transaction>();
         demoProductsList = new ArrayList<Product>();
         partyName = "Customer";
+        moneyReceived = false; // customer doesn't receive money
     }
     
     public void buyProduct(Product product) {
