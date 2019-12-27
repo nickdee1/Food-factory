@@ -4,6 +4,8 @@ import foodchain.states.State;
 import foodchain.reporters.ProductReporter;
 import java.util.Map;
 import com.google.common.collect.ImmutableMap; 
+import foodchain.parties.Party;
+import java.util.List;
 
 public abstract class Product {
     
@@ -11,6 +13,9 @@ public abstract class Product {
     protected Integer price;
     protected String name;
     protected boolean isReadyToTransmit;
+    protected boolean isCurrentlyProcessed;
+    
+    protected List<Party> currentlyProcessingParties;
     
     protected Map<String, Integer> demoStorageParametres;
     protected ImmutableMap<String, Integer> storageParametres;
@@ -41,6 +46,26 @@ public abstract class Product {
 
     public String getName() {
         return name;
+    }
+
+    public List<Party> getCurrentlyProcessingParties() {
+        return currentlyProcessingParties;
+    }
+
+    public boolean isIsCurrentlyProcessed() {
+        return isCurrentlyProcessed;
+    }
+    
+    public void clearPartyList() {
+        currentlyProcessingParties.clear();
+    }
+
+    public void addCurrentlyProcessingParties(Party party) {
+        currentlyProcessingParties.add(party);
+    }
+
+    public void setIsCurrentlyProcessed(boolean isCurrentlyProcessed) {
+        this.isCurrentlyProcessed = isCurrentlyProcessed;
     }
 
     public boolean isIsReadyToTransmit() {

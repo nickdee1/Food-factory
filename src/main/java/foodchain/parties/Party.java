@@ -20,5 +20,9 @@ public interface Party {
     void makeRequest(String productName);
     void getRequest(String productName, Party sender);
 
+    // some public methods
     String getPartyName();
+    void removeProduct(Product product);
+    void increaseAttempts();
+    void setDoubleSpending();
 }

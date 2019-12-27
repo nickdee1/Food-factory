@@ -27,9 +27,20 @@ public abstract class AbstractParty implements Party {
     protected Party nextParty;
     protected Party currentRequestingParty;
     protected String partyName;
+    
+    protected boolean attemptToDoubleSpend = false;
+    protected Integer attemptsNumber = 0;
 
     public void setNext(Party next) {
         nextParty = next;
+    }
+    
+    public void increaseAttempts() {
+        attemptsNumber++;
+    }
+    
+    public void setDoubleSpending() {
+        attemptToDoubleSpend = true;
     }
     
     public void updateTransactions(Transaction transaction) {
@@ -72,10 +83,12 @@ public abstract class AbstractParty implements Party {
         if (productsList != null) {
             for (Product p : productsList) {
                 if (p.getName().equalsIgnoreCase(productName)) {
-                    // TO CHECK
                     System.out.println(this.getPartyName()+" already has "+p.getName());
                     currentRequestedProduct = p;
+                    System.out.println("PRODUCT IS CURRENTLY PROCESSED: "+
+                            currentRequestedProduct.isIsCurrentlyProcessed());
                     currentRequestedProduct.setIsReadyToTransmit(true);
+                    currentRequestedProduct.setIsCurrentlyProcessed(true);
                     return;
                 }
             }
@@ -84,14 +97,22 @@ public abstract class AbstractParty implements Party {
     }
     
     public void makeTransaction(Party receiver, Product product) {
+        System.out.println("PRODUCT IS CURRENTLY PROCESSED: "+product.isIsCurrentlyProcessed());
         if (moneyReceived) {
             Transaction transaction = new ProductTransaction(receiver, this, product);
+            Transaction tmpTransaction = transaction;
             SellingChannel channel = new SellingChannel(receiver);
             transaction = channel.makeTransmission(transaction);
-            removeProduct(product);
+            if (transaction == null) {
+                System.out.println("Something went wrong!");
+                tmpTransaction.setSuccessful(false);
+                addOwnTransaction(tmpTransaction);
+            }
+            else {
+                transaction.setSuccessful(true);
+                addOwnTransaction(transaction);
+            }
             moneyReceived = false;
-            transaction.setSuccessful(true);
-            addOwnTransaction(transaction);
         }
     }
     
@@ -102,6 +123,8 @@ public abstract class AbstractParty implements Party {
     }
     
     public void receiveProduct(ProductTransaction transaction) {
+        Product product = transaction.getProduct();
+        product.addCurrentlyProcessingParties(this);
         transaction.setSuccessful(true);
         addOwnTransaction(transaction);
         transaction.addParty(transaction.getSender());
@@ -139,7 +162,7 @@ public abstract class AbstractParty implements Party {
         productsList = ImmutableList.copyOf(demoProductsList);
     }
     
-    protected void removeProduct(Product product) {
+    public void removeProduct(Product product) {
         demoProductsList.remove(product);
         productsList = ImmutableList.copyOf(demoProductsList);
     }
