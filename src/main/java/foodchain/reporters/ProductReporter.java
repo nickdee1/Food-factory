@@ -10,7 +10,7 @@ import java.util.*;
 
 public class ProductReporter implements Visitor {
 
-    private List<Product> productList;
+    private final List<Product> productList;
 
     public ProductReporter(List<Product> productList) {
         this.productList = productList;

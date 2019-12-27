@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import static foodchain.parties.Data.*;
 
-
 public class Seller extends AbstractParty {
 
     public Seller() {
@@ -19,7 +18,7 @@ public class Seller extends AbstractParty {
         partyName = "Seller";
     }
 
-    public void sellProduct(Product product) {
+    private void sellProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in seller is "+product.getState().getStateName());
         initSellerParametres(product);
@@ -77,5 +76,4 @@ public class Seller extends AbstractParty {
             product.setSellerParametres(MILK_PACKAGING, MILK_SELLING_PLACE);
         }
     }
-
 }

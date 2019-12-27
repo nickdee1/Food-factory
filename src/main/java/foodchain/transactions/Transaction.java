@@ -13,7 +13,7 @@ public abstract class Transaction implements Observable {
     private final Party receiver;
     private final Party sender;
     private final String timestamp;
-    private String hashCode;
+    private final String hashCode;
     private String previousHashCode;
     private boolean successful;
     private final Set<Party> observingParties;

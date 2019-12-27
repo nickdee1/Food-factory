@@ -1,7 +1,6 @@
 package foodchain.transactions;
 
 import foodchain.parties.Party;
-import java.util.Date;
 
 public class MoneyTransaction extends Transaction {
     
@@ -15,7 +14,6 @@ public class MoneyTransaction extends Transaction {
     public int getMoneyAmount() {
         return moneyAmount;
     }
-
 
     public String getTransactionFlag() {
         return "MONEY";

@@ -26,9 +26,6 @@ public class Data {
     static final Integer MILK_PROCESSING_TEMPERATURE = 4;
     static final Integer MILK_CHEMICAL_PROCESSING_DEGREE = 11;
     
-    // DISTRIBUTOR DATA
-    static final Integer PRODUCTS_DISTRIBUTION_TIME = 3;
-    
     // SELLER DATA
     static final String APPLE_PACKAGING = "POLYETHYLENE";
     static final String APPLE_SELLING_PLACE = "FRUIT SECTION";

@@ -9,6 +9,6 @@ public class AliveState extends State {
     }
 
     public void prepare(Product productContext) {
-        productContext.setState(new RawState(this.productContext));
+        productContext.setState(new RawState());
     }
 }

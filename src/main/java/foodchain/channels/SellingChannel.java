@@ -18,6 +18,7 @@ public class SellingChannel implements Channel {
         System.out.println("Product transaction is being made...");
         ProductTransaction productTransaction = (ProductTransaction)transaction;
         Product product = productTransaction.getProduct();
+        // check for double spending
         if (product.isIsCurrentlyProcessed()) {
             System.out.println("ATTEMPT TO COMMIT DOUBLE SPENDING");
             System.out.println("--------------------------------------------------");
@@ -34,5 +35,4 @@ public class SellingChannel implements Channel {
         receiver.receiveProduct(productTransaction);
         return productTransaction;
     }
-
 }

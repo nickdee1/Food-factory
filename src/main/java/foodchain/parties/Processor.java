@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import static foodchain.parties.Data.*;
 
-
 public class Processor extends AbstractParty {
 
     public Processor() {
@@ -19,7 +18,7 @@ public class Processor extends AbstractParty {
         partyName = "Processor";
     }
 
-    public void processProduct(Product product) {
+    private void processProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in processor is "+product.getState().getStateName());
         initProcessorParametres(product);

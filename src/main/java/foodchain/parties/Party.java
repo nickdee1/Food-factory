@@ -7,7 +7,6 @@ import foodchain.transactions.Transaction;
 import foodchain.reporters.PartiesReporter;
 
 public interface Party {
-    void makeTransaction(Party receiver, Product product);
     void makeTransaction(Integer money);
     void receiveProduct(ProductTransaction transaction);
     void receiveMoney(MoneyTransaction transaction);
@@ -16,9 +15,8 @@ public interface Party {
     // visitor
     void acceptReporter(PartiesReporter partiesReporter);
     // chain of responsibility
-    void setNext(Party party); 
+    void setNext(AbstractParty party); 
     void makeRequest(String productName);
-    void getRequest(String productName, Party sender);
 
     // some public methods
     String getPartyName();

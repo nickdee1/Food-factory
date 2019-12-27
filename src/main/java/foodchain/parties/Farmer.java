@@ -4,7 +4,6 @@ import foodchain.transactions.MoneyTransaction;
 import foodchain.transactions.ProductTransaction;
 import foodchain.transactions.Transaction;
 import foodchain.products.Product;
-import foodchain.*;
 import foodchain.reporters.PartiesReporter;
 import java.util.ArrayList;
 
@@ -20,14 +19,6 @@ public class Farmer extends AbstractParty {
         balance = 0;
         moneyReceived = false;
         partyName = "Farmer";
-    }
-
-    public Product makeProduct(String productName) {
-        Product product = FoodFactory.makeProduct(productName);
-        if (product != null) {
-            addProduct(product);
-        }
-        return product;
     }
 
     @Override

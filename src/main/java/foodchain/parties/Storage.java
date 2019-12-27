@@ -11,7 +11,6 @@ import static foodchain.parties.Data.*;
 
 public class Storage extends AbstractParty {
 
-
     public Storage() {
         demoTransactionsList = new ArrayList<Transaction>();
         demoOwnTransactionsList = new ArrayList<Transaction>();
@@ -20,7 +19,7 @@ public class Storage extends AbstractParty {
         partyName = "Storage";
     }
 
-    public void store(Product product) {
+    private void store(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in storage is "+product.getState().getStateName());
         initStorageParametres(product);
@@ -50,9 +49,7 @@ public class Storage extends AbstractParty {
                 makeRequest(currentRequestedProduct.getName());
                 makeTransaction(receivedMoney);
             }
-            else {
-                sendProduct(currentRequestedProduct);
-            }
+            else sendProduct(currentRequestedProduct);
         }
     }
     

@@ -2,7 +2,6 @@ package foodchain.transactions;
 
 import foodchain.products.Product;
 import foodchain.parties.Party;
-import java.util.Date;
 
 public class ProductTransaction extends Transaction {
     

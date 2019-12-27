@@ -13,6 +13,8 @@ import com.google.common.collect.ImmutableList;
 
 // must be ABSTRACT to avoid being instantiated directly
 public abstract class AbstractParty implements Party {
+    
+    // demos are necessary to modify and then convert to immutable lists
     protected List<Transaction> demoTransactionsList;
     protected ImmutableList<Transaction> transactionsList;
 
@@ -22,16 +24,18 @@ public abstract class AbstractParty implements Party {
     protected List<Product> demoProductsList;
     protected ImmutableList<Product> productsList;
 
+    // basic variables
     protected boolean moneyReceived;
     protected Product currentRequestedProduct;
-    protected Party nextParty;
     protected Party currentRequestingParty;
+    protected AbstractParty nextParty;
     protected String partyName;
     
+    // double spending detection
     protected boolean attemptToDoubleSpend = false;
     protected Integer attemptsNumber = 0;
 
-    public void setNext(Party next) {
+    public void setNext(AbstractParty next) {
         nextParty = next;
     }
     
@@ -77,7 +81,11 @@ public abstract class AbstractParty implements Party {
         transaction.notifyAllParties();
     }
     
-    public void getRequest(String productName, Party sender) {
+    private void getRequest(String productName, Party sender) {
+        if ((this.getPartyName()).equalsIgnoreCase("customer")) {
+            System.out.println("Customer doesn't get requests!");
+            return;
+        }
         currentRequestingParty = sender;
         System.out.println("Current requested party: "+currentRequestingParty.getPartyName());
         if (productsList != null) {
@@ -96,7 +104,7 @@ public abstract class AbstractParty implements Party {
         currentRequestedProduct = FoodFactory.makeProduct(productName);
     }
     
-    public void makeTransaction(Party receiver, Product product) {
+    protected void makeTransaction(Party receiver, Product product) {
         if (moneyReceived) {
             Transaction transaction = new ProductTransaction(receiver, this, product);
             Transaction tmpTransaction = transaction;

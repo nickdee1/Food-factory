@@ -7,9 +7,6 @@ import foodchain.transactions.Transaction;
 import foodchain.reporters.PartiesReporter;
 import java.util.ArrayList;
 
-import static foodchain.parties.Data.*;
-
-
 public class Distributor extends AbstractParty {
 
     public Distributor() {
@@ -19,10 +16,9 @@ public class Distributor extends AbstractParty {
         partyName = "Distributor";
     }
 
-    public void deliverProduct(Product product) {
+    private void deliverProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in distributor is "+product.getState().getStateName());
-        // TODO
         addProduct(product);
     }
 
@@ -61,16 +57,4 @@ public class Distributor extends AbstractParty {
             currentRequestingParty = null;
         }
     }
-
-    // TO USE IN SIMULATION
-    public boolean increaseCurrentDistributionTime(Product product) {
-        if (product.getDistributionTime() == PRODUCTS_DISTRIBUTION_TIME) {
-            return false;
-        }
-        else {
-            product.increaseDistributionTime();
-            return true;
-        }
-    }
-
 }

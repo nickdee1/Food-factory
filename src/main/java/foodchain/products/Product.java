@@ -12,18 +12,17 @@ public abstract class Product {
     protected State state;
     protected Integer price;
     protected String name;
-    protected boolean isReadyToTransmit;
+    protected boolean isReadyToTransmit; // someone already has this product
     protected boolean isCurrentlyProcessed;
     
     protected List<Party> currentlyProcessingParties;
     
+    // demos are necessary to modify and then convert to immutable maps
     protected Map<String, Integer> demoStorageParametres;
     protected ImmutableMap<String, Integer> storageParametres;
     
     protected Map<String, Integer> demoProcessorParametres;
     protected ImmutableMap<String, Integer> processorParametres;
-    
-    protected Integer distributionTime;
     
     protected Map<String, String> demoSellerParametres;
     protected ImmutableMap<String, String> sellerParametres;
@@ -110,13 +109,5 @@ public abstract class Product {
 
     public Map<String, String> getSellerParametres() {
         return sellerParametres;
-    }
-    
-    public void increaseDistributionTime() {
-        distributionTime++;
-    }
-
-    public Integer getDistributionTime() {
-        return distributionTime;
     }
 }

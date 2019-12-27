@@ -17,7 +17,7 @@ public class Customer extends AbstractParty {
         moneyReceived = false; // customer doesn't receive money
     }
     
-    public void buyProduct(Product product) {
+    private void buyProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in customer is "+product.getState().getStateName());
         System.out.println("PRODUCT IS CURRENTLY PROCESSED: "+
@@ -45,12 +45,7 @@ public class Customer extends AbstractParty {
     }
 
     @Override
-    public void getRequest(String productName, Party sender) {
-        System.out.println("Customer doesn't get any requests!");
-    }
-
-    @Override
-    public void makeTransaction(Party receiver, Product product) {
+    protected void makeTransaction(Party receiver, Product product) {
         System.out.println("Customer doesn't send any products!");
     }
 

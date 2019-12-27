@@ -14,7 +14,6 @@ public class Apple extends Product {
         demoStorageParametres = new HashMap<String, Integer>();
         demoProcessorParametres = new HashMap<String, Integer>();
         currentlyProcessingParties = new ArrayList<Party>();
-        distributionTime = 0;
         demoSellerParametres = new HashMap<String, String>();
     }
 }

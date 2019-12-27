@@ -4,7 +4,7 @@ import foodchain.products.Product;
 
 public class RawState extends State {
 
-    public RawState(Product productContext) {
+    public RawState() {
         stateName = "Raw";
     }
 
