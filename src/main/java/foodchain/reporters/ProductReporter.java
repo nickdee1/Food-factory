@@ -1,7 +1,7 @@
 package foodchain.reporters;
 
-import org.json.JSONObject;
 import foodchain.products.Product;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -58,7 +58,6 @@ public class ProductReporter implements Visitor {
         try {
             FileWriter file = new FileWriter(new File(filepath));
             file.write(object.toString(2));
-            file.flush();
             file.close();
         } catch (IOException e) {
             e.printStackTrace();

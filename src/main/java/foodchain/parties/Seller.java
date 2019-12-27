@@ -29,7 +29,7 @@ public class Seller extends AbstractParty {
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {
-        partiesReporter.generateReportForParty(this);
+        partiesReporter.generateReportForSeller(this);
     }
 
     @Override
@@ -66,17 +66,14 @@ public class Seller extends AbstractParty {
 
     private void initSellerParametres(Product product) {
         if ((product.getName()).equalsIgnoreCase("apple")) {
-            System.out.println("Apple seller parametres: "+product.getSellerParametres().toString());
             System.out.println("Sell apple...");
             product.setSellerParametres(APPLE_PACKAGING, APPLE_SELLING_PLACE);
         }
         else if ((product.getName()).equalsIgnoreCase("pork")) {
-            System.out.println("Pork seller parametres: "+product.getSellerParametres().toString());
             System.out.println("Sell pork...");
             product.setSellerParametres(PORK_PACKAGING, PORK_SELLING_PLACE);
         }
         else if ((product.getName()).equalsIgnoreCase("milk")) {
-            System.out.println("Milk seller parametres: "+product.getSellerParametres().toString());
             System.out.println("Sell milk...");
             product.setSellerParametres(MILK_PACKAGING, MILK_SELLING_PLACE);
         }

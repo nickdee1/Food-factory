@@ -3,6 +3,7 @@ package foodchain.products;
 import foodchain.states.State;
 import foodchain.reporters.ProductReporter;
 import java.util.Map;
+import com.google.common.collect.ImmutableMap; 
 
 public abstract class Product {
     
@@ -11,10 +12,16 @@ public abstract class Product {
     protected String name;
     protected boolean isReadyToTransmit;
     
-    protected Map<String, Integer> storageParametres;
-    protected Map<String, Integer> processorParametres;
+    protected Map<String, Integer> demoStorageParametres;
+    protected ImmutableMap<String, Integer> storageParametres;
+    
+    protected Map<String, Integer> demoProcessorParametres;
+    protected ImmutableMap<String, Integer> processorParametres;
+    
     protected Integer distributionTime;
-    protected Map<String, String> sellerParametres;
+    
+    protected Map<String, String> demoSellerParametres;
+    protected ImmutableMap<String, String> sellerParametres;
     
     public void accept(ProductReporter reporter) {
         
@@ -46,28 +53,34 @@ public abstract class Product {
     
     public void setStorageParametres(Integer storageTime, Integer storageTemperature,
             Integer storageHumidity) {
-        storageParametres.put("Storage Time", storageTime);
-        storageParametres.put("Storage Temperature", storageTemperature);
-        storageParametres.put("Storage Humidity", storageHumidity);
+        demoStorageParametres.put("Storage Time", storageTime);
+        demoStorageParametres.put("Storage Temperature", storageTemperature);
+        demoStorageParametres.put("Storage Humidity", storageHumidity);
+        storageParametres = ImmutableMap.copyOf(demoStorageParametres);
+        demoStorageParametres = null;
     }
 
-    public Map<String, Integer> getStorageParametres() {
+    public ImmutableMap<String, Integer> getStorageParametres() {
         return storageParametres;
     }
     
     public void setProcessorParametres(Integer processorTemperature, Integer
             chemicalDegree) {
-        processorParametres.put("Processing Temperature", processorTemperature);
-        processorParametres.put("Chemical Processing Degree", chemicalDegree);
+        demoProcessorParametres.put("Processing Temperature", processorTemperature);
+        demoProcessorParametres.put("Chemical Processing Degree", chemicalDegree);
+        processorParametres = ImmutableMap.copyOf(demoProcessorParametres);
+        demoProcessorParametres = null;
     }
 
-    public Map<String, Integer> getProcessorParametres() {
+    public ImmutableMap<String, Integer> getProcessorParametres() {
         return processorParametres;
     }
     
     public void setSellerParametres(String packaging, String sellingPlace) {
-        sellerParametres.put("Type of Packaging", packaging);
-        sellerParametres.put("Selling Place", sellingPlace);
+        demoSellerParametres.put("Type of Packaging", packaging);
+        demoSellerParametres.put("Selling Place", sellingPlace);
+        sellerParametres = ImmutableMap.copyOf(demoSellerParametres);
+        demoSellerParametres = null;
     }
 
     public Map<String, String> getSellerParametres() {
@@ -75,7 +88,6 @@ public abstract class Product {
     }
     
     public void increaseDistributionTime() {
-        
         distributionTime++;
     }
 

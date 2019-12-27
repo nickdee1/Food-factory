@@ -3,11 +3,9 @@ package foodchain.reporters;
 import foodchain.parties.*;
 import org.json.JSONObject;
 
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -67,19 +65,6 @@ public class PartiesReporter implements Visitor {
     }
 
 
-<<<<<<< HEAD
-=======
-    public void generateReportForParty(AbstractParty party) {
-        String name = party.getPartyName().toLowerCase();
-        Map output = generateMapForParty(party);
-        generateJSON(new JSONObject(output), name);
-    }
-
-
-<<<<<<< HEAD
->>>>>>> d3ea9f8005fe44ba142b28856c1f31b144c56d19
-=======
->>>>>>> d3ea9f8005fe44ba142b28856c1f31b144c56d19
     private Map<String, Object> generateMapForParty(AbstractParty party) {
         Map<String, Object> outputMap = new LinkedHashMap<String, Object>();
         outputMap.put("name", party.getPartyName());
@@ -90,8 +75,10 @@ public class PartiesReporter implements Visitor {
         List<Map> productMaps = productReporter.generateMapsForAll();
         List<Map> transactionMaps = transactionReporter.generateMapsForAll();
 
+
         outputMap.put("products", productMaps);
         outputMap.put("transactions", transactionMaps);
+
 
         return outputMap;
     }
@@ -102,7 +89,6 @@ public class PartiesReporter implements Visitor {
         try {
             FileWriter file = new FileWriter(new File(filepath));
             file.write(object.toString(2));
-            file.flush();
             file.close();
         } catch (IOException e) {
             e.printStackTrace();

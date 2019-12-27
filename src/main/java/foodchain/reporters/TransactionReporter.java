@@ -76,7 +76,6 @@ public class TransactionReporter implements Visitor {
         try {
             FileWriter file = new FileWriter(new File(filepath));
             file.write(object.toString(2));
-            file.flush();
             file.close();
         } catch (IOException e) {
             e.printStackTrace();

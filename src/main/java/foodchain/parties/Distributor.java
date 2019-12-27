@@ -28,7 +28,7 @@ public class Distributor extends AbstractParty {
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {
-        partiesReporter.generateReportForParty(this);
+        partiesReporter.generateReportForDistributor(this);
     }
 
     @Override

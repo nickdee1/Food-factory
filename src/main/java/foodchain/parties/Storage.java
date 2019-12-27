@@ -30,7 +30,7 @@ public class Storage extends AbstractParty {
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {
-        partiesReporter.generateReportForParty(this);
+        partiesReporter.generateReportForStorage(this);
     }
 
     @Override
@@ -67,19 +67,16 @@ public class Storage extends AbstractParty {
 
     private void initStorageParametres(Product product) {
         if ((product.getName()).equalsIgnoreCase("apple")) {
-            System.out.println("Apple storage parametres: "+product.getStorageParametres().toString());
             System.out.println("Store apple...");
             product.setStorageParametres(APPLE_STORAGE_TIME, APPLE_STORAGE_TEMPERATURE,
                     APPLE_STORAGE_HUMIDITY);
         }
         else if ((product.getName()).equalsIgnoreCase("pork")) {
-            System.out.println("Pork storage parametres: "+product.getStorageParametres().toString());
             System.out.println("Store pork...");
             product.setStorageParametres(PORK_STORAGE_TIME, PORK_STORAGE_TEMPERATURE,
                     PORK_STORAGE_HUMIDITY);
         }
         else if ((product.getName()).equalsIgnoreCase("milk")) {
-            System.out.println("Milk storage parametres: "+product.getStorageParametres().toString());
             System.out.println("Store milk...");
             product.setStorageParametres(MILK_STORAGE_TIME, MILK_STORAGE_TEMPERATURE,
                     MILK_STORAGE_HUMIDITY);
