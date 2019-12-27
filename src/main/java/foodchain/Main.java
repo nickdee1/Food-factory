@@ -29,9 +29,9 @@ public class Main {
         Integer moneyForProduct = 45;
         
         // SIMULATION OF ONE PARTY HAVING ALREADY EXISTING PRODUCT
-        //Product alreadyExistingMilk = new Milk();
-        //alreadyExistingMilk.setState(new StoredState());
-        //storage.addProductToList(alreadyExistingMilk);
+        Product alreadyExistingMilk = new Milk();
+        alreadyExistingMilk.setState(new StoredState());
+        storage.addProductToList(alreadyExistingMilk);
 
         // TEST COMMUNICATION BETWEEN CUSTOMER AND SELLER
         customer.makeRequest(productName);

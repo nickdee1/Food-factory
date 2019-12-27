@@ -16,7 +16,7 @@ public class Farmer extends AbstractParty {
     public Farmer() {
         demoTransactionsList = new ArrayList<Transaction>();
         demoOwnTransactionsList = new ArrayList<Transaction>();
-        productsList = new ArrayList<Product>();
+        demoProductsList = new ArrayList<Product>();
         balance = 0;
         moneyReceived = false;
         partyName = "Farmer";
@@ -25,7 +25,7 @@ public class Farmer extends AbstractParty {
     public Product makeProduct(String productName) {
         Product product = FoodFactory.makeProduct(productName);
         if (product != null) {
-            productsList.add(product);
+            addProduct(product);
         }
         return product;
     }

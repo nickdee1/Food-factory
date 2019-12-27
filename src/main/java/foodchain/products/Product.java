@@ -57,7 +57,7 @@ public abstract class Product {
         demoStorageParametres.put("Storage Temperature", storageTemperature);
         demoStorageParametres.put("Storage Humidity", storageHumidity);
         storageParametres = ImmutableMap.copyOf(demoStorageParametres);
-        demoStorageParametres = null;
+        demoStorageParametres.clear();
     }
 
     public ImmutableMap<String, Integer> getStorageParametres() {
@@ -69,7 +69,7 @@ public abstract class Product {
         demoProcessorParametres.put("Processing Temperature", processorTemperature);
         demoProcessorParametres.put("Chemical Processing Degree", chemicalDegree);
         processorParametres = ImmutableMap.copyOf(demoProcessorParametres);
-        demoProcessorParametres = null;
+        demoProcessorParametres.clear();
     }
 
     public ImmutableMap<String, Integer> getProcessorParametres() {
@@ -80,7 +80,7 @@ public abstract class Product {
         demoSellerParametres.put("Type of Packaging", packaging);
         demoSellerParametres.put("Selling Place", sellingPlace);
         sellerParametres = ImmutableMap.copyOf(demoSellerParametres);
-        demoSellerParametres = null;
+        demoSellerParametres.clear();
     }
 
     public Map<String, String> getSellerParametres() {

@@ -15,7 +15,7 @@ public class Processor extends AbstractParty {
     public Processor() {
         demoTransactionsList = new ArrayList<Transaction>();
         demoOwnTransactionsList = new ArrayList<Transaction>();
-        productsList = new ArrayList<Product>();
+        demoProductsList = new ArrayList<Product>();
         partyName = "Processor";
     }
 
@@ -24,7 +24,7 @@ public class Processor extends AbstractParty {
         System.out.println("Product state in processor is "+product.getState().getStateName());
         initProcessorParametres(product);
         System.out.println(product.getName()+" processor parametres: "+product.getProcessorParametres().toString());
-        productsList.add(product);
+        addProduct(product);
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {

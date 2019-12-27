@@ -15,7 +15,7 @@ public class Distributor extends AbstractParty {
     public Distributor() {
         demoTransactionsList = new ArrayList<Transaction>();
         demoOwnTransactionsList = new ArrayList<Transaction>();
-        productsList = new ArrayList<Product>();
+        demoProductsList = new ArrayList<Product>();
         partyName = "Distributor";
     }
 
@@ -23,7 +23,7 @@ public class Distributor extends AbstractParty {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in distributor is "+product.getState().getStateName());
         // TODO
-        productsList.add(product);
+        addProduct(product);
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {

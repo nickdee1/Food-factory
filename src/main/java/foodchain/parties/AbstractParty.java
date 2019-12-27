@@ -19,7 +19,9 @@ public abstract class AbstractParty implements Party {
     protected List<Transaction> demoOwnTransactionsList;
     protected ImmutableList<Transaction> ownTransactionsList;
     
-    protected List<Product> productsList;
+    protected List<Product> demoProductsList;
+    protected ImmutableList<Product> productsList;
+    
     protected boolean moneyReceived;
     protected Product currentRequestedProduct;
     protected Party nextParty;
@@ -67,13 +69,15 @@ public abstract class AbstractParty implements Party {
     public void getRequest(String productName, Party sender) {
         currentRequestingParty = sender;
         System.out.println("Current requested party: "+currentRequestingParty.getPartyName());
-        for (Product p : productsList) {
-            if (p.getName().equalsIgnoreCase(productName)) {
-                // TO CHECK
-                System.out.println(this.getPartyName()+" already has "+p.getName());
-                currentRequestedProduct = p;
-                currentRequestedProduct.setIsReadyToTransmit(true);
-                return;
+        if (productsList != null) {
+            for (Product p : productsList) {
+                if (p.getName().equalsIgnoreCase(productName)) {
+                    // TO CHECK
+                    System.out.println(this.getPartyName()+" already has "+p.getName());
+                    currentRequestedProduct = p;
+                    currentRequestedProduct.setIsReadyToTransmit(true);
+                    return;
+                }
             }
         }
         currentRequestedProduct = FoodFactory.makeProduct(productName);
@@ -84,7 +88,7 @@ public abstract class AbstractParty implements Party {
             Transaction transaction = new ProductTransaction(receiver, this, null, product);
             SellingChannel channel = new SellingChannel(receiver);
             channel.makeTransmission(transaction);
-            productsList.remove(product);
+            removeProduct(product);
             moneyReceived = false;
             transaction.setSuccessful(true);
             addOwnTransaction(transaction);
@@ -94,7 +98,7 @@ public abstract class AbstractParty implements Party {
     public void prepareProductToNextStage(Product product) {
         State storedState = product.getState();
         storedState.prepare(product);
-        productsList.add(product);
+        demoProductsList.add(product);
     }
     
     public void receiveProduct(ProductTransaction transaction) {
@@ -126,6 +130,16 @@ public abstract class AbstractParty implements Party {
         demoOwnTransactionsList.add(transaction);
         ownTransactionsList = ImmutableList.copyOf(demoOwnTransactionsList);
     }
+    
+    protected void addProduct(Product product) {
+        demoProductsList.add(product);
+        productsList = ImmutableList.copyOf(demoProductsList);
+    }
+    
+    protected void removeProduct(Product product) {
+        demoProductsList.remove(product);
+        productsList = ImmutableList.copyOf(demoProductsList);
+    }
 
     public String getPartyName() {
         return partyName;
@@ -139,12 +153,12 @@ public abstract class AbstractParty implements Party {
         return ownTransactionsList;
     }
 
-    public List<Product> getProductsList() {
+    public ImmutableList<Product> getProductsList() {
         return productsList;
     }
     
     // for simulation
     public void addProductToList(Product product) {
-        productsList.add(product);
+        addProduct(product);
     }
 }

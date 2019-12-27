@@ -12,7 +12,7 @@ public class Customer extends AbstractParty {
     public Customer() {
         demoTransactionsList = new ArrayList<Transaction>();
         demoOwnTransactionsList = new ArrayList<Transaction>();
-        productsList = new ArrayList<Product>();
+        demoProductsList = new ArrayList<Product>();
         partyName = "Customer";
     }
     
@@ -20,9 +20,8 @@ public class Customer extends AbstractParty {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in customer is "+product.getState().getStateName());
         System.out.println("CONGRATULATIONS, FOOD CHAIN IS COMPLETED");
-        productsList.add(product);
+        addProduct(product);
     }
-
 
     public void acceptReporter(PartiesReporter partiesReporter) {
         partiesReporter.generateReportForCustomer(this);

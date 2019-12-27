@@ -15,7 +15,7 @@ public class Storage extends AbstractParty {
     public Storage() {
         demoTransactionsList = new ArrayList<Transaction>();
         demoOwnTransactionsList = new ArrayList<Transaction>();
-        productsList = new ArrayList<Product>();
+        demoProductsList = new ArrayList<Product>();
         moneyReceived = false;
         partyName = "Storage";
     }
@@ -25,7 +25,7 @@ public class Storage extends AbstractParty {
         System.out.println("Product state in storage is "+product.getState().getStateName());
         initStorageParametres(product);
         System.out.println(product.getName()+" storage parametres: "+product.getStorageParametres().toString());
-        productsList.add(product);
+        addProduct(product);
     }
 
     public void acceptReporter(PartiesReporter partiesReporter) {
