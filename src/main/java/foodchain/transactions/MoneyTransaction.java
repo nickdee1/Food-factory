@@ -7,9 +7,8 @@ public class MoneyTransaction extends Transaction {
     
     private final Integer moneyAmount;
     
-    public MoneyTransaction(Party receiver, Party sender, Date timestamp,
-            Integer moneyAmount) {
-        super(receiver, sender, timestamp);
+    public MoneyTransaction(Party receiver, Party sender, Integer moneyAmount) {
+        super(receiver, sender);
         this.moneyAmount = moneyAmount;
     }
 

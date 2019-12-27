@@ -8,9 +8,8 @@ public class ProductTransaction extends Transaction {
     
     private final Product product;
 
-    public ProductTransaction(Party receiver, Party sender, Date timestamp,
-            Product product) {
-        super(receiver, sender, timestamp);
+    public ProductTransaction(Party receiver, Party sender, Product product) {
+        super(receiver, sender);
         this.product = product;
     }
 

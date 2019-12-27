@@ -50,7 +50,7 @@ public class TransactionReporter implements Visitor {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         map.put("receiver", transaction.getReceiver().getPartyName());
         map.put("sender", transaction.getSender().getPartyName());
-        map.put("timestamp", "01/01/1970"); // TODO: - Change it
+        map.put("timestamp", transaction.getTimestamp());
         map.put("hashcode", transaction.getHashCode());
         map.put("successful", transaction.isSuccessful());
         map.put("price", transaction.getMoneyAmount());
@@ -62,7 +62,7 @@ public class TransactionReporter implements Visitor {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         map.put("receiver", transaction.getReceiver().getPartyName());
         map.put("sender", transaction.getSender().getPartyName());
-        map.put("timestamp", "01/01/1970"); // TODO: - Change it
+        map.put("timestamp", transaction.getTimestamp());
         map.put("hashcode", transaction.getHashCode());
         map.put("successful", transaction.isSuccessful());
         map.put("product", transaction.getProduct().getName());

@@ -9,19 +9,19 @@ import foodchain.transactions.Transaction;
 import foodchain.channels.PaymentChannel;
 import foodchain.channels.SellingChannel;
 import java.util.List;
-import com.google.common.collect.ImmutableList; 
+import com.google.common.collect.ImmutableList;
 
 // must be ABSTRACT to avoid being instantiated directly
 public abstract class AbstractParty implements Party {
     protected List<Transaction> demoTransactionsList;
     protected ImmutableList<Transaction> transactionsList;
-    
+
     protected List<Transaction> demoOwnTransactionsList;
     protected ImmutableList<Transaction> ownTransactionsList;
-    
+
     protected List<Product> demoProductsList;
     protected ImmutableList<Product> productsList;
-    
+
     protected boolean moneyReceived;
     protected Product currentRequestedProduct;
     protected Party nextParty;
@@ -85,7 +85,7 @@ public abstract class AbstractParty implements Party {
     
     public void makeTransaction(Party receiver, Product product) {
         if (moneyReceived) {
-            Transaction transaction = new ProductTransaction(receiver, this, null, product);
+            Transaction transaction = new ProductTransaction(receiver, this, product);
             SellingChannel channel = new SellingChannel(receiver);
             transaction = channel.makeTransmission(transaction);
             removeProduct(product);
@@ -110,7 +110,7 @@ public abstract class AbstractParty implements Party {
     }
     
     public void makeTransaction(Integer money) {
-        Transaction transaction = new MoneyTransaction(nextParty, this, null, money);
+        Transaction transaction = new MoneyTransaction(nextParty, this, money);
         Transaction tmpTransaction = transaction;
         PaymentChannel channel = new PaymentChannel(nextParty);
         transaction = channel.makeTransmission(transaction);
@@ -121,7 +121,7 @@ public abstract class AbstractParty implements Party {
         }
         else addOwnTransaction(transaction);
     }
-    
+
     private void addOwnTransaction(Transaction transaction) {
         int size = demoOwnTransactionsList.size();
         if (size == 0) {
@@ -133,7 +133,7 @@ public abstract class AbstractParty implements Party {
         demoOwnTransactionsList.add(transaction);
         ownTransactionsList = ImmutableList.copyOf(demoOwnTransactionsList);
     }
-    
+
     protected void addProduct(Product product) {
         demoProductsList.add(product);
         productsList = ImmutableList.copyOf(demoProductsList);
