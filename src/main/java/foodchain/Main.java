@@ -29,6 +29,7 @@ public class Main {
         Integer moneyForProduct = 45;
         
         // SIMULATION OF ONE PARTY HAVING ALREADY EXISTING PRODUCT
+        System.out.println("SIMULATION: STORAGE ALREADY HAS MILK");
         Product alreadyExistingMilk = new Milk();
         alreadyExistingMilk.setState(new StoredState());
         storage.addProductToList(alreadyExistingMilk);
@@ -37,9 +38,14 @@ public class Main {
         customer.makeRequest(productName);
         customer.makeTransaction(moneyForProduct);
         // WITH DOUBLE SPENDING
+        System.out.println("SIMULATON: CUSTOMER WANTS MILK AGAIN, SELLER WILL "
+                + "TRY TO SELL HIM THE SAME MILK - DOUBLE SPENDING");
         customer.makeRequest(productName);
         customer.makeTransaction(moneyForProduct);
         // TRY AGAIN AND SUCCEED
+        System.out.println("SIMULATION: AFTER ATTEMPT TO COMMIT DOUBLE SPENDING "+
+                "SELLER WILL FINALLY SELL NEW MILK");
+        System.out.println("WHOLE FOOD CHAIN WILL WORK");
         customer.makeRequest(productName);
         customer.makeTransaction(moneyForProduct);
 
