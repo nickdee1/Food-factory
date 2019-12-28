@@ -8,6 +8,10 @@ public class CollectedState extends State {
         stateName = "Collected";
     }
 
+    /**
+     *
+     * @param productContext
+     */
     public void prepare(Product productContext) {
         productContext.setState(new StoredState());
     }

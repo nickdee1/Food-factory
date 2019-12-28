@@ -19,6 +19,7 @@ public class Storage extends AbstractParty {
         partyName = "Storage";
     }
 
+    // process product as storage
     private void store(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in storage is "+product.getState().getStateName());
@@ -27,10 +28,20 @@ public class Storage extends AbstractParty {
         addProduct(product);
     }
 
+    /**
+     *
+     * @param partiesReporter
+     */
     public void acceptReporter(PartiesReporter partiesReporter) {
         partiesReporter.generateReportForParty(this);
     }
 
+    /**
+     * Receives product transaction transmitted by selling channel,
+     * process product as storage, sends it to next party in food
+     * chain.
+     * @param transaction
+     */
     @Override
     public void receiveProduct(ProductTransaction transaction) {
         super.receiveProduct(transaction);
@@ -40,6 +51,11 @@ public class Storage extends AbstractParty {
         sendProduct(product);
     }
     
+    /**
+     * Receives money transaction from payment channel, forwards
+     * request to the next party in chain of responsibility if necessary.
+     * @param transaction
+     */
     @Override
     public void receiveMoney(MoneyTransaction transaction) {
         super.receiveMoney(transaction);
@@ -53,6 +69,7 @@ public class Storage extends AbstractParty {
         }
     }
     
+    // sends product to the current requesting party
     private void sendProduct(Product product) {
         if (currentRequestedProduct != null) {
             makeTransaction(currentRequestingParty, product);
@@ -61,6 +78,7 @@ public class Storage extends AbstractParty {
         }
     }
 
+    // initialize parametres of product after storing
     private void initStorageParametres(Product product) {
         if ((product.getName()).equalsIgnoreCase("apple")) {
             System.out.println("Store apple...");

@@ -8,8 +8,16 @@ import foodchain.products.Milk;
 import foodchain.products.Product;
 import foodchain.products.Pork;
 
+/**
+ * Secondary class for making products.
+ */
 public class FoodFactory {
 
+    /**
+     * Makes product requested by name.
+     * @param productName - name of product to create
+     * @return requested product
+     */
     public static Product makeProduct(String productName) {
         if (productName.equalsIgnoreCase("milk")) {
             Product milk = new Milk();
@@ -30,5 +38,4 @@ public class FoodFactory {
         }
         return null;
     }
-
 }

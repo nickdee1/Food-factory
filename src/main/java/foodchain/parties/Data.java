@@ -1,5 +1,9 @@
 package foodchain.parties;
 
+/**
+ * Secondary class which contains static constants for
+ * products processing.
+ */
 public class Data {
     
     // STORAGE DATA

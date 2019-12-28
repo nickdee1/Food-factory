@@ -8,6 +8,10 @@ public class AliveState extends State {
         stateName = "Alive";
     }
 
+    /**
+     * 
+     * @param productContext
+     */
     public void prepare(Product productContext) {
         productContext.setState(new RawState());
     }

@@ -8,6 +8,10 @@ public class GrowingState extends State {
         stateName = "Growing";
     }
     
+    /**
+     *
+     * @param productContext
+     */
     public void prepare(Product productContext) {
         productContext.setState(new CollectedState());
     }

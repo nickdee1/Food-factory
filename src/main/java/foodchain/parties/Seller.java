@@ -18,6 +18,7 @@ public class Seller extends AbstractParty {
         partyName = "Seller";
     }
 
+    // process product as seller
     private void sellProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in seller is "+product.getState().getStateName());
@@ -26,10 +27,20 @@ public class Seller extends AbstractParty {
         addProduct(product);
     }
 
+    /**
+     *
+     * @param partiesReporter
+     */
     public void acceptReporter(PartiesReporter partiesReporter) {
         partiesReporter.generateReportForParty(this);
     }
 
+    /**
+     * Receives product transaction transmitted by selling channel,
+     * process product as seller, sends it to next party in food
+     * chain.
+     * @param transaction
+     */
     @Override
     public void receiveProduct(ProductTransaction transaction) {
         super.receiveProduct(transaction);
@@ -39,6 +50,11 @@ public class Seller extends AbstractParty {
         sendProduct(product);
     }
 
+    /**
+     * Receives money transaction from payment channel, forwards
+     * request to the next party in chain of responsibility if necessary.
+     * @param transaction
+     */
     @Override
     public void receiveMoney(MoneyTransaction transaction) {
         super.receiveMoney(transaction);
@@ -54,6 +70,7 @@ public class Seller extends AbstractParty {
         }
     }
     
+    // sends product to the current requesting party
     private void sendProduct(Product product) {
         if (currentRequestedProduct != null) {
             makeTransaction(currentRequestingParty, product);
@@ -62,6 +79,7 @@ public class Seller extends AbstractParty {
         }
     }
 
+    // initialize parametres of product after putting in a store to sell
     private void initSellerParametres(Product product) {
         if ((product.getName()).equalsIgnoreCase("apple")) {
             System.out.println("Sell apple...");

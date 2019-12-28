@@ -8,6 +8,10 @@ public class RawState extends State {
         stateName = "Raw";
     }
 
+    /**
+     *
+     * @param productContext
+     */
     public void prepare(Product productContext) {
         productContext.setState(new StoredState());
     }

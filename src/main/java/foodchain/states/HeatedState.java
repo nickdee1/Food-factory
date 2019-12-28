@@ -8,6 +8,10 @@ public class HeatedState extends State {
         stateName = "Heated";
     }
 
+    /**
+     *
+     * @param productContext
+     */
     public void prepare(Product productContext) {
         productContext.setState(new PackedState());
     }

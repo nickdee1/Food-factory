@@ -1,24 +1,31 @@
 package foodchain.channels;
 
-import foodchain.reporters.report.SecurityMessage;
 import foodchain.transactions.ProductTransaction;
 import foodchain.transactions.Transaction;
 import foodchain.parties.Party;
 import foodchain.products.Product;
-import sun.plugin2.message.Message;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+/**
+ * Channel to sell product.
+ */
 public class SellingChannel implements Channel {
 
     private final Party receiver;
 
+    /**
+     *
+     * @param receiver
+     */
     public SellingChannel(Party receiver) {
    
         this.receiver = receiver;
     }
 
+    /**
+     * Transmits product to receiver, checks if there is double spending.
+     * @param transaction - already made product transaction to transmit
+     * @return result if transmission was successful, null otherwise
+     */
     public ProductTransaction makeTransmission(Transaction transaction) {
         System.out.println("Product transaction is being made...");
         ProductTransaction productTransaction = (ProductTransaction)transaction;
@@ -35,20 +42,6 @@ public class SellingChannel implements Channel {
                 p.removeProduct(product);
             }
             product.clearPartyList();
-
-            // TODO: - Refactor
-            Date currentDate = new Date();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-
-            SecurityMessage message = new SecurityMessage();
-            message.message = "Attempt to commit double spending";
-            message.sender = transaction.getSender().getPartyName();
-            message.receiver = transaction.getReceiver().getPartyName();
-            message.product = product;
-            message.timestamp = dateFormat.format(currentDate);
-
-            SecurityHistory sh = SecurityHistory.getInstance();
-            sh.addMessage(message);
             return null;
         }
         receiver.receiveProduct(productTransaction);

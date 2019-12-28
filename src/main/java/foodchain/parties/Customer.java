@@ -17,6 +17,7 @@ public class Customer extends AbstractParty {
         moneyReceived = false; // customer doesn't receive money
     }
     
+    // process product as customer
     private void buyProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in customer is "+product.getState().getStateName());
@@ -27,10 +28,19 @@ public class Customer extends AbstractParty {
         addProduct(product);
     }
 
+    /**
+     *
+     * @param partiesReporter
+     */
     public void acceptReporter(PartiesReporter partiesReporter) {
         partiesReporter.generateReportForParty(this);
     }
 
+    /**
+     * Receives product transaction transmitted by selling channel and
+     * process product as customer.
+     * @param transaction
+     */
     @Override
     public void receiveProduct(ProductTransaction transaction) {
         super.receiveProduct(transaction);
@@ -39,14 +49,23 @@ public class Customer extends AbstractParty {
         buyProduct(product);
     }
 
+    /**
+     * Only prints warning that customer doesn't receive money.
+     * @param transaction
+     */
     @Override
     public void receiveMoney(MoneyTransaction transaction) {
         System.out.println("Customer doesn't receive money, but pays!");
     }
 
+    /**
+     * Only prints warning that customer doesn't sell products.
+     * @param receiver
+     * @param product
+     */
     @Override
     protected void makeTransaction(Party receiver, Product product) {
-        System.out.println("Customer doesn't send any products!");
+        System.out.println("Customer doesn't sell any products!");
     }
 
 }

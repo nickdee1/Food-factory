@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Milk extends Product {
-    
+
     public Milk() {
         this.state = new CollectedState();
         price = 45;

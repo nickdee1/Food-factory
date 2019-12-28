@@ -16,9 +16,6 @@ public class ProductReporter implements Visitor {
         this.productList = productList;
     }
 
-    protected ProductReporter() {
-    }
-
     public void generateForAll() {
         Map<String, List> outputMap = new LinkedHashMap<String, List>();
         String output_file = "products";

@@ -8,6 +8,10 @@ public class DeliveredState extends State {
         stateName = "Delivered";
     }
     
+    /**
+     *
+     * @param productContext
+     */
     public void prepare(Product productContext) {
         productContext.setState(new PackedState());
     }

@@ -16,16 +16,27 @@ public class Distributor extends AbstractParty {
         partyName = "Distributor";
     }
 
+    // process product as distributor
     private void deliverProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in distributor is "+product.getState().getStateName());
         addProduct(product);
     }
 
+    /**
+     *
+     * @param partiesReporter
+     */
     public void acceptReporter(PartiesReporter partiesReporter) {
         partiesReporter.generateReportForParty(this);
     }
 
+    /**
+     * Receives product transaction transmitted by selling channel,
+     * process product as distributor, sends it to next party in food
+     * chain.
+     * @param transaction
+     */
     @Override
     public void receiveProduct(ProductTransaction transaction) {
         super.receiveProduct(transaction);
@@ -35,6 +46,11 @@ public class Distributor extends AbstractParty {
         sendProduct(product);
     }
 
+    /**
+     * Receives money transaction from payment channel, forwards
+     * request to the next party in chain of responsibility if necessary.
+     * @param transaction
+     */
     @Override
     public void receiveMoney(MoneyTransaction transaction) {
         super.receiveMoney(transaction);
@@ -50,6 +66,7 @@ public class Distributor extends AbstractParty {
         }
     }
     
+    // sends product to the current requesting party
     private void sendProduct(Product product) {
         if (currentRequestedProduct != null) {
             makeTransaction(currentRequestingParty, product);
