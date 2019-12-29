@@ -37,6 +37,9 @@ public class SellingChannel implements Channel {
             Party sender = transaction.getSender();
             sender.setDoubleSpending();
             sender.increaseAttempts();
+
+            SecurityHistory sh = SecurityHistory.getInstance();
+            sh.reportForbiddenAction(sender, receiver, product);
             // reset
             for (Party p : product.getCurrentlyProcessingParties()) {
                 p.removeProduct(product);
@@ -47,4 +50,5 @@ public class SellingChannel implements Channel {
         receiver.receiveProduct(productTransaction);
         return productTransaction;
     }
+
 }

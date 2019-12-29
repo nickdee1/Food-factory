@@ -1,5 +1,6 @@
 package foodchain.reporters;
 
+import foodchain.parties.AbstractParty;
 import foodchain.products.Product;
 import org.json.JSONObject;
 
@@ -8,14 +9,32 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Class for generating JSON report for the products in simulation
+ */
 public class ProductReporter implements Visitor {
 
-    private final List<Product> productList;
+    /**
+     * List of products the report is generated for
+     */
+    private List<Product> productList;
 
+    /**
+     * Constructor for ProductReporter
+     * @param productList the list with products report is generated for
+     */
     public ProductReporter(List<Product> productList) {
         this.productList = productList;
     }
 
+
+    public ProductReporter() {
+    }
+
+
+    /**
+     * Method generates JSON report for all products from product list {@link #productList}
+     */
     public void generateForAll() {
         Map<String, List> outputMap = new LinkedHashMap<String, List>();
         String output_file = "products";
@@ -27,6 +46,12 @@ public class ProductReporter implements Visitor {
     }
 
 
+    /**
+     *  Method generates List of Maps for the products in order to grab all its' attributes
+     *  and further converting them into JSON format
+     * @return generated List with necessary attributes
+     * @throws NullPointerException in case {@link #productList} is null
+     */
     protected List<Map> generateMapsForAll() throws NullPointerException {
         List<Map> arrayOfProducts = new ArrayList<Map>();
 
@@ -38,18 +63,23 @@ public class ProductReporter implements Visitor {
         return arrayOfProducts;
     }
 
+    public void generateReportForProduct(Product product) {
+        String name = product.getName();
+        Map outputMap = generateMapReportForProduct(product);
+        generateJSON(new JSONObject(outputMap), name);
+    }
 
+    /**
+     * Method generates Map for the product in order to grab all it's attributes
+     * and further converting them into JSON format
+     * @param product the party the Map is generated for
+     * @return generated Map with necessary attributes
+     */
     protected Map<String, Object> generateMapReportForProduct(Product product) {
         String name = product.getName();
         String state = product.getState().getStateName();
         Integer price = product.getPrice();
-        List<Map> params = new ArrayList<Map>();
-
-
-        // TODO: - Refactor params (null state, json formatting)
-        params.add(product.getStorageParametres());
-        params.add(product.getProcessorParametres());
-        params.add(product.getSellerParametres());
+        List params = product.getAllParameters();
 
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         map.put("name", name);
@@ -60,6 +90,12 @@ public class ProductReporter implements Visitor {
         return map;
     }
 
+    /**
+     * Method generates JSON file for the report and saves it into
+     * directory /reports/
+     * @param object the JSONObject for which the report is generated for
+     * @param name the filename without extension report would be saved with
+     */
     private void generateJSON(JSONObject object, String name) {
         String filepath = "reports/" + name + ".json";
 

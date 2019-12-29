@@ -4,6 +4,10 @@ import foodchain.parties.*;
 import foodchain.products.Milk;
 import foodchain.products.Product;
 import foodchain.reporters.PartiesReporter;
+import foodchain.reporters.ProductReporter;
+import foodchain.reporters.SecurityReporter;
+import foodchain.reporters.TransactionReporter;
+import foodchain.reporters.report.ProductReport;
 import foodchain.states.StoredState;
 import foodchain.transactions.Transaction;
 import java.util.ArrayList;
@@ -52,7 +56,8 @@ public class Main {
 
         // TEST REPORTS
         List<AbstractParty> parties = new ArrayList<AbstractParty>();
-        List<Transaction> tr = new ArrayList<Transaction>();
+        List<Transaction> tr = customer.getTransactionsList();
+        List<Product> products = customer.getProductsList();
         parties.add(customer);
         parties.add(seller);
         parties.add(distributor);
@@ -60,8 +65,17 @@ public class Main {
         parties.add(storage);
         parties.add(farmer);
 
+
+
+        TransactionReporter trr = new TransactionReporter(tr);
+        trr.generateForAll();
+        ProductReporter prr = new ProductReporter(products);
+        prr.generateForAll();
         PartiesReporter pr = new PartiesReporter(parties);
         pr.generateForAll();
+        SecurityReporter srr = new SecurityReporter();
+        srr.generateForAll();
 
+        seller.acceptReporter(new PartiesReporter());
     }
 }

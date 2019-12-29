@@ -2,6 +2,8 @@ package foodchain.products;
 
 import foodchain.states.State;
 import foodchain.reporters.ProductReporter;
+
+import java.util.ArrayList;
 import java.util.Map;
 import com.google.common.collect.ImmutableMap; 
 import foodchain.parties.Party;
@@ -70,7 +72,7 @@ public abstract class Product {
      * @param reporter
      */
     public void accept(ProductReporter reporter) {
-        
+        reporter.generateReportForProduct(this);
     }
     
     /**
@@ -169,9 +171,9 @@ public abstract class Product {
      */
     public void setStorageParametres(Integer storageTime, Integer storageTemperature,
             Integer storageHumidity) {
-        demoStorageParametres.put("Storage Time", storageTime);
-        demoStorageParametres.put("Storage Temperature", storageTemperature);
-        demoStorageParametres.put("Storage Humidity", storageHumidity);
+        demoStorageParametres.put("storage_time", storageTime);
+        demoStorageParametres.put("storage_temperature", storageTemperature);
+        demoStorageParametres.put("storage_humidity", storageHumidity);
         storageParametres = ImmutableMap.copyOf(demoStorageParametres);
         demoStorageParametres.clear();
     }
@@ -191,8 +193,8 @@ public abstract class Product {
      */
     public void setProcessorParametres(Integer processorTemperature, Integer
             chemicalDegree) {
-        demoProcessorParametres.put("Processing Temperature", processorTemperature);
-        demoProcessorParametres.put("Chemical Processing Degree", chemicalDegree);
+        demoProcessorParametres.put("processing_temperature", processorTemperature);
+        demoProcessorParametres.put("chemical_processing_degree", chemicalDegree);
         processorParametres = ImmutableMap.copyOf(demoProcessorParametres);
         demoProcessorParametres.clear();
     }
@@ -211,8 +213,8 @@ public abstract class Product {
      * @param sellingPlace
      */
     public void setSellerParametres(String packaging, String sellingPlace) {
-        demoSellerParametres.put("Type of Packaging", packaging);
-        demoSellerParametres.put("Selling Place", sellingPlace);
+        demoSellerParametres.put("type_of_packaging", packaging);
+        demoSellerParametres.put("selling_place", sellingPlace);
         sellerParametres = ImmutableMap.copyOf(demoSellerParametres);
         demoSellerParametres.clear();
     }
@@ -223,5 +225,18 @@ public abstract class Product {
      */
     public Map<String, String> getSellerParametres() {
         return sellerParametres;
+    }
+
+
+    /**
+     * @return
+     */
+    public List<Map> getAllParameters() {
+        List<Map> allProductParameters = new ArrayList<Map>();
+        if (processorParametres != null) allProductParameters.add(processorParametres);
+        if (sellerParametres != null) allProductParameters.add(sellerParametres);
+        if (storageParametres != null) allProductParameters.add(storageParametres);
+
+        return allProductParameters;
     }
 }
