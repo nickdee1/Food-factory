@@ -1,6 +1,7 @@
 package foodchain.parties;
 
 import foodchain.FoodFactory;
+import foodchain.PartiesIterator;
 import foodchain.transactions.MoneyTransaction;
 import foodchain.products.Product;
 import foodchain.transactions.ProductTransaction;
@@ -55,6 +56,7 @@ public abstract class AbstractParty implements Party {
     protected Product currentRequestedProduct;
     protected Party currentRequestingParty;
 
+
     /**
      * Next party in chain of responsibility
      */
@@ -73,7 +75,14 @@ public abstract class AbstractParty implements Party {
     public void setNext(AbstractParty next) {
         nextParty = next;
     }
-    
+
+    /**
+     * @return
+     */
+    public AbstractParty getNextParty() {
+        return nextParty;
+    }
+
     /**
      * Increases number of attempts to commit double-spending
      */
@@ -299,5 +308,9 @@ public abstract class AbstractParty implements Party {
      */
     public void addProductToList(Product product) {
         addProduct(product);
+    }
+
+    public PartiesIterator iterator() {
+        return new PartiesIterator(this);
     }
 }

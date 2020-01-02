@@ -77,5 +77,7 @@ public class Main {
         srr.generateForAll();
 
         seller.acceptReporter(new PartiesReporter());
+
+        pr.generateForAll(processor);
     }
 }
