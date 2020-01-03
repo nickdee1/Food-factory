@@ -141,8 +141,19 @@ public abstract class AbstractParty implements Party {
             transaction.setSuccessful(false);
         }
         addOwnTransaction(transaction);
-        transaction.addParty(transaction.getSender());
-        transaction.addParty(this);
+        //transaction.addParty(transaction.getSender());
+        //transaction.addParty(this);
+        Party currentParty = currentRequestingParty;
+        Party tmpParty = currentParty;
+        while (currentParty != null) {
+            tmpParty = currentParty;
+            currentParty = currentParty.getCurrentRequestingParty();
+        }
+        currentParty = tmpParty;
+        while (currentParty != null) {
+            transaction.addParty(currentParty);
+            currentParty = currentParty.getNextParty();
+        }
         transaction.notifyAllParties();
     }
     
@@ -185,16 +196,35 @@ public abstract class AbstractParty implements Party {
             if (transaction == null) {
                 System.out.println("Something went wrong!");
                 tmpTransaction.setSuccessful(false);
-                tmpTransaction.addParty(this);
-                tmpTransaction.addParty(receiver);
+                //tmpTransaction.addParty(this);
+                //tmpTransaction.addParty(receiver);
+                Party currentParty = currentRequestingParty;
+                Party tmpParty = currentParty;
+                while (currentParty != null) {
+                    tmpParty = currentParty;
+                    currentParty = currentParty.getCurrentRequestingParty();
+                }
+                currentParty = tmpParty;
+                while (currentParty != null) {
+                    tmpTransaction.addParty(currentParty);
+                    currentParty = currentParty.getNextParty();
+                }
                 addOwnTransaction(tmpTransaction);
                 tmpTransaction.notifyAllParties();
             }
             else {
                 product.setIsCurrentlyProcessed(true);
                 transaction.setSuccessful(true);
-                transaction.addParty(this);
-                transaction.addParty(receiver);
+                //transaction.addParty(this);
+                //transaction.addParty(receiver);
+                Party currentParty = currentRequestingParty;
+                while (currentParty != null) {
+                    currentParty = currentParty.getCurrentRequestingParty();
+                }
+                while (currentParty != null) {
+                    tmpTransaction.addParty(currentParty);
+                    currentParty = currentParty.getNextParty();
+                }
                 addOwnTransaction(transaction);
                 transaction.notifyAllParties();
             }
@@ -276,6 +306,11 @@ public abstract class AbstractParty implements Party {
      */
     public String getPartyName() {
         return partyName;
+    }
+    
+
+    public Party getCurrentRequestingParty() {
+        return currentRequestingParty;
     }
 
     /**

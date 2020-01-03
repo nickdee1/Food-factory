@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Customer extends AbstractParty {
 
     public Customer() {
+        currentRequestingParty = null;
         demoTransactionsList = new ArrayList<Transaction>();
         demoOwnTransactionsList = new ArrayList<Transaction>();
         demoProductsList = new ArrayList<Product>();

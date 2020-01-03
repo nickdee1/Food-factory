@@ -7,7 +7,6 @@ import foodchain.reporters.PartiesReporter;
 import foodchain.reporters.ProductReporter;
 import foodchain.reporters.SecurityReporter;
 import foodchain.reporters.TransactionReporter;
-import foodchain.reporters.report.ProductReport;
 import foodchain.states.StoredState;
 import foodchain.transactions.Transaction;
 import java.util.ArrayList;
@@ -29,11 +28,11 @@ public class Main {
         seller.setNext(distributor);
         Customer customer = new Customer();
         customer.setNext(seller);
-        String productName = "mIlK";
-        Integer moneyForProduct = 45;
+        String productName = "apple";
+        Integer moneyForProduct = 20;
         
         // SIMULATION OF ONE PARTY HAVING ALREADY EXISTING PRODUCT
-        System.out.println("SIMULATION: STORAGE ALREADY HAS MILK");
+        System.out.println("SIMULATION: STORAGE ALREADY HAS APPLE");
         Product alreadyExistingMilk = new Milk();
         alreadyExistingMilk.setState(new StoredState());
         storage.addProductToList(alreadyExistingMilk);
@@ -42,17 +41,16 @@ public class Main {
         customer.makeRequest(productName);
         customer.makeTransaction(moneyForProduct);
         // WITH DOUBLE SPENDING
-        System.out.println("SIMULATON: CUSTOMER WANTS MILK AGAIN, SELLER WILL "
-                + "TRY TO SELL HIM THE SAME MILK - DOUBLE SPENDING");
+        System.out.println("SIMULATON: CUSTOMER WANTS APPLE AGAIN, SELLER WILL "
+                + "TRY TO SELL HIM THE SAME APPLE - DOUBLE SPENDING");
         customer.makeRequest(productName);
         customer.makeTransaction(moneyForProduct);
         // TRY AGAIN AND SUCCEED
         System.out.println("SIMULATION: AFTER ATTEMPT TO COMMIT DOUBLE SPENDING "+
-                "SELLER WILL FINALLY SELL NEW MILK");
+                "SELLER WILL FINALLY SELL NEW APPLE");
         System.out.println("WHOLE FOOD CHAIN WILL WORK");
         customer.makeRequest(productName);
         customer.makeTransaction(moneyForProduct);
-
 
         // TEST REPORTS
         List<AbstractParty> parties = new ArrayList<AbstractParty>();
@@ -64,8 +62,6 @@ public class Main {
         parties.add(processor);
         parties.add(storage);
         parties.add(farmer);
-
-
 
         TransactionReporter trr = new TransactionReporter(tr);
         trr.generateForAll();

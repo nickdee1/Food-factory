@@ -18,9 +18,11 @@ public abstract class Transaction implements Observable {
     private boolean successful;
     private final Set<Party> observingParties;
     private Transaction previousTransaction;
+    private boolean partiesSetIsMade;
 
 
     public Transaction(Party receiver, Party sender) {
+        partiesSetIsMade = false;
         this.receiver = receiver;
         this.sender = sender;
         this.timestamp = generateTimestamp();
@@ -65,6 +67,11 @@ public abstract class Transaction implements Observable {
 
     public void setSuccessful(boolean successful) {
         this.successful = successful;
+    }
+    
+    private void makePartiesSet() {
+        // TODO
+        partiesSetIsMade = true;
     }
 
     public void notifyAllParties() {
