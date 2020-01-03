@@ -1,7 +1,6 @@
 package foodchain.parties;
 
 import foodchain.FoodFactory;
-import foodchain.PartiesIterator;
 import foodchain.transactions.MoneyTransaction;
 import foodchain.products.Product;
 import foodchain.transactions.ProductTransaction;

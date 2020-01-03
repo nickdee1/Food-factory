@@ -1,6 +1,6 @@
 package foodchain.reporters;
 
-import foodchain.PartiesIterator;
+import foodchain.parties.PartiesIterator;
 import foodchain.parties.*;
 import org.json.JSONObject;
 

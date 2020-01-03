@@ -30,7 +30,7 @@ public class TransactionReporter implements Visitor {
     }
 
 
-    protected List<Map> generateMapsForAll() {
+    List<Map> generateMapsForAll() {
         List<Map> arrayOfTransactions = new ArrayList<Map>();
         for (Transaction t : transactionList) {
             if (t.getTransactionFlag().equals("MONEY")) {
@@ -46,7 +46,7 @@ public class TransactionReporter implements Visitor {
     }
 
 
-    protected Map<String, Object> generateMapForMoneyTransaction(MoneyTransaction transaction) {
+     private Map<String, Object> generateMapForMoneyTransaction(MoneyTransaction transaction) {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         map.put("receiver", transaction.getReceiver().getPartyName());
         map.put("sender", transaction.getSender().getPartyName());
@@ -58,7 +58,7 @@ public class TransactionReporter implements Visitor {
         return map;
     }
 
-    protected Map<String, Object> generateMapProductTransaction(ProductTransaction transaction) {
+    private Map<String, Object> generateMapProductTransaction(ProductTransaction transaction) {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         map.put("receiver", transaction.getReceiver().getPartyName());
         map.put("sender", transaction.getSender().getPartyName());

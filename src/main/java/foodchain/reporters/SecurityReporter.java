@@ -31,7 +31,7 @@ public class SecurityReporter implements Visitor {
         generateJSON(new JSONObject(outputMap), output);
     }
 
-    protected List<Map> generateMapsForAll() {
+    private List<Map> generateMapsForAll() {
         List<Map> listOfAllMaps = new ArrayList<Map>();
 
         for (SecurityMessage m : messages) {
@@ -42,7 +42,7 @@ public class SecurityReporter implements Visitor {
         return listOfAllMaps;
     }
 
-    protected Map<String, Object> generateMapForSecurityMessage(SecurityMessage message) {
+    private Map<String, Object> generateMapForSecurityMessage(SecurityMessage message) {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         ProductReporter productReporter = new ProductReporter();
 

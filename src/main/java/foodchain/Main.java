@@ -7,7 +7,6 @@ import foodchain.reporters.PartiesReporter;
 import foodchain.reporters.ProductReporter;
 import foodchain.reporters.SecurityReporter;
 import foodchain.reporters.TransactionReporter;
-import foodchain.reporters.report.ProductReport;
 import foodchain.states.StoredState;
 import foodchain.transactions.Transaction;
 import java.util.ArrayList;

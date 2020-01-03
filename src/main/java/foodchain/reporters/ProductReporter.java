@@ -1,6 +1,4 @@
 package foodchain.reporters;
-
-import foodchain.parties.AbstractParty;
 import foodchain.products.Product;
 import org.json.JSONObject;
 
@@ -28,7 +26,7 @@ public class ProductReporter implements Visitor {
     }
 
 
-    public ProductReporter() {
+    ProductReporter() {
     }
 
 
@@ -52,7 +50,7 @@ public class ProductReporter implements Visitor {
      * @return generated List with necessary attributes
      * @throws NullPointerException in case {@link #productList} is null
      */
-    protected List<Map> generateMapsForAll() throws NullPointerException {
+    List<Map> generateMapsForAll() throws NullPointerException {
         List<Map> arrayOfProducts = new ArrayList<Map>();
 
         for (Product p : productList) {
@@ -75,7 +73,7 @@ public class ProductReporter implements Visitor {
      * @param product the party the Map is generated for
      * @return generated Map with necessary attributes
      */
-    protected Map<String, Object> generateMapReportForProduct(Product product) {
+    Map<String, Object> generateMapReportForProduct(Product product) {
         String name = product.getName();
         String state = product.getState().getStateName();
         Integer price = product.getPrice();
