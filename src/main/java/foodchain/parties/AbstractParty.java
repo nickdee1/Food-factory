@@ -18,12 +18,12 @@ import com.google.common.collect.ImmutableList;
  */
 public abstract class AbstractParty implements Party {
     
-    // demos are necessary to modify and then convert to immutable lists
+    /* Demos are necessary to modify and then convert to immutable lists */
 
     /**
      * List of all transactions in the food chain to modify
      */
-    protected List<Transaction> demoTransactionsList;
+    List<Transaction> demoTransactionsList;
 
     /**
      * Immutable list of all transactions in the food chain
@@ -50,8 +50,7 @@ public abstract class AbstractParty implements Party {
      */
     protected ImmutableList<Product> productsList;
 
-    // basic variables
-
+    /* Basic variables */
     protected boolean moneyReceived;
     protected Product currentRequestedProduct;
     protected Party currentRequestingParty;
@@ -62,22 +61,23 @@ public abstract class AbstractParty implements Party {
      */
     protected AbstractParty nextParty;
     protected String partyName;
-    
-    // double spending detection
 
+
+    /* Double spending detection */
     protected boolean attemptToDoubleSpend = false;
     protected Integer attemptsNumber = 0;
 
     /**
-     *
-     * @param next - next party in chain of responsibility
+     * Set next party in chain of responsibility
+     * @param next - next party in chain
      */
     public void setNext(AbstractParty next) {
         nextParty = next;
     }
 
     /**
-     * @return
+     * Get next party in chain of responsibility
+     * @return next party in chain
      */
     public AbstractParty getNextParty() {
         return nextParty;
@@ -101,7 +101,7 @@ public abstract class AbstractParty implements Party {
      * Adds recent transaction made somewhere in food chain
      * to the list of transactions of whole food chain of
      * current party.
-     * @param transaction
+     * @param transaction the transaction to add to the list
      */
     public void updateTransactions(Transaction transaction) {
         int size = demoTransactionsList.size();
@@ -118,7 +118,7 @@ public abstract class AbstractParty implements Party {
     /**
      * Ask next party in chain of responsibility for product
      * defined by its name.
-     * @param productName
+     * @param productName name of product to make request for
      */
     public void makeRequest(String productName) {
         nextParty.getRequest(productName, this);
@@ -126,7 +126,7 @@ public abstract class AbstractParty implements Party {
 
     /**
      * Receives money transaction from payment channel.
-     * @param transaction
+     * @param transaction the transaction to process
      */
     public void receiveMoney(MoneyTransaction transaction) {
         Integer receivedMoney = transaction.getMoneyAmount();
@@ -154,8 +154,12 @@ public abstract class AbstractParty implements Party {
         }
         transaction.notifyAllParties();
     }
-    
-    // gets request to make product defined by its name from party-sender
+
+    /**
+     * Gets request to make product defined by its name from party-sender
+     * @param productName the name of product
+     * @param sender the sender who sent request
+     */
     private void getRequest(String productName, Party sender) {
         if ((this.getPartyName()).equalsIgnoreCase("customer")) {
             System.out.println("Customer doesn't get requests!");
@@ -182,8 +186,8 @@ public abstract class AbstractParty implements Party {
     /**
      * Transmits product to party-receiver by selling channel (only
      * if money for this product were received).
-     * @param receiver
-     * @param product
+     * @param receiver the party-receiver to which the product is sent
+     * @param product the product to send
      */
     protected void makeTransaction(Party receiver, Product product) {
         if (moneyReceived) {
@@ -228,7 +232,7 @@ public abstract class AbstractParty implements Party {
     
     /**
      * Changes product's state to the next one in its processing.
-     * @param product
+     * @param product the product to which state is changed
      */
     public void prepareProductToNextStage(Product product) {
         State storedState = product.getState();
@@ -238,7 +242,7 @@ public abstract class AbstractParty implements Party {
     
     /**
      * Receives product transaction transmitted by selling channel.
-     * @param transaction
+     * @param transaction the transaction to process
      */
     public void receiveProduct(ProductTransaction transaction) {
         Product product = transaction.getProduct();
@@ -248,7 +252,7 @@ public abstract class AbstractParty implements Party {
     /**
      * Send money to party which is currently requested to make
      * product by payment channel.
-     * @param money
+     * @param money value to make transaction
      */
     public void makeTransaction(Integer money) {
         Transaction transaction = new MoneyTransaction(nextParty, this, money);
@@ -263,7 +267,10 @@ public abstract class AbstractParty implements Party {
         else addOwnTransaction(transaction);
     }
 
-    // adds transaction to list of party's own transactions
+    /**
+     * Adds transaction to list of party's own transactions
+     * @param transaction the transaction to add to the list
+     */
     private void addOwnTransaction(Transaction transaction) {
         int size = demoOwnTransactionsList.size();
         if (size == 0) {
@@ -278,7 +285,7 @@ public abstract class AbstractParty implements Party {
 
     /**
      * Adds product in list of party's products.
-     * @param product
+     * @param product the product to add to the list
      */
     protected void addProduct(Product product) {
         demoProductsList.add(product);
@@ -287,7 +294,7 @@ public abstract class AbstractParty implements Party {
     
     /**
      * Removes product from list of party's products.
-     * @param product
+     * @param product to process
      */
     public void removeProduct(Product product) {
         demoProductsList.remove(product);
@@ -295,7 +302,7 @@ public abstract class AbstractParty implements Party {
     }
 
     /**
-     *
+     * Get the name of party
      * @return name of party
      */
     public String getPartyName() {
@@ -303,12 +310,16 @@ public abstract class AbstractParty implements Party {
     }
 
 
+    /**
+     * Get the requesting party
+     * @return the requesting party
+     */
     public Party getCurrentRequestingParty() {
         return currentRequestingParty;
     }
 
     /**
-     *
+     * Get lists of all transactions
      * @return list of all transactions in whole food chain
      */
     public ImmutableList<Transaction> getTransactionsList() {
@@ -316,16 +327,16 @@ public abstract class AbstractParty implements Party {
     }
 
     /**
-     *
-     * @return list of all transactions of current party
+     * Get the list of all transactions of current party
+     * @return list of all transactions
      */
     public ImmutableList<Transaction> getOwnTransactionsList() {
         return ownTransactionsList;
     }
 
     /**
-     *
-     * @return list of all products of current party
+     * Get lists of all products of current party
+     * @return list of all products
      */
     public ImmutableList<Product> getProductsList() {
         return productsList;
@@ -339,9 +350,13 @@ public abstract class AbstractParty implements Party {
         addProduct(product);
     }
 
+
+    /**
+     * Creates iterator to walk over the parties
+     * @return new iterator of parties
+     */
     public PartiesIterator iterator() {
         return new PartiesIterator(this);
     }
-
 
 }

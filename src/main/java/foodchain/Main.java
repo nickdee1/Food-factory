@@ -65,18 +65,7 @@ public class Main {
         parties.add(farmer);
 
 
-
-        TransactionReporter trr = new TransactionReporter(tr);
-        trr.generateForAll();
-        ProductReporter prr = new ProductReporter(products);
-        prr.generateForAll();
-        PartiesReporter pr = new PartiesReporter(parties);
-        pr.generateForAll();
-        SecurityReporter srr = new SecurityReporter();
-        srr.generateForAll();
-
         seller.acceptReporter(new PartiesReporter());
 
-        pr.generateForAll(customer);
     }
 }

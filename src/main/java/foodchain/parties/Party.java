@@ -11,22 +11,22 @@ import foodchain.reporters.PartiesReporter;
  */
 public interface Party {
 
-    // all functions have javadocs in classes implementing this interface
+    /* All functions have JavaDocs in classes implementing this interface */
     void makeTransaction(Integer money);
     void receiveProduct(ProductTransaction transaction);
     void receiveMoney(MoneyTransaction transaction);
     
-    // observer
+    /* Observer */
     void updateTransactions(Transaction transaction);
     
-    // visitor
+    /* Visitor */
     void acceptReporter(PartiesReporter partiesReporter);
     
-    // chain of responsibility
+    /* Chain of responsibility */
     void setNext(AbstractParty party); 
     void makeRequest(String productName);
 
-    // some public methods
+    /* Some public methods */
     String getPartyName();
     Party getCurrentRequestingParty();
     AbstractParty getNextParty();

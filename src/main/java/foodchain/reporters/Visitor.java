@@ -1,7 +1,7 @@
 package foodchain.reporters;
 
-import java.util.List;
+import org.json.JSONObject;
 
 public interface Visitor {
-    void generateForAll();
+    void generateJSON(JSONObject object, String name);
 }

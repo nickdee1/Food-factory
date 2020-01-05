@@ -3,10 +3,6 @@ package foodchain.reporters;
 import foodchain.PartiesIterator;
 import foodchain.parties.*;
 import org.json.JSONObject;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
 
 
@@ -15,22 +11,17 @@ import java.util.*;
  */
 public class PartiesReporter extends Reporter {
 
-    /**
-     * List of parties the report is generated for
-     */
-    private List<AbstractParty> parties;
 
+    /**
+     *  Constructor for PartiesReporter
+     */
     public PartiesReporter() {
     }
 
     /**
-     * Constructor for PartiesReporter
-     * @param parties the list with parties report is generated for
+     * Method generates JSON report for parties
+     * @param start start party
      */
-    public PartiesReporter(List<AbstractParty> parties) {
-        this.parties = parties;
-    }
-
     public void generateForAll(AbstractParty start) {
         String output_file = "parties";
         Map<String, Object> outputMap = new LinkedHashMap<String, Object>();
@@ -46,22 +37,7 @@ public class PartiesReporter extends Reporter {
         outputMap.put("parties", arrayOfParties);
         generateJSON(new JSONObject(outputMap), output_file);
     }
-    /**
-     * Method generates JSON report for all parties from parties list {@link #parties}
-     */
-    public void generateForAll() {
-        String output_file = "parties";
-        Map<String, Object> outputMap = new LinkedHashMap<String, Object>();
 
-        List<Map> arrayOfParties = new ArrayList<Map>();
-        for (AbstractParty p : parties) {
-            Map partyMap = generateMapForParty(p);
-            arrayOfParties.add(partyMap);
-        }
-
-        outputMap.put("parties", arrayOfParties);
-        generateJSON(new JSONObject(outputMap), output_file);
-    }
 
     /**
      * Method generates JSON report for exact party

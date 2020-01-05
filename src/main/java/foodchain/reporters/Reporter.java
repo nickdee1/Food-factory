@@ -8,7 +8,7 @@ import java.io.IOException;
 
 abstract class Reporter implements Visitor{
 
-    void generateJSON(JSONObject object, String name) {
+    public void generateJSON(JSONObject object, String name) {
         File path = new File("reports/");
         path.mkdir();
 
