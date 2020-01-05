@@ -1,4 +1,4 @@
-package foodchain.parties;
+package foodchain;
 
 import foodchain.parties.AbstractParty;
 

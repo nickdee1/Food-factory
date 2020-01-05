@@ -66,15 +66,7 @@ public abstract class Product {
      * Immutable map of product's selling characteristics.
      */
     protected ImmutableMap<String, String> sellerParametres;
-    
-    /**
-     *
-     * @param reporter
-     */
-    public void accept(ProductReporter reporter) {
-        reporter.generateReportForProduct(this);
-    }
-    
+
     /**
      *
      * @param state

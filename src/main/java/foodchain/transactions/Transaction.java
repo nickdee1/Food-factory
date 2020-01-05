@@ -29,7 +29,8 @@ public abstract class Transaction implements Observable {
     }
     
     public void addParty(Party party) {
-        observingParties.add(party);
+        if (!observingParties.contains(party))
+            observingParties.add(party);
     }
 
     private String generateHashCode(String receiverName, String senderName) {

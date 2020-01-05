@@ -4,15 +4,12 @@ import foodchain.transactions.MoneyTransaction;
 import foodchain.transactions.ProductTransaction;
 import foodchain.transactions.Transaction;
 import org.json.JSONObject;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
 
-public class TransactionReporter implements Visitor {
+public class TransactionReporter extends Reporter {
 
     private final List<Transaction> transactionList;
+
 
     public TransactionReporter(List<Transaction> transactions) {
         this.transactionList = transactions;
@@ -70,15 +67,4 @@ public class TransactionReporter implements Visitor {
         return map;
     }
 
-    private void generateJSON(JSONObject object, String name) {
-        String filepath = "reports/" + name + ".json";
-
-        try {
-            FileWriter file = new FileWriter(new File(filepath));
-            file.write(object.toString(2));
-            file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

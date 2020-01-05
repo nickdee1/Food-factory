@@ -28,6 +28,8 @@ public interface Party {
 
     // some public methods
     String getPartyName();
+    Party getCurrentRequestingParty();
+    AbstractParty getNextParty();
     void removeProduct(Product product);
     void increaseAttempts();
     void setDoubleSpending();

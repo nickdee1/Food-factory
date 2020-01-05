@@ -3,7 +3,6 @@ package foodchain.transactions;
 import foodchain.parties.Farmer;
 import foodchain.parties.Storage;
 import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.api.Test;
 
 class TransactionTest {
 
@@ -15,7 +14,6 @@ class TransactionTest {
 
         System.out.println(tr.getHashCode());
         System.out.println(newTr.getHashCode());
-
         System.out.println(newTr.getTimestamp());
     }
 }

@@ -41,7 +41,7 @@ public class Main {
         customer.makeRequest(productName);
         customer.makeTransaction(moneyForProduct);
         // WITH DOUBLE SPENDING
-        System.out.println("SIMULATON: CUSTOMER WANTS MILK AGAIN, SELLER WILL "
+        System.out.println("SIMULATION: CUSTOMER WANTS MILK AGAIN, SELLER WILL "
                 + "TRY TO SELL HIM THE SAME MILK - DOUBLE SPENDING");
         customer.makeRequest(productName);
         customer.makeTransaction(moneyForProduct);
@@ -77,6 +77,6 @@ public class Main {
 
         seller.acceptReporter(new PartiesReporter());
 
-        pr.generateForAll(processor);
+        pr.generateForAll(customer);
     }
 }
