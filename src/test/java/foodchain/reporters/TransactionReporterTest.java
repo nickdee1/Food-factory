@@ -27,7 +27,6 @@ class TransactionReporterTest {
         storage.makeRequest("milk");
         storage.makeTransaction(45);
 
-
         TransactionReporter tr = new TransactionReporter(storage.getTransactionsList());
         tr.generateForAll();
 

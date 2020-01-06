@@ -1,6 +1,4 @@
 package foodchain.reporters;
-
-import foodchain.PartiesIterator;
 import foodchain.parties.*;
 import org.json.JSONObject;
 import java.util.*;

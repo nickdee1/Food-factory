@@ -45,7 +45,9 @@ public class SellingChannel implements Channel {
 
             /* Reset */
             for (Party p : product.getCurrentlyProcessingParties()) {
-                p.removeProduct(product);
+                if (!p.getPartyName().equals("Customer")) {
+                    p.removeProduct(product);
+                }
             }
             product.clearPartyList();
             return null;

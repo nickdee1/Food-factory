@@ -1,7 +1,7 @@
 package foodchain.parties;
 
 import foodchain.FoodFactory;
-import foodchain.PartiesIterator;
+import foodchain.parties.PartiesIterator;
 import foodchain.transactions.MoneyTransaction;
 import foodchain.products.Product;
 import foodchain.transactions.ProductTransaction;
@@ -229,7 +229,7 @@ public abstract class AbstractParty implements Party {
             moneyReceived = false;
         }
     }
-    
+
     /**
      * Changes product's state to the next one in its processing.
      * @param product the product to which state is changed
@@ -237,9 +237,8 @@ public abstract class AbstractParty implements Party {
     public void prepareProductToNextStage(Product product) {
         State storedState = product.getState();
         storedState.prepare(product);
-        demoProductsList.add(product);
     }
-    
+
     /**
      * Receives product transaction transmitted by selling channel.
      * @param transaction the transaction to process
@@ -248,7 +247,7 @@ public abstract class AbstractParty implements Party {
         Product product = transaction.getProduct();
         product.addCurrentlyProcessingParties(this);
     }
-    
+
     /**
      * Send money to party which is currently requested to make
      * product by payment channel.

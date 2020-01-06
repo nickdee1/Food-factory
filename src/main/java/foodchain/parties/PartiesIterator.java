@@ -1,7 +1,4 @@
-package foodchain;
-
-import foodchain.parties.AbstractParty;
-
+package foodchain.parties;
 import java.util.Iterator;
 
 public class PartiesIterator implements Iterator {

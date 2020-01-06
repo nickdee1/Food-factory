@@ -14,7 +14,7 @@ public abstract class State {
     protected String stateName;
 
     /**
-     *
+     * Get state name
      * @return name of state
      */
     public String getStateName() {
@@ -23,7 +23,7 @@ public abstract class State {
 
     /**
      * Change product's state to next in its processing.
-     * @param product
+     * @param product the product to set state on
      */
     public abstract void prepare(Product product);
 }

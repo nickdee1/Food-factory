@@ -22,8 +22,6 @@ public class Customer extends AbstractParty {
     private void buyProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in customer is "+product.getState().getStateName());
-        System.out.println("PRODUCT IS CURRENTLY PROCESSED: "+
-                            product.isIsCurrentlyProcessed());
         System.out.println("CONGRATULATIONS, FOOD CHAIN IS COMPLETED");
         System.out.println("--------------------------------------------------");
         addProduct(product);

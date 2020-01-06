@@ -3,7 +3,6 @@ package foodchain.reporters;
 import foodchain.products.Milk;
 import foodchain.products.Pork;
 import foodchain.products.Product;
-import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
