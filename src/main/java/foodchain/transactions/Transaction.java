@@ -18,11 +18,9 @@ public abstract class Transaction implements Observable {
     private boolean successful;
     private final Set<Party> observingParties;
     private Transaction previousTransaction;
-    private boolean partiesSetIsMade;
 
 
     public Transaction(Party receiver, Party sender) {
-        partiesSetIsMade = false;
         this.receiver = receiver;
         this.sender = sender;
         this.timestamp = generateTimestamp();
@@ -31,7 +29,8 @@ public abstract class Transaction implements Observable {
     }
     
     public void addParty(Party party) {
-        observingParties.add(party);
+        if (!observingParties.contains(party))
+            observingParties.add(party);
     }
 
     private String generateHashCode(String receiverName, String senderName) {
@@ -67,11 +66,6 @@ public abstract class Transaction implements Observable {
 
     public void setSuccessful(boolean successful) {
         this.successful = successful;
-    }
-    
-    private void makePartiesSet() {
-        // TODO
-        partiesSetIsMade = true;
     }
 
     public void notifyAllParties() {

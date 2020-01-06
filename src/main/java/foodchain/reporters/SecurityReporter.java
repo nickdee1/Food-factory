@@ -3,16 +3,13 @@ package foodchain.reporters;
 import foodchain.channels.SecurityHistory;
 import foodchain.reporters.report.SecurityMessage;
 import org.json.JSONObject;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SecurityReporter implements Visitor {
+
+public class SecurityReporter extends Reporter {
 
     private List<SecurityMessage> messages;
 
@@ -31,7 +28,7 @@ public class SecurityReporter implements Visitor {
         generateJSON(new JSONObject(outputMap), output);
     }
 
-    protected List<Map> generateMapsForAll() {
+    private List<Map> generateMapsForAll() {
         List<Map> listOfAllMaps = new ArrayList<Map>();
 
         for (SecurityMessage m : messages) {
@@ -42,7 +39,7 @@ public class SecurityReporter implements Visitor {
         return listOfAllMaps;
     }
 
-    protected Map<String, Object> generateMapForSecurityMessage(SecurityMessage message) {
+    private Map<String, Object> generateMapForSecurityMessage(SecurityMessage message) {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         ProductReporter productReporter = new ProductReporter();
 
@@ -54,17 +51,5 @@ public class SecurityReporter implements Visitor {
         map.put("timestamp", message.timestamp);
 
         return map;
-    }
-
-    private void generateJSON(JSONObject object, String name) {
-        String filepath = "reports/" + name + ".json";
-
-        try {
-            FileWriter file = new FileWriter(new File(filepath));
-            file.write(object.toString(2));
-            file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

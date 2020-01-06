@@ -16,5 +16,4 @@ public class Pork extends Product {
         currentlyProcessingParties = new ArrayList<Party>();
         demoSellerParametres = new HashMap<String, String>();
     }
-
 }

@@ -9,18 +9,21 @@ import foodchain.parties.Party;
  */
 public class PaymentChannel implements Channel {
 
+    /**
+     * Party which receives money
+     */
     private final Party receiver;
 
     /**
-     *
-     * @param receiver
+     * Constructs channel for sending money
+     * @param receiver receiver party to send money to
      */
     public PaymentChannel(Party receiver) {
         this.receiver = receiver;
     }
 
     /**
-     *
+     * Method for making transaction between two parties
      * @param transaction - already created money transaction to transmit
      * @return result if transmission was successful, null otherwise
      */

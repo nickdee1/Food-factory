@@ -10,16 +10,16 @@ import foodchain.products.Product;
  */
 public class SellingChannel implements Channel {
 
+    /**
+     * Party which receives product
+     */
     private final Party receiver;
 
     /**
-     *
-     * @param receiver
+     * Constructs a channel for sending product
+     * @param receiver receiver party to send product to
      */
-    public SellingChannel(Party receiver) {
-   
-        this.receiver = receiver;
-    }
+    public SellingChannel(Party receiver) { this.receiver = receiver; }
 
     /**
      * Transmits product to receiver, checks if there is double spending.
@@ -30,7 +30,8 @@ public class SellingChannel implements Channel {
         System.out.println("Product transaction is being made...");
         ProductTransaction productTransaction = (ProductTransaction)transaction;
         Product product = productTransaction.getProduct();
-        // check for double spending
+
+        /* Check for double spending */
         if (product.isIsCurrentlyProcessed()) {
             System.out.println("ATTEMPT TO COMMIT DOUBLE SPENDING");
             System.out.println("--------------------------------------------------");
@@ -38,9 +39,11 @@ public class SellingChannel implements Channel {
             sender.setDoubleSpending();
             sender.increaseAttempts();
 
+            /* Report forbidden action */
             SecurityHistory sh = SecurityHistory.getInstance();
             sh.reportForbiddenAction(sender, receiver, product);
-            // reset
+
+            /* Reset */
             for (Party p : product.getCurrentlyProcessingParties()) {
                 p.removeProduct(product);
             }

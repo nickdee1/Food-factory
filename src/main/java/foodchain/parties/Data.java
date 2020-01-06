@@ -4,9 +4,9 @@ package foodchain.parties;
  * Secondary class which contains static constants for
  * products processing.
  */
-public class Data {
+class Data {
     
-    // STORAGE DATA
+    /* STORAGE DATA */
     static final Integer APPLE_STORAGE_TIME = 1;
     static final Integer APPLE_STORAGE_TEMPERATURE = 15;
     static final Integer APPLE_STORAGE_HUMIDITY = 40;
@@ -15,12 +15,12 @@ public class Data {
     static final Integer PORK_STORAGE_TEMPERATURE = -5;
     static final Integer PORK_STORAGE_HUMIDITY = 13;
     
-    // milk must not be stored
+    /* milk must not be stored */
     static final Integer MILK_STORAGE_TIME = 0;
     static final Integer MILK_STORAGE_TEMPERATURE = 0;
     static final Integer MILK_STORAGE_HUMIDITY = 0;
     
-    // PROCESSOR DATA
+    /* PROCESSOR DATA */
     static final Integer APPLE_PROCESSING_TEMPERATURE = 0;
     static final Integer APPLE_CHEMICAL_PROCESSING_DEGREE = 50;
     
@@ -30,7 +30,7 @@ public class Data {
     static final Integer MILK_PROCESSING_TEMPERATURE = 4;
     static final Integer MILK_CHEMICAL_PROCESSING_DEGREE = 11;
     
-    // SELLER DATA
+    /* SELLER DATA */
     static final String APPLE_PACKAGING = "POLYETHYLENE";
     static final String APPLE_SELLING_PLACE = "FRUIT SECTION";
     

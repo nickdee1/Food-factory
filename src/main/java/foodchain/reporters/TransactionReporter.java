@@ -4,15 +4,12 @@ import foodchain.transactions.MoneyTransaction;
 import foodchain.transactions.ProductTransaction;
 import foodchain.transactions.Transaction;
 import org.json.JSONObject;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
 
-public class TransactionReporter implements Visitor {
+public class TransactionReporter extends Reporter {
 
     private final List<Transaction> transactionList;
+
 
     public TransactionReporter(List<Transaction> transactions) {
         this.transactionList = transactions;
@@ -30,7 +27,7 @@ public class TransactionReporter implements Visitor {
     }
 
 
-    protected List<Map> generateMapsForAll() {
+    List<Map> generateMapsForAll() {
         List<Map> arrayOfTransactions = new ArrayList<Map>();
         for (Transaction t : transactionList) {
             if (t.getTransactionFlag().equals("MONEY")) {
@@ -46,7 +43,7 @@ public class TransactionReporter implements Visitor {
     }
 
 
-    protected Map<String, Object> generateMapForMoneyTransaction(MoneyTransaction transaction) {
+     private Map<String, Object> generateMapForMoneyTransaction(MoneyTransaction transaction) {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         map.put("receiver", transaction.getReceiver().getPartyName());
         map.put("sender", transaction.getSender().getPartyName());
@@ -58,7 +55,7 @@ public class TransactionReporter implements Visitor {
         return map;
     }
 
-    protected Map<String, Object> generateMapProductTransaction(ProductTransaction transaction) {
+    private Map<String, Object> generateMapProductTransaction(ProductTransaction transaction) {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         map.put("receiver", transaction.getReceiver().getPartyName());
         map.put("sender", transaction.getSender().getPartyName());
@@ -70,15 +67,4 @@ public class TransactionReporter implements Visitor {
         return map;
     }
 
-    private void generateJSON(JSONObject object, String name) {
-        String filepath = "reports/" + name + ".json";
-
-        try {
-            FileWriter file = new FileWriter(new File(filepath));
-            file.write(object.toString(2));
-            file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
