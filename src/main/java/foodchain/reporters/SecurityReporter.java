@@ -8,16 +8,28 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * Class for generating JSON report for the report messages in simulation
+ */
 public class SecurityReporter extends Reporter {
 
+    /**
+     * List of messages the report is generated for
+     */
     private List<SecurityMessage> messages;
 
+
+    /**
+     * Constructor for SecurityReporter
+     */
     public SecurityReporter() {
         SecurityHistory sh = SecurityHistory.getInstance();
         messages = sh.getMessages();
     }
 
+    /**
+     * Generates report for all report messages
+     */
     public void generateForAll() {
         Map<String, List> outputMap = new LinkedHashMap<String, List>();
         String output = "security_messages";
@@ -28,6 +40,10 @@ public class SecurityReporter extends Reporter {
         generateJSON(new JSONObject(outputMap), output);
     }
 
+    /**
+     * Generates list of maps of all messages
+     * @return list with maps of all messages
+     */
     private List<Map> generateMapsForAll() {
         List<Map> listOfAllMaps = new ArrayList<Map>();
 
@@ -39,6 +55,11 @@ public class SecurityReporter extends Reporter {
         return listOfAllMaps;
     }
 
+    /**
+     * Generates map for the report message
+     * @param message the massage to be processed
+     * @return the map covering all message attributes
+     */
     private Map<String, Object> generateMapForSecurityMessage(SecurityMessage message) {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         ProductReporter productReporter = new ProductReporter();

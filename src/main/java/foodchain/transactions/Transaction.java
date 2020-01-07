@@ -75,22 +75,43 @@ public abstract class Transaction implements Observable {
         return hashCode;
     }
 
+    /**
+     * Get timestamp of transaction
+     * @return string generated timestamp
+     */
     public String getTimestamp() {
         return timestamp;
     }
 
+    /**
+     * Get sender of transaction
+     * @return sender
+     */
     public Party getSender() {
         return sender;
     }
 
+    /**
+     * Get receiver of transaction
+     * @return receiver
+     */
     public Party getReceiver() {
         return receiver;
     }
 
+    /**
+     * Get a success flag on transaction
+     * @return true if transaction was successful
+     */
     public boolean isSuccessful() {
         return successful;
     }
 
+
+    /**
+     * Get a success flag on transaction
+     * @param successful success flag
+     */
     public void setSuccessful(boolean successful) {
         this.successful = successful;
     }

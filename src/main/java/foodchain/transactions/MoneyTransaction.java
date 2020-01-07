@@ -13,9 +13,10 @@ public class MoneyTransaction extends Transaction {
     private final Integer moneyAmount;
 
     /**
-     * @param receiver
-     * @param sender
-     * @param moneyAmount
+     * Constructs money transaction between parties
+     * @param receiver the party which receives money
+     * @param sender the party which sends money
+     * @param moneyAmount amount of money to be transmitted
      */
     public MoneyTransaction(Party receiver, Party sender, Integer moneyAmount) {
         super(receiver, sender);

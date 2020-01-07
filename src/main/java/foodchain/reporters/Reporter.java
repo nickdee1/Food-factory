@@ -6,8 +6,16 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-abstract class Reporter implements Visitor{
+/**
+ * Template for every reporter in chain
+ */
+abstract class Reporter implements Visitor {
 
+    /**
+     * Method generates JSON file out of JSONObject
+     * @param object the JSONObject to be converted
+     * @param name the filename of output file
+     */
     public void generateJSON(JSONObject object, String name) {
         File path = new File("reports/");
         path.mkdir();
