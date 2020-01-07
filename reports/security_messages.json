@@ -1,0 +1,26 @@
+{"security_messages": [{
+  "product": {
+    "name": "Apple",
+    "current_state": "Sold",
+    "params": [
+      {
+        "chemical_processing_degree": 50,
+        "processing_temperature": 0
+      },
+      {
+        "type_of_packaging": "POLYETHYLENE",
+        "selling_place": "FRUIT SECTION"
+      },
+      {
+        "storage_humidity": 40,
+        "storage_temperature": 15,
+        "storage_time": 1
+      }
+    ],
+    "price": 20
+  },
+  "message": "Attempt to commit transaction with the product that was already sold",
+  "receiver": "Customer",
+  "sender": "Seller",
+  "timestamp": "03/01/2020 17:27:23"
+}]}

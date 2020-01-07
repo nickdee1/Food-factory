@@ -1,0 +1,89 @@
+{
+  "name": "Seller",
+  "transactions": [
+    {
+      "receiver": "Seller",
+      "sender": "Customer",
+      "price": 20,
+      "timestamp": "03/01/2020 17:27:23",
+      "hashcode": "-1178335235",
+      "successful": true
+    },
+    {
+      "product": "Apple",
+      "receiver": "Customer",
+      "sender": "Seller",
+      "timestamp": "03/01/2020 17:27:23",
+      "hashcode": "-1079803824",
+      "successful": true
+    },
+    {
+      "receiver": "Distributor",
+      "sender": "Seller",
+      "price": 20,
+      "timestamp": "03/01/2020 17:27:23",
+      "hashcode": "-1204108326",
+      "successful": true
+    },
+    {
+      "receiver": "Seller",
+      "sender": "Customer",
+      "price": 20,
+      "timestamp": "03/01/2020 17:27:23",
+      "hashcode": "-653850785",
+      "successful": true
+    },
+    {
+      "product": "Apple",
+      "receiver": "Customer",
+      "sender": "Seller",
+      "timestamp": "03/01/2020 17:27:23",
+      "hashcode": "-453913884",
+      "successful": false
+    },
+    {
+      "receiver": "Seller",
+      "sender": "Customer",
+      "price": 20,
+      "timestamp": "03/01/2020 17:27:23",
+      "hashcode": "-1381175879",
+      "successful": true
+    },
+    {
+      "product": "Apple",
+      "receiver": "Customer",
+      "sender": "Seller",
+      "timestamp": "03/01/2020 17:27:23",
+      "hashcode": "-2097854625",
+      "successful": true
+    },
+    {
+      "receiver": "Distributor",
+      "sender": "Seller",
+      "price": 20,
+      "timestamp": "03/01/2020 17:27:23",
+      "hashcode": "1293493064",
+      "successful": true
+    }
+  ],
+  "products": [{
+    "name": "Apple",
+    "current_state": "Sold",
+    "params": [
+      {
+        "chemical_processing_degree": 50,
+        "processing_temperature": 0
+      },
+      {
+        "type_of_packaging": "POLYETHYLENE",
+        "selling_place": "FRUIT SECTION"
+      },
+      {
+        "storage_humidity": 40,
+        "storage_temperature": 15,
+        "storage_time": 1
+      }
+    ],
+    "price": 20
+  }]
+}

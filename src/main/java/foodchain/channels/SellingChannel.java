@@ -43,12 +43,11 @@ public class SellingChannel implements Channel {
             SecurityHistory sh = SecurityHistory.getInstance();
             sh.reportForbiddenAction(sender, receiver, product);
 
-            /* Reset */
-            for (Party p : product.getCurrentlyProcessingParties()) {
-                if (!p.getPartyName().equals("Customer")) {
-                    p.removeProduct(product);
-                }
-            }
+            /* Reset products of each Party by stream */
+            product.getCurrentlyProcessingParties().stream()
+                    .filter(party -> !party.getPartyName().equals("Customer"))
+                    .forEach(party -> party.removeProduct(product));
+
             product.clearPartyList();
             return null;
         }

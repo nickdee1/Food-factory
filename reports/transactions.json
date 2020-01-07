@@ -1,0 +1,98 @@
+{"transactions": [
+  {
+    "receiver": "Seller",
+    "sender": "Customer",
+    "price": 20,
+    "timestamp": "03/01/2020 17:27:23",
+    "hashcode": "-1178335235",
+    "successful": true
+  },
+  {
+    "receiver": "Distributor",
+    "sender": "Seller",
+    "price": 20,
+    "timestamp": "03/01/2020 17:27:23",
+    "hashcode": "-1204108326",
+    "successful": true
+  },
+  {
+    "receiver": "Processor",
+    "sender": "Distributor",
+    "price": 20,
+    "timestamp": "03/01/2020 17:27:23",
+    "hashcode": "722073409",
+    "successful": true
+  },
+  {
+    "receiver": "Storage",
+    "sender": "Processor",
+    "price": 20,
+    "timestamp": "03/01/2020 17:27:23",
+    "hashcode": "-1025643146",
+    "successful": true
+  },
+  {
+    "receiver": "Farmer",
+    "sender": "Storage",
+    "price": 20,
+    "timestamp": "03/01/2020 17:27:23",
+    "hashcode": "1908312468",
+    "successful": true
+  },
+  {
+    "receiver": "Seller",
+    "sender": "Customer",
+    "price": 20,
+    "timestamp": "03/01/2020 17:27:23",
+    "hashcode": "-653850785",
+    "successful": true
+  },
+  {
+    "product": "Apple",
+    "receiver": "Customer",
+    "sender": "Seller",
+    "timestamp": "03/01/2020 17:27:23",
+    "hashcode": "-453913884",
+    "successful": false
+  },
+  {
+    "receiver": "Seller",
+    "sender": "Customer",
+    "price": 20,
+    "timestamp": "03/01/2020 17:27:23",
+    "hashcode": "-1381175879",
+    "successful": true
+  },
+  {
+    "receiver": "Distributor",
+    "sender": "Seller",
+    "price": 20,
+    "timestamp": "03/01/2020 17:27:23",
+    "hashcode": "1293493064",
+    "successful": true
+  },
+  {
+    "receiver": "Processor",
+    "sender": "Distributor",
+    "price": 20,
+    "timestamp": "03/01/2020 17:27:23",
+    "hashcode": "-1401432023",
+    "successful": true
+  },
+  {
+    "receiver": "Storage",
+    "sender": "Processor",
+    "price": 20,
+    "timestamp": "03/01/2020 17:27:23",
+    "hashcode": "-1568088183",
+    "successful": true
+  },
+  {
+    "receiver": "Farmer",
+    "sender": "Storage",
+    "price": 20,
+    "timestamp": "03/01/2020 17:27:23",
+    "hashcode": "-1897940940",
+    "successful": true
+  }
+]}
