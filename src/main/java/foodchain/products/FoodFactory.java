@@ -1,4 +1,4 @@
-package foodchain;
+package foodchain.products;
 
 import foodchain.states.GrowingState;
 import foodchain.states.State;

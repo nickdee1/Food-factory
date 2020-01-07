@@ -26,6 +26,7 @@ public class SellingChannel implements Channel {
      * @param transaction - already made product transaction to transmit
      * @return result if transmission was successful, null otherwise
      */
+    @Override
     public ProductTransaction makeTransmission(Transaction transaction) {
         System.out.println("Product transaction is being made...");
         ProductTransaction productTransaction = (ProductTransaction)transaction;
@@ -42,18 +43,16 @@ public class SellingChannel implements Channel {
             /* Report forbidden action */
             SecurityHistory sh = SecurityHistory.getInstance();
             sh.reportForbiddenAction(sender, receiver, product);
-
-            /* Reset */
-            for (Party p : product.getCurrentlyProcessingParties()) {
-                if (!p.getPartyName().equals("Customer")) {
-                    p.removeProduct(product);
-                }
-            }
+            
+            /* Reset products of each Party by stream */
+            product.getCurrentlyProcessingParties().stream()
+                    .filter(party -> !party.getPartyName().equals("Customer"))
+                    .forEach(party -> party.removeProduct(product));
+                    
             product.clearPartyList();
             return null;
         }
         receiver.receiveProduct(productTransaction);
         return productTransaction;
     }
-
 }
