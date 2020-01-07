@@ -11,6 +11,10 @@ import foodchain.channels.PaymentChannel;
 import foodchain.channels.SellingChannel;
 import java.util.List;
 import com.google.common.collect.ImmutableList;
+import foodchain.strategies.AppleStrategy;
+import foodchain.strategies.MilkStrategy;
+import foodchain.strategies.PorkStrategy;
+import foodchain.strategies.Strategy;
 
 /**
  * Abstract class representing common attributes and methods for each party.
@@ -66,6 +70,8 @@ public abstract class AbstractParty implements Party {
     /* Double spending detection */
     protected boolean attemptToDoubleSpend = false;
     protected Integer attemptsNumber = 0;
+    
+    protected Strategy strategy;
 
     /**
      * Set next party in chain of responsibility
@@ -356,6 +362,19 @@ public abstract class AbstractParty implements Party {
      */
     public PartiesIterator iterator() {
         return new PartiesIterator(this);
+    }
+    
+    protected void chooseStrategy(Product product) {
+        String name = product.getName();
+        if (name.equalsIgnoreCase("milk")) {
+            strategy = new MilkStrategy(product);
+        }
+        else if (name.equalsIgnoreCase("apple")) {
+            strategy = new AppleStrategy(product);
+        }
+        else if (name.equalsIgnoreCase("pork")) {
+            strategy = new PorkStrategy(product);
+        }
     }
 
 }

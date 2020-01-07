@@ -22,7 +22,8 @@ public class Seller extends AbstractParty {
     private void sellProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in seller is "+product.getState().getStateName());
-        initSellerParametres(product);
+        chooseStrategy(product);
+        strategy.initSellerParametres();
         System.out.println(product.getName()+" seller parametres: "+product.getSellerParametres().toString());
         addProduct(product);
     }
@@ -76,22 +77,6 @@ public class Seller extends AbstractParty {
             makeTransaction(currentRequestingParty, product);
             currentRequestedProduct = null;
             currentRequestingParty = null;
-        }
-    }
-
-    // initialize parametres of product after putting in a store to sell
-    private void initSellerParametres(Product product) {
-        if ((product.getName()).equalsIgnoreCase("apple")) {
-            System.out.println("Sell apple...");
-            product.setSellerParametres(APPLE_PACKAGING, APPLE_SELLING_PLACE);
-        }
-        else if ((product.getName()).equalsIgnoreCase("pork")) {
-            System.out.println("Sell pork...");
-            product.setSellerParametres(PORK_PACKAGING, PORK_SELLING_PLACE);
-        }
-        else if ((product.getName()).equalsIgnoreCase("milk")) {
-            System.out.println("Sell milk...");
-            product.setSellerParametres(MILK_PACKAGING, MILK_SELLING_PLACE);
         }
     }
 }

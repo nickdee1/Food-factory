@@ -7,8 +7,6 @@ import foodchain.transactions.Transaction;
 import foodchain.reporters.PartiesReporter;
 import java.util.ArrayList;
 
-import static foodchain.parties.Data.*;
-
 public class Storage extends AbstractParty {
 
     public Storage() {
@@ -23,7 +21,8 @@ public class Storage extends AbstractParty {
     private void store(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in storage is "+product.getState().getStateName());
-        initStorageParametres(product);
+        chooseStrategy(product);
+        strategy.initStorageParametres();
         System.out.println(product.getName()+" storage parametres: "+product.getStorageParametres().toString());
         addProduct(product);
     }
@@ -77,24 +76,4 @@ public class Storage extends AbstractParty {
             currentRequestingParty = null;
         }
     }
-
-    // initialize parametres of product after storing
-    private void initStorageParametres(Product product) {
-        if ((product.getName()).equalsIgnoreCase("apple")) {
-            System.out.println("Store apple...");
-            product.setStorageParametres(APPLE_STORAGE_TIME, APPLE_STORAGE_TEMPERATURE,
-                    APPLE_STORAGE_HUMIDITY);
-        }
-        else if ((product.getName()).equalsIgnoreCase("pork")) {
-            System.out.println("Store pork...");
-            product.setStorageParametres(PORK_STORAGE_TIME, PORK_STORAGE_TEMPERATURE,
-                    PORK_STORAGE_HUMIDITY);
-        }
-        else if ((product.getName()).equalsIgnoreCase("milk")) {
-            System.out.println("Store milk...");
-            product.setStorageParametres(MILK_STORAGE_TIME, MILK_STORAGE_TEMPERATURE,
-                    MILK_STORAGE_HUMIDITY);
-        }
-    }
-
 }
