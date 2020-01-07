@@ -9,8 +9,14 @@ import java.util.ArrayList;
 
 import static foodchain.parties.Data.*;
 
+/**
+ * Storage class in simulation.
+ */
 public class Storage extends AbstractParty {
 
+    /**
+     * Construct storage party.
+     */
     public Storage() {
         demoTransactionsList = new ArrayList<Transaction>();
         demoOwnTransactionsList = new ArrayList<Transaction>();
@@ -19,7 +25,10 @@ public class Storage extends AbstractParty {
         partyName = "Storage";
     }
 
-    // process product as storage
+    /**
+     * Process product as storage.
+     * @param product the  product to be processed.
+     */
     private void store(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in storage is "+product.getState().getStateName());
@@ -29,18 +38,10 @@ public class Storage extends AbstractParty {
     }
 
     /**
-     *
-     * @param partiesReporter
-     */
-    public void acceptReporter(PartiesReporter partiesReporter) {
-        partiesReporter.generateReportForParty(this);
-    }
-
-    /**
      * Receives product transaction transmitted by selling channel,
      * process product as storage, sends it to next party in food
      * chain.
-     * @param transaction
+     * @param transaction the transaction to be processed.
      */
     @Override
     public void receiveProduct(ProductTransaction transaction) {
@@ -54,7 +55,7 @@ public class Storage extends AbstractParty {
     /**
      * Receives money transaction from payment channel, forwards
      * request to the next party in chain of responsibility if necessary.
-     * @param transaction
+     * @param transaction the transaction to be processed.
      */
     @Override
     public void receiveMoney(MoneyTransaction transaction) {
@@ -68,8 +69,11 @@ public class Storage extends AbstractParty {
             else sendProduct(currentRequestedProduct);
         }
     }
-    
-    // sends product to the current requesting party
+
+    /**
+     * Sends product to the current requesting party.
+     * @param product the product to be processed.
+     */
     private void sendProduct(Product product) {
         if (currentRequestedProduct != null) {
             makeTransaction(currentRequestingParty, product);
@@ -78,7 +82,10 @@ public class Storage extends AbstractParty {
         }
     }
 
-    // initialize parametres of product after storing
+    /**
+     * Initialize parametres of product after storing.
+     * @param product the product to be processed
+     */
     private void initStorageParametres(Product product) {
         if ((product.getName()).equalsIgnoreCase("apple")) {
             System.out.println("Store apple...");

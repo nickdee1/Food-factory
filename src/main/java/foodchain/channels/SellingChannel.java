@@ -11,20 +11,20 @@ import foodchain.products.Product;
 public class SellingChannel implements Channel {
 
     /**
-     * Party which receives product
+     * Party which receives product.
      */
     private final Party receiver;
 
     /**
-     * Constructs a channel for sending product
-     * @param receiver receiver party to send product to
+     * Constructs a channel for sending product.
+     * @param receiver receiver party to send product to.
      */
     public SellingChannel(Party receiver) { this.receiver = receiver; }
 
     /**
      * Transmits product to receiver, checks if there is double spending.
-     * @param transaction - already made product transaction to transmit
-     * @return result if transmission was successful, null otherwise
+     * @param transaction - already made product transaction to transmit.
+     * @return result if transmission was successful, null otherwise.s
      */
     public ProductTransaction makeTransmission(Transaction transaction) {
         System.out.println("Product transaction is being made...");

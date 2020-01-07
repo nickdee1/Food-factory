@@ -7,8 +7,14 @@ import foodchain.transactions.Transaction;
 import foodchain.reporters.PartiesReporter;
 import java.util.ArrayList;
 
+/**
+ * Distributor class in simulation.
+ */
 public class Distributor extends AbstractParty {
 
+    /**
+     * Construct distributor party.
+     */
     public Distributor() {
         demoTransactionsList = new ArrayList<Transaction>();
         demoOwnTransactionsList = new ArrayList<Transaction>();
@@ -16,7 +22,10 @@ public class Distributor extends AbstractParty {
         partyName = "Distributor";
     }
 
-    // process product as distributor
+    /**
+     * Process product as distributor.
+     * @param product the  product to be processed.
+     */
     private void deliverProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in distributor is "+product.getState().getStateName());
@@ -24,18 +33,8 @@ public class Distributor extends AbstractParty {
     }
 
     /**
-     *
-     * @param partiesReporter
-     */
-    public void acceptReporter(PartiesReporter partiesReporter) {
-        partiesReporter.generateReportForParty(this);
-    }
-
-    /**
-     * Receives product transaction transmitted by selling channel,
-     * process product as distributor, sends it to next party in food
-     * chain.
-     * @param transaction
+     * Receives product transaction transmitted by selling channel.
+     * @param transaction the transaction to process.
      */
     @Override
     public void receiveProduct(ProductTransaction transaction) {
@@ -47,9 +46,8 @@ public class Distributor extends AbstractParty {
     }
 
     /**
-     * Receives money transaction from payment channel, forwards
-     * request to the next party in chain of responsibility if necessary.
-     * @param transaction
+     * Receives money transaction from payment channel.
+     * @param transaction the transaction to process.
      */
     @Override
     public void receiveMoney(MoneyTransaction transaction) {
@@ -65,8 +63,11 @@ public class Distributor extends AbstractParty {
             }
         }
     }
-    
-    // sends product to the current requesting party
+
+    /**
+     * Sends product to the current requesting party.
+     * @param product the product to be processed.
+     */
     private void sendProduct(Product product) {
         if (currentRequestedProduct != null) {
             makeTransaction(currentRequestingParty, product);

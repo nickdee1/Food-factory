@@ -9,32 +9,31 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Class storing reports about forbidden actions
+ * Class storing reports about forbidden actions.
  */
 public class SecurityHistory {
 
 
     /**
-     * Variable storing instance of this class
+     * Variable storing instance of this class.
      */
     private static SecurityHistory instance = null;
 
     /**
-     * List of forbidden reports (messages)
+     * List of forbidden reports (messages).
      */
     private List<SecurityMessage> messages;
 
-
     /**
-     * Constricts empty forbidden reports list
+     * Constricts empty forbidden reports list.
      */
     private SecurityHistory() {
         messages = new ArrayList<SecurityMessage>();
     }
 
     /**
-     * Get static instance of reports history
-     * @return static instance of Security History
+     * Get static instance of reports history.
+     * @return static instance of Security History.
      */
     public static SecurityHistory getInstance() {
         if (instance == null)
@@ -44,10 +43,10 @@ public class SecurityHistory {
 
     /**
      * Method for creating and saving report about forbidden action committed
-     * by certain parties
-     * @param sender the party who tried to send product
-     * @param receiver the party who tried to receive product
-     * @param product the product parties tried to transmit
+     * by certain parties.
+     * @param sender the party who tried to send product.
+     * @param receiver the party who tried to receive product.
+     * @param product the product parties tried to transmit.
      */
     void reportForbiddenAction(Party sender, Party receiver, Product product) {
         SecurityMessage message = new SecurityMessage();
@@ -63,8 +62,8 @@ public class SecurityHistory {
     }
 
     /**
-     * Returns all reports about forbidden actions
-     * @return lists with messages about with info about forbidden actions
+     * Returns all reports about forbidden actions.
+     * @return lists with messages about with info about forbidden actions.
      */
     public List<SecurityMessage> getMessages() {
         return messages;

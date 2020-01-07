@@ -8,9 +8,9 @@ import foodchain.transactions.Transaction;
 public interface Channel {
 
     /**
-     * interface method for making transactions between parties
-     * @param transaction to transmit
-     * @return result if transmission was successful, null otherwise
+     * interface method for making transactions between parties.
+     * @param transaction to transmit.
+     * @return result if transmission was successful, null otherwise.
      */
     Transaction makeTransmission(Transaction transaction);
 }

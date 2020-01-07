@@ -9,12 +9,12 @@ import foodchain.products.Product;
 public abstract class State {
 
     /**
-     * Name of state
+     * Name of state.
      */
     protected String stateName;
 
     /**
-     * Get state name
+     * Get state name.
      * @return name of state
      */
     public String getStateName() {
@@ -23,7 +23,7 @@ public abstract class State {
 
     /**
      * Change product's state to next in its processing.
-     * @param product the product to set state on
+     * @param product the product to set state on.
      */
     public abstract void prepare(Product product);
 }

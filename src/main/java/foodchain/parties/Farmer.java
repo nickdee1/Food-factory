@@ -7,10 +7,16 @@ import foodchain.products.Product;
 import foodchain.reporters.PartiesReporter;
 import java.util.ArrayList;
 
+/**
+ * Distributor class in simulation.
+ */
 public class Farmer extends AbstractParty {
 
     private Integer balance;
 
+    /**
+     * Construct farmer party.
+     */
     public Farmer() {
         demoTransactionsList = new ArrayList<Transaction>();
         demoOwnTransactionsList = new ArrayList<Transaction>();
@@ -22,7 +28,7 @@ public class Farmer extends AbstractParty {
 
     /**
      * Only prints warning that farmer doesn't pay money.
-     * @param money
+     * @param money the money being processed.
      */
     @Override
     public void makeTransaction(Integer money) {
@@ -30,16 +36,8 @@ public class Farmer extends AbstractParty {
     }
 
     /**
-     *
-     * @param partiesReporter
-     */
-    public void acceptReporter(PartiesReporter partiesReporter) {
-        partiesReporter.generateReportForParty(this);
-    }
-
-    /**
      * Only prints warning that farmer doesn't receive products.
-     * @param transaction
+     * @param transaction the transaction to be processed.
      */
     @Override
     public void receiveProduct(ProductTransaction transaction) {
@@ -49,7 +47,7 @@ public class Farmer extends AbstractParty {
     /**
      * Receives money for product and sends it to the current
      * requesting party.
-     * @param transaction
+     * @param transaction to be processed.
      */
     @Override
     public void receiveMoney(MoneyTransaction transaction) {
@@ -63,7 +61,7 @@ public class Farmer extends AbstractParty {
 
     /**
      * Only prints warning that farmer doesn't make requests.
-     * @param productName
+     * @param productName name of the product.
      */
     @Override
     public void makeRequest(String productName) {

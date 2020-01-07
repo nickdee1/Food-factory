@@ -5,20 +5,20 @@ import java.util.*;
 
 
 /**
- * Class for generating JSON report for the parties in simulation
+ * Class for generating JSON report for the parties in simulation.
  */
 public class PartiesReporter extends Reporter {
 
 
     /**
-     *  Constructor for PartiesReporter
+     *  Constructor for PartiesReporter.
      */
     public PartiesReporter() {
     }
 
     /**
-     * Method generates JSON report for parties
-     * @param start start party
+     * Method generates JSON report for parties.
+     * @param start start party.
      */
     public void generateForAll(AbstractParty start) {
         String output_file = "parties";
@@ -38,8 +38,8 @@ public class PartiesReporter extends Reporter {
 
 
     /**
-     * Method generates JSON report for exact party
-     * @param party the party report is generated for
+     * Method generates JSON report for exact party.
+     * @param party the party report is generated for.
      */
     public void generateReportForParty(AbstractParty party) {
         String name = party.getPartyName();
@@ -52,8 +52,8 @@ public class PartiesReporter extends Reporter {
     /**
      * Method generates Map for the party in order to grab all it's attributes
      * and further converting them into JSON format
-     * @param party the party the Map is generated for
-     * @return generated Map with necessary attributes
+     * @param party the party the Map is generated for.
+     * @return generated Map with necessary attributes.
      */
     private Map<String, Object> generateMapForParty(AbstractParty party) {
         Map<String, Object> outputMap = new LinkedHashMap<String, Object>();

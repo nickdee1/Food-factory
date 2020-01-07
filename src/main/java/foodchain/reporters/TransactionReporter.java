@@ -7,18 +7,18 @@ import org.json.JSONObject;
 import java.util.*;
 
 /**
- * Class for generating JSON report for the products in simulation
+ * Class for generating JSON report for the products in simulation.
  */
 public class TransactionReporter extends Reporter {
 
     /**
-     * List of transactions the report is generated for
+     * List of transactions the report is generated for.
      */
     private final List<Transaction> transactionList;
 
     /**
-     * Constructor for TransactionReporter
-     * @param transactions the list with transactions report is generated for
+     * Constructor for TransactionReporter.
+     * @param transactions the list with transactions report is generated for.
      */
     public TransactionReporter(List<Transaction> transactions) {
         this.transactionList = transactions;
@@ -26,7 +26,7 @@ public class TransactionReporter extends Reporter {
 
 
     /**
-     * Method generates JSON report for all products from transactionList list
+     * Method generates JSON report for all products from transactionList list.
      */
     public void generateForAll() {
         Map<String, List> outputMap = new LinkedHashMap<String, List>();
@@ -41,8 +41,8 @@ public class TransactionReporter extends Reporter {
 
     /**
      *  Method generates List of Maps for the transactions in order to grab all its' attributes
-     *  and further converting them into JSON format
-     * @return generated List with necessary attributes
+     *  and further converting them into JSON format.
+     * @return generated List with necessary attributes.
      */
     List<Map> generateMapsForAll() {
         List<Map> arrayOfTransactions = new ArrayList<Map>();
@@ -61,9 +61,9 @@ public class TransactionReporter extends Reporter {
 
 
     /**
-     * Generates map out of all money transaction attributes
-     * @param transaction the money transaction to be processed
-     * @return map covering all transaction attributes
+     * Generates map out of all money transaction attributes.
+     * @param transaction the money transaction to be processed.
+     * @return map covering all transaction attributes.
      */
      private Map<String, Object> generateMapForMoneyTransaction(MoneyTransaction transaction) {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
@@ -79,9 +79,9 @@ public class TransactionReporter extends Reporter {
 
 
     /**
-     * Generates map out of all product transaction attributes
-     * @param transaction the product transaction to be processed
-     * @return map covering all transaction attributes
+     * Generates map out of all product transaction attributes.
+     * @param transaction the product transaction to be processed.
+     * @return map covering all transaction attributes.
      */
     private Map<String, Object> generateMapProductTransaction(ProductTransaction transaction) {
         Map<String, Object> map = new LinkedHashMap<String, Object>();

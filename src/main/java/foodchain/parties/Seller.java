@@ -9,8 +9,14 @@ import java.util.ArrayList;
 
 import static foodchain.parties.Data.*;
 
+/**
+ * Seller class in simulation.
+ */
 public class Seller extends AbstractParty {
 
+    /**
+     * Construct seller party.
+     */
     public Seller() {
         demoTransactionsList = new ArrayList<Transaction>();
         demoOwnTransactionsList = new ArrayList<Transaction>();
@@ -18,7 +24,10 @@ public class Seller extends AbstractParty {
         partyName = "Seller";
     }
 
-    // process product as seller
+    /**
+     * Process product as distributor.
+     * @param product the  product to be processed.
+     */
     private void sellProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in seller is "+product.getState().getStateName());
@@ -28,18 +37,10 @@ public class Seller extends AbstractParty {
     }
 
     /**
-     *
-     * @param partiesReporter
-     */
-    public void acceptReporter(PartiesReporter partiesReporter) {
-        partiesReporter.generateReportForParty(this);
-    }
-
-    /**
      * Receives product transaction transmitted by selling channel,
      * process product as seller, sends it to next party in food
      * chain.
-     * @param transaction
+     * @param transaction the transaction to be processed.
      */
     @Override
     public void receiveProduct(ProductTransaction transaction) {
@@ -53,7 +54,7 @@ public class Seller extends AbstractParty {
     /**
      * Receives money transaction from payment channel, forwards
      * request to the next party in chain of responsibility if necessary.
-     * @param transaction
+     * @param transaction the transaction to be processed.
      */
     @Override
     public void receiveMoney(MoneyTransaction transaction) {
@@ -69,8 +70,11 @@ public class Seller extends AbstractParty {
             }
         }
     }
-    
-    // sends product to the current requesting party
+
+    /**
+     * Sends product to the current requesting party.
+     * @param product the product to be processed.
+     */
     private void sendProduct(Product product) {
         if (currentRequestedProduct != null) {
             makeTransaction(currentRequestingParty, product);
@@ -79,7 +83,11 @@ public class Seller extends AbstractParty {
         }
     }
 
-    // initialize parametres of product after putting in a store to sell
+
+    /**
+     * Initialize parametres of product after putting in a store to sell.
+     * @param product the product to be processed.
+     */
     private void initSellerParametres(Product product) {
         if ((product.getName()).equalsIgnoreCase("apple")) {
             System.out.println("Sell apple...");

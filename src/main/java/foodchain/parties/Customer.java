@@ -4,11 +4,16 @@ import foodchain.transactions.MoneyTransaction;
 import foodchain.products.Product;
 import foodchain.transactions.ProductTransaction;
 import foodchain.transactions.Transaction;
-import foodchain.reporters.PartiesReporter;
 import java.util.ArrayList;
 
+/**
+ * Customer class in simulation.
+ */
 public class Customer extends AbstractParty {
 
+    /**
+     * Construct customer party.
+     */
     public Customer() {
         currentRequestingParty = null;
         demoTransactionsList = new ArrayList<Transaction>();
@@ -17,8 +22,11 @@ public class Customer extends AbstractParty {
         partyName = "Customer";
         moneyReceived = false; // customer doesn't receive money
     }
-    
-    // process product as customer
+
+    /**
+     * Process product as customer.
+     * @param product the  product to be processed.
+     */
     private void buyProduct(Product product) {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in customer is "+product.getState().getStateName());
@@ -28,17 +36,8 @@ public class Customer extends AbstractParty {
     }
 
     /**
-     *
-     * @param partiesReporter
-     */
-    public void acceptReporter(PartiesReporter partiesReporter) {
-        partiesReporter.generateReportForParty(this);
-    }
-
-    /**
-     * Receives product transaction transmitted by selling channel and
-     * process product as customer.
-     * @param transaction
+     * Receives product transaction transmitted by selling channel.
+     * @param transaction the transaction to process.
      */
     @Override
     public void receiveProduct(ProductTransaction transaction) {
@@ -49,8 +48,8 @@ public class Customer extends AbstractParty {
     }
 
     /**
-     * Only prints warning that customer doesn't receive money.
-     * @param transaction
+     * Receives money transaction from payment channel.
+     * @param transaction the transaction to process.
      */
     @Override
     public void receiveMoney(MoneyTransaction transaction) {
@@ -58,9 +57,10 @@ public class Customer extends AbstractParty {
     }
 
     /**
-     * Only prints warning that customer doesn't sell products.
-     * @param receiver
-     * @param product
+     * Transmits product to party-receiver by selling channel (only
+     * if money for this product were received).
+     * @param receiver the party-receiver to which the product is sent.
+     * @param product the product to send.
      */
     @Override
     protected void makeTransaction(Party receiver, Product product) {

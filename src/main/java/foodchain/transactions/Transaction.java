@@ -9,7 +9,7 @@ import java.util.Random;
 import java.util.Set;
 
 /**
- * Class-template for transactions in simulation
+ * Class-template for transactions in simulation.
  */
 public abstract class Transaction implements Observable {
 
@@ -24,9 +24,9 @@ public abstract class Transaction implements Observable {
 
 
     /**
-     * Constructs transaction between parties
-     * @param receiver the party which receives money/product
-     * @param sender the party which sends money/product
+     * Constructs transaction between parties.
+     * @param receiver the party which receives money/product.
+     * @param sender the party which sends money/product.
      */
     public Transaction(Party receiver, Party sender) {
         this.receiver = receiver;
@@ -38,8 +38,8 @@ public abstract class Transaction implements Observable {
 
     /**
      * Method for adding parties to observing list in order to submit
-     * blockchain philosophy
-     * @param party the party to be added into observing list
+     * blockchain philosophy.
+     * @param party the party to be added into observing list.
      */
     public void addParty(Party party) {
         if (!observingParties.contains(party))
@@ -47,10 +47,10 @@ public abstract class Transaction implements Observable {
     }
 
     /**
-     * Generates hash code for transaction
-     * @param receiverName the party receiver party of transaction
-     * @param senderName the sender party of transaction
-     * @return hash code of transaction
+     * Generates hash code for transaction.
+     * @param receiverName the party receiver party of transaction.
+     * @param senderName the sender party of transaction.
+     * @return hash code of transaction.
      */
     private String generateHashCode(String receiverName, String senderName) {
         String localHashCode = receiverName + senderName + new Random(1000).toString();
@@ -58,8 +58,8 @@ public abstract class Transaction implements Observable {
     }
 
     /**
-     * Generates timestamp of transaction
-     * @return string generated timestamp of transaction
+     * Generates timestamp of transaction.
+     * @return string generated timestamp of transaction.
      */
     private String generateTimestamp() {
         Date currentDate = new Date();
@@ -68,56 +68,55 @@ public abstract class Transaction implements Observable {
     }
 
     /**
-     * Get hashcode of transaction
-     * @return string generated hash code
+     * Get hashcode of transaction.
+     * @return string generated hash code.
      */
     public String getHashCode() {
         return hashCode;
     }
 
     /**
-     * Get timestamp of transaction
-     * @return string generated timestamp
+     * Get timestamp of transaction.
+     * @return string generated timestamp.
      */
     public String getTimestamp() {
         return timestamp;
     }
 
     /**
-     * Get sender of transaction
-     * @return sender
+     * Get sender of transaction.
+     * @return sender.
      */
     public Party getSender() {
         return sender;
     }
 
     /**
-     * Get receiver of transaction
-     * @return receiver
+     * Get receiver of transaction.
+     * @return receiver.
      */
     public Party getReceiver() {
         return receiver;
     }
 
     /**
-     * Get a success flag on transaction
-     * @return true if transaction was successful
+     * Get a success flag on transaction.
+     * @return true if transaction was successful.
      */
     public boolean isSuccessful() {
         return successful;
     }
 
-
     /**
-     * Get a success flag on transaction
-     * @param successful success flag
+     * Get a success flag on transaction.
+     * @param successful success flag.
      */
     public void setSuccessful(boolean successful) {
         this.successful = successful;
     }
 
     /**
-     * Notify all observing parties about this transaction
+     * Notify all observing parties about this transaction.
      */
     public void notifyAllParties() {
         for (Party p : observingParties) {
@@ -126,8 +125,8 @@ public abstract class Transaction implements Observable {
     }
 
     /**
-     * Link previous transaction in list of transactions
-     * @param previousTransaction the previous committed transaction in chain
+     * Link previous transaction in list of transactions.
+     * @param previousTransaction the previous committed transaction in chain.
      */
     public void setPreviousTransaction(Transaction previousTransaction) {
         this.previousTransaction = previousTransaction;
@@ -139,8 +138,8 @@ public abstract class Transaction implements Observable {
     }
 
     /**
-     * Get transaction flag of current transaction (MONEY / PRODUCT)
-     * @return string type of transaction
+     * Get transaction flag of current transaction (MONEY / PRODUCT).
+     * @return string type of transaction.
      */
     public abstract String getTransactionFlag();
 

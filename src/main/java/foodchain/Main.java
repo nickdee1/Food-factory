@@ -4,6 +4,7 @@ import foodchain.parties.*;
 import foodchain.products.Milk;
 import foodchain.products.Product;
 import foodchain.reporters.PartiesReporter;
+import foodchain.reporters.ProductReporter;
 import foodchain.reporters.SecurityReporter;
 import foodchain.states.StoredState;
 
@@ -54,6 +55,8 @@ public class Main {
         pr.generateForAll(customer);
 
         SecurityReporter sr = new SecurityReporter();
+        ProductReporter pdr = new ProductReporter(seller.getProductsList());
+        pdr.generateForAll();
         sr.generateForAll();
     }
 }

@@ -1,5 +1,6 @@
 package foodchain;
 
+import foodchain.products.FoodFactory;
 import foodchain.products.Product;
 import org.junit.jupiter.api.Test;
 
