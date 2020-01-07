@@ -1,62 +1,27 @@
-{"products": [
-  {
-    "name": "Apple",
-    "current_state": "Sold",
-    "params": [
-      {
-        "chemical_processing_degree": 50,
-        "processing_temperature": 0
-      },
-      {
-        "type_of_packaging": "POLYETHYLENE",
-        "selling_place": "FRUIT SECTION"
-      },
-      {
-        "storage_humidity": 40,
-        "storage_temperature": 15,
-        "storage_time": 1
-      }
-    ],
-    "price": 20
-  },
-  {
-    "name": "Apple",
-    "current_state": "Sold",
-    "params": [
-      {
-        "chemical_processing_degree": 50,
-        "processing_temperature": 0
-      },
-      {
-        "type_of_packaging": "POLYETHYLENE",
-        "selling_place": "FRUIT SECTION"
-      },
-      {
-        "storage_humidity": 40,
-        "storage_temperature": 15,
-        "storage_time": 1
-      }
-    ],
-    "price": 20
-  },
-  {
-    "name": "Apple",
-    "current_state": "Sold",
-    "params": [
-      {
-        "chemical_processing_degree": 50,
-        "processing_temperature": 0
-      },
-      {
-        "type_of_packaging": "POLYETHYLENE",
-        "selling_place": "FRUIT SECTION"
-      },
-      {
-        "storage_humidity": 40,
-        "storage_temperature": 15,
-        "storage_time": 1
-      }
-    ],
-    "price": 20
-  }
-]}
+{"products": [{
+  "name": "Milk",
+  "params": [
+    {
+      "chemical_processing_degree": 11,
+      "processing_temperature": 4
+    },
+    {
+      "type_of_packaging": "TETRAPACK",
+      "selling_place": "MILK SECTION"
+    },
+    {
+      "storage_humidity": 0,
+      "storage_temperature": 0,
+      "storage_time": 0
+    }
+  ],
+  "price": 45,
+  "state_history": [
+    "Collected",
+    "Stored",
+    "Processed",
+    "Delivered",
+    "Packed",
+    "Sold"
+  ]
+}]}

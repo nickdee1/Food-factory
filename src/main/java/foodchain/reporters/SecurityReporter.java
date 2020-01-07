@@ -31,7 +31,7 @@ public class SecurityReporter extends Reporter {
      * Generates report for all report messages.
      */
     public void generateForAll() {
-        Map<String, List> outputMap = new LinkedHashMap<String, List>();
+        Map<String, List> outputMap = new LinkedHashMap<>();
         String output = "security_messages";
 
         List<Map> listOfAllMessages = generateMapsForAll();
@@ -45,7 +45,7 @@ public class SecurityReporter extends Reporter {
      * @return list with maps of all messages.
      */
     private List<Map> generateMapsForAll() {
-        List<Map> listOfAllMaps = new ArrayList<Map>();
+        List<Map> listOfAllMaps = new ArrayList<>();
 
         for (SecurityMessage m : messages) {
             Map messageMap = generateMapForSecurityMessage(m);
@@ -61,7 +61,7 @@ public class SecurityReporter extends Reporter {
      * @return the map covering all message attributes.
      */
     private Map<String, Object> generateMapForSecurityMessage(SecurityMessage message) {
-        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        Map<String, Object> map = new LinkedHashMap<>();
         ProductReporter productReporter = new ProductReporter();
 
         Map productMap = productReporter.generateMapReportForProduct(message.product);

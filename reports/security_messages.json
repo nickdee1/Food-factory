@@ -1,26 +1,28 @@
 {"security_messages": [{
   "product": {
-    "name": "Apple",
-    "current_state": "Sold",
+    "name": "Milk",
     "params": [
       {
-        "chemical_processing_degree": 50,
-        "processing_temperature": 0
+        "chemical_processing_degree": 11,
+        "processing_temperature": 4
       },
       {
-        "type_of_packaging": "POLYETHYLENE",
-        "selling_place": "FRUIT SECTION"
-      },
-      {
-        "storage_humidity": 40,
-        "storage_temperature": 15,
-        "storage_time": 1
+        "type_of_packaging": "TETRAPACK",
+        "selling_place": "MILK SECTION"
       }
     ],
-    "price": 20
+    "price": 45,
+    "state_history": [
+      "Collected",
+      "Stored",
+      "Processed",
+      "Delivered",
+      "Packed",
+      "Sold"
+    ]
   },
   "message": "Attempt to commit transaction with the product that was already sold",
   "receiver": "Customer",
   "sender": "Seller",
-  "timestamp": "03/01/2020 17:27:23"
+  "timestamp": "07/01/2020 18:26:49"
 }]}
