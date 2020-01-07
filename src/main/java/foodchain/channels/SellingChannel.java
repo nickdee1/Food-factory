@@ -24,7 +24,7 @@ public class SellingChannel implements Channel {
     /**
      * Transmits product to receiver, checks if there is double spending.
      * @param transaction - already made product transaction to transmit.
-     * @return result if transmission was successful, null otherwise.s
+     * @return result if transmission was successful, null otherwise.
      */
     public ProductTransaction makeTransmission(Transaction transaction) {
         System.out.println("Product transaction is being made...");
