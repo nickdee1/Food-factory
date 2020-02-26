@@ -1,17 +1,18 @@
-package foodchain.states;
+package foodchain.states.green;
 
 import foodchain.products.Product;
+import foodchain.states.State;
 
 /**
  * Class represents state of product.
  */
-public class RawState extends State {
+public class GrowingState extends State {
 
     /**
      * Constructs state of product.
      */
-    public RawState() {
-        stateName = "Raw";
+    public GrowingState() {
+        stateName = "Growing";
     }
 
     /**
@@ -19,6 +20,6 @@ public class RawState extends State {
      * @param productContext the product to set state on.
      */
     public void prepare(Product productContext) {
-        productContext.setState(new StoredState());
+        productContext.setState(new CollectedState());
     }
 }

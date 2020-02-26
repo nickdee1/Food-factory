@@ -49,15 +49,12 @@ public class SecurityHistory {
      * @param product the product parties tried to transmit.
      */
     void reportForbiddenAction(Party sender, Party receiver, Product product) {
-        SecurityMessage message = new SecurityMessage();
         Date currentDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-
-        message.sender = sender.getPartyName();
-        message.receiver = receiver.getPartyName();
-        message.product = product;
-        message.message = "Attempt to commit transaction with the product that was already sold";
-        message.timestamp = dateFormat.format(currentDate);
+        String reportedMessage = "Attempt to commit transaction with the product that was already sold";
+        SecurityMessage message = new SecurityMessage(
+                product, sender.getPartyName(), receiver.getPartyName(), dateFormat.format(currentDate), reportedMessage
+        );
         messages.add(message);
     }
 

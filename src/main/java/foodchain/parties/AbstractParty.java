@@ -218,7 +218,7 @@ public abstract class AbstractParty implements Party {
      */
     protected void makeTransaction(Party receiver, Product product) {
         if (moneyReceived) {
-            Transaction transaction = new ProductTransaction(receiver, this, product);
+            ProductTransaction transaction = new ProductTransaction(receiver, this, product);
             Transaction tmpTransaction = transaction;
             SellingChannel channel = new SellingChannel(receiver);
             transaction = channel.makeTransmission(transaction);
@@ -281,12 +281,12 @@ public abstract class AbstractParty implements Party {
      * @param money value to make transaction.
      */
     public void makeTransaction(Integer money) {
-        Transaction transaction = new MoneyTransaction(nextParty, this, money);
+        MoneyTransaction transaction = new MoneyTransaction(nextParty, this, money);
         Transaction tmpTransaction = transaction;
         PaymentChannel channel = new PaymentChannel(nextParty);
         transaction = channel.makeTransmission(transaction);
         if (transaction == null) {
-            System.out.println("Something went wrong!");
+            System.err.println("Something went wrong!");
             tmpTransaction.setSuccessful(false);
             addOwnTransaction(tmpTransaction);
         }

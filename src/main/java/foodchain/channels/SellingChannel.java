@@ -8,7 +8,7 @@ import foodchain.products.Product;
 /**
  * Channel to sell product.
  */
-public class SellingChannel implements Channel {
+public class SellingChannel implements Channel<ProductTransaction> {
 
     /**
      * Party which receives product.
@@ -26,10 +26,9 @@ public class SellingChannel implements Channel {
      * @param transaction - already made product transaction to transmit.
      * @return result if transmission was successful, null otherwise.
      */
-    public ProductTransaction makeTransmission(Transaction transaction) {
+    public ProductTransaction makeTransmission(ProductTransaction transaction) {
         System.out.println("Product transaction is being made...");
-        ProductTransaction productTransaction = (ProductTransaction)transaction;
-        Product product = productTransaction.getProduct();
+        Product product = transaction.getProduct();
 
         /* Check for double spending */
         if (product.isIsCurrentlyProcessed()) {
@@ -51,8 +50,8 @@ public class SellingChannel implements Channel {
             product.clearPartyList();
             return null;
         }
-        receiver.receiveProduct(productTransaction);
-        return productTransaction;
+        receiver.receiveProduct(transaction);
+        return transaction;
     }
 
 }

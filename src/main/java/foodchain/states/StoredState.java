@@ -1,6 +1,7 @@
 package foodchain.states;
 
 import foodchain.products.Product;
+import foodchain.states.meat.HeatedState;
 
 /**
  * Class represents state of product.

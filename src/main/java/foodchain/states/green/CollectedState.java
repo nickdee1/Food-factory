@@ -1,6 +1,8 @@
-package foodchain.states;
+package foodchain.states.green;
 
 import foodchain.products.Product;
+import foodchain.states.State;
+import foodchain.states.StoredState;
 
 /**
  * Class represents state of product.

@@ -22,10 +22,8 @@ abstract class Reporter implements Visitor {
 
         String filepath = "reports/" + name + ".json";
 
-        try {
-            FileWriter file = new FileWriter(new File(filepath));
+        try (FileWriter file = new FileWriter(new File(filepath))){
             file.write(object.toString(2));
-            file.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -64,12 +64,12 @@ public class SecurityReporter extends Reporter {
         Map<String, Object> map = new LinkedHashMap<>();
         ProductReporter productReporter = new ProductReporter();
 
-        Map productMap = productReporter.generateMapReportForProduct(message.product);
-        map.put("message", message.message);
-        map.put("sender", message.sender);
-        map.put("receiver", message.receiver);
+        Map productMap = productReporter.generateMapReportForProduct(message.getProduct());
+        map.put("message", message.getMessage());
+        map.put("sender", message.getSender());
+        map.put("receiver", message.getReceiver());
         map.put("product", productMap);
-        map.put("timestamp", message.timestamp);
+        map.put("timestamp", message.getTimestamp());
 
         return map;
     }

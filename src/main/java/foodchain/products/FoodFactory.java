@@ -1,12 +1,8 @@
 package foodchain.products;
 
-import foodchain.states.GrowingState;
+import foodchain.states.green.GrowingState;
 import foodchain.states.State;
-import foodchain.states.AliveState;
-import foodchain.products.Apple;
-import foodchain.products.Milk;
-import foodchain.products.Product;
-import foodchain.products.Pork;
+import foodchain.states.meat.AliveState;
 
 /**
  * Secondary class for making products.
@@ -20,9 +16,7 @@ public class FoodFactory {
      */
     public static Product makeProduct(String productName) {
         if (productName.equalsIgnoreCase("milk")) {
-            Product milk = new Milk();
-            // milk doesn't need to be prepared on this stage
-            return milk;
+            return new Milk();
         }
         else if (productName.equalsIgnoreCase("pork")) {
             Product pork = new Pork();

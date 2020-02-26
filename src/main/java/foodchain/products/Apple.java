@@ -1,7 +1,7 @@
 package foodchain.products;
 
 import foodchain.parties.Party;
-import foodchain.states.GrowingState;
+import foodchain.states.green.GrowingState;
 import java.util.ArrayList;
 import java.util.HashMap;
 

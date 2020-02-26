@@ -5,12 +5,12 @@ import foodchain.transactions.Transaction;
 /**
  * Interface for payment and selling channels.
  */
-public interface Channel {
+public interface Channel<T> {
 
     /**
      * Interface method for making transactions between parties.
      * @param transaction to transmit
      * @return result if transmission was successful, null otherwise
      */
-    Transaction makeTransmission(Transaction transaction);
+    T makeTransmission(T transaction);
 }
