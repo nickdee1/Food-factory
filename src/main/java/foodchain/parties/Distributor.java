@@ -16,9 +16,9 @@ public class Distributor extends AbstractParty {
      * Construct distributor party.
      */
     public Distributor() {
-        demoTransactionsList = new ArrayList<Transaction>();
-        demoOwnTransactionsList = new ArrayList<Transaction>();
-        demoProductsList = new ArrayList<Product>();
+        demoTransactionsList = new ArrayList<>();
+        demoOwnTransactionsList = new ArrayList<>();
+        demoProductsList = new ArrayList<>();
         partyName = "Distributor";
     }
 

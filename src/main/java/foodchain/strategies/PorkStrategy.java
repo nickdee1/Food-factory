@@ -20,7 +20,7 @@ public class PorkStrategy extends Strategy {
      * Init strategy for storage parametres.
      */
     @Override
-    public void initStorageParametres() {
+    public void initStorageParameters() {
         System.out.println("Store pork...");
         product.setStorageParametres(PORK_STORAGE_TIME, PORK_STORAGE_TEMPERATURE,
                 PORK_STORAGE_HUMIDITY);
@@ -30,7 +30,7 @@ public class PorkStrategy extends Strategy {
      * Init strategy for seller parametres.
      */
     @Override
-    public void initSellerParametres() {
+    public void initSellerParameters() {
         System.out.println("Sell pork...");
         product.setSellerParametres(PORK_PACKAGING, PORK_SELLING_PLACE);
     }
@@ -39,7 +39,7 @@ public class PorkStrategy extends Strategy {
      * Init strategy for processor parametres.
      */
     @Override
-    public void initProcessorParametres() {
+    public void initProcessorParameters() {
         System.out.println("Process pork...");
         product.setProcessorParametres(PORK_PROCESSING_TEMPERATURE, PORK_CHEMICAL_PROCESSING_DEGREE);
     }

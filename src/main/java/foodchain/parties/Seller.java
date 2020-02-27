@@ -4,10 +4,8 @@ import foodchain.transactions.MoneyTransaction;
 import foodchain.products.Product;
 import foodchain.transactions.ProductTransaction;
 import foodchain.transactions.Transaction;
-import foodchain.reporters.PartiesReporter;
-import java.util.ArrayList;
 
-import static foodchain.parties.Data.*;
+import java.util.ArrayList;
 
 /**
  * Seller class in simulation.
@@ -32,7 +30,7 @@ public class Seller extends AbstractParty {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in seller is "+product.getState().getStateName());
         chooseStrategy(product);
-        strategy.initSellerParametres();
+        strategy.initSellerParameters();
         System.out.println(product.getName()+" seller parametres: "+product.getSellerParametres().toString());
         addProduct(product);
     }

@@ -1,6 +1,6 @@
 package foodchain.reporters;
 
-import foodchain.channels.SecurityHistory;
+import foodchain.security_history.SecurityHistory;
 import foodchain.reporters.report.SecurityMessage;
 import org.json.JSONObject;
 import java.util.ArrayList;
@@ -17,7 +17,6 @@ public class SecurityReporter extends Reporter {
      * List of messages the report is generated for.
      */
     private List<SecurityMessage> messages;
-
 
     /**
      * Constructor for SecurityReporter.

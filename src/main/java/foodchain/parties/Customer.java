@@ -16,9 +16,9 @@ public class Customer extends AbstractParty {
      */
     public Customer() {
         currentRequestingParty = null;
-        demoTransactionsList = new ArrayList<Transaction>();
-        demoOwnTransactionsList = new ArrayList<Transaction>();
-        demoProductsList = new ArrayList<Product>();
+        demoTransactionsList = new ArrayList<>();
+        demoOwnTransactionsList = new ArrayList<>();
+        demoProductsList = new ArrayList<>();
         partyName = "Customer";
         moneyReceived = false; // customer doesn't receive money
     }
@@ -53,7 +53,7 @@ public class Customer extends AbstractParty {
      */
     @Override
     public void receiveMoney(MoneyTransaction transaction) {
-        System.out.println("Customer doesn't receive money, but pays!");
+        System.err.println("Customer doesn't receive money, but pays!");
     }
 
     /**
@@ -64,7 +64,7 @@ public class Customer extends AbstractParty {
      */
     @Override
     protected void makeTransaction(Party receiver, Product product) {
-        System.out.println("Customer doesn't sell any products!");
+        System.err.println("Customer doesn't sell any products!");
     }
 
 }

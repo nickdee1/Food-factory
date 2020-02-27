@@ -4,10 +4,8 @@ import foodchain.transactions.MoneyTransaction;
 import foodchain.products.Product;
 import foodchain.transactions.ProductTransaction;
 import foodchain.transactions.Transaction;
-import foodchain.reporters.PartiesReporter;
-import java.util.ArrayList;
 
-import static foodchain.parties.Data.*;
+import java.util.ArrayList;
 
 /**
  * Storage class in simulation.
@@ -33,7 +31,7 @@ public class Storage extends AbstractParty {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in storage is "+product.getState().getStateName());
         chooseStrategy(product);
-        strategy.initStorageParametres();
+        strategy.initStorageParameters();
         System.out.println(product.getName()+" storage parametres: "+product.getStorageParametres().toString());
         addProduct(product);
     }

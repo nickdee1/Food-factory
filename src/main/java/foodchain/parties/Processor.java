@@ -6,8 +6,6 @@ import foodchain.transactions.ProductTransaction;
 import foodchain.transactions.Transaction;
 import java.util.ArrayList;
 
-import static foodchain.parties.Data.*;
-
 /**
  * Processor class in simulation.
  */
@@ -17,9 +15,9 @@ public class Processor extends AbstractParty {
      * Construct farmer party.
      */
     public Processor() {
-        demoTransactionsList = new ArrayList<Transaction>();
-        demoOwnTransactionsList = new ArrayList<Transaction>();
-        demoProductsList = new ArrayList<Product>();
+        demoTransactionsList = new ArrayList<>();
+        demoOwnTransactionsList = new ArrayList<>();
+        demoProductsList = new ArrayList<>();
         partyName = "Processor";
     }
 
@@ -31,7 +29,7 @@ public class Processor extends AbstractParty {
         super.prepareProductToNextStage(product);
         System.out.println("Product state in processor is "+product.getState().getStateName());
         chooseStrategy(product);
-        strategy.initProcessorParametres();
+        strategy.initProcessorParameters();
         System.out.println(product.getName()+" processor parametres: "+product.getProcessorParametres().toString());
         addProduct(product);
     }

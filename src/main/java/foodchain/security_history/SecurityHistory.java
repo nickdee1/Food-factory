@@ -1,4 +1,4 @@
-package foodchain.channels;
+package foodchain.security_history;
 
 import foodchain.parties.Party;
 import foodchain.products.Product;
@@ -28,7 +28,7 @@ public class SecurityHistory {
      * Constricts empty forbidden reports list.
      */
     private SecurityHistory() {
-        messages = new ArrayList<SecurityMessage>();
+        messages = new ArrayList<>();
     }
 
     /**
@@ -48,7 +48,7 @@ public class SecurityHistory {
      * @param receiver the party who tried to receive product.
      * @param product the product parties tried to transmit.
      */
-    void reportForbiddenAction(Party sender, Party receiver, Product product) {
+    public void reportForbiddenAction(Party sender, Party receiver, Product product) {
         Date currentDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String reportedMessage = "Attempt to commit transaction with the product that was already sold";

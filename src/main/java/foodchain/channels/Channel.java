@@ -5,7 +5,7 @@ import foodchain.transactions.Transaction;
 /**
  * Interface for payment and selling channels.
  */
-public interface Channel<T> {
+public interface Channel<T extends Transaction> {
 
     /**
      * Interface method for making transactions between parties.

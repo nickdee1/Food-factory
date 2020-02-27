@@ -24,15 +24,15 @@ abstract public class Strategy {
     /**
      * Init strategy for storage parametres.
      */
-    public abstract void initStorageParametres();
+    public abstract void initStorageParameters();
 
     /**
      * Init strategy for seller parametres.
      */
-    public abstract  void initSellerParametres();
+    public abstract  void initSellerParameters();
 
     /**
      * Init strategy for processor parametres.
      */
-    public abstract  void initProcessorParametres();
+    public abstract  void initProcessorParameters();
 }

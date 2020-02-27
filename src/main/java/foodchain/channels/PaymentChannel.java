@@ -29,7 +29,7 @@ public class PaymentChannel implements Channel<MoneyTransaction> {
      */
     public MoneyTransaction makeTransmission(MoneyTransaction transaction) {
         if ((transaction.getSender().getPartyName()).equalsIgnoreCase("farmer")) {
-            System.out.println("Farmer doesn't send money!");
+            System.err.println("Farmer doesn't send money!");
             return null;
         }
         System.out.println("Money transaction is being made to "+transaction.getReceiver().getPartyName());

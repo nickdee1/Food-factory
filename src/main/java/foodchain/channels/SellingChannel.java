@@ -1,7 +1,7 @@
 package foodchain.channels;
 
+import foodchain.security_history.SecurityHistory;
 import foodchain.transactions.ProductTransaction;
-import foodchain.transactions.Transaction;
 import foodchain.parties.Party;
 import foodchain.products.Product;
 

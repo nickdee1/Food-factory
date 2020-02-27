@@ -20,7 +20,7 @@ public class MilkStrategy extends Strategy {
      * Init strategy for storage parametres.
      */
     @Override
-    public void initStorageParametres() {
+    public void initStorageParameters() {
         System.out.println("Store milk...");
         product.setStorageParametres(MILK_STORAGE_TIME, MILK_STORAGE_TEMPERATURE,
                 MILK_STORAGE_HUMIDITY);
@@ -30,7 +30,7 @@ public class MilkStrategy extends Strategy {
      * Init strategy for seller parametres.
      */
     @Override
-    public void initSellerParametres() {
+    public void initSellerParameters() {
         System.out.println("Sell milk...");
         product.setSellerParametres(MILK_PACKAGING, MILK_SELLING_PLACE);
     }
@@ -39,7 +39,7 @@ public class MilkStrategy extends Strategy {
      * Init strategy for processor parametres.
      */
     @Override
-    public void initProcessorParametres() {
+    public void initProcessorParameters() {
         System.out.println("Process milk...");
         product.setProcessorParametres(MILK_PROCESSING_TEMPERATURE, MILK_CHEMICAL_PROCESSING_DEGREE);
     }

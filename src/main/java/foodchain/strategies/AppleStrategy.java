@@ -20,7 +20,7 @@ public class AppleStrategy extends Strategy {
      * Init strategy for storage parametres.
      */
     @Override
-    public void initStorageParametres() {
+    public void initStorageParameters() {
         System.out.println("Store apple...");
         product.setStorageParametres(APPLE_STORAGE_TIME, APPLE_STORAGE_TEMPERATURE,
                 APPLE_STORAGE_HUMIDITY);
@@ -30,7 +30,7 @@ public class AppleStrategy extends Strategy {
      * Init strategy for seller parametres.
      */
     @Override
-    public void initSellerParametres() {
+    public void initSellerParameters() {
         System.out.println("Sell apple...");
         product.setSellerParametres(APPLE_PACKAGING, APPLE_SELLING_PLACE);
     }
@@ -39,7 +39,7 @@ public class AppleStrategy extends Strategy {
      * Init strategy for processor parametres.
      */
     @Override
-    public void initProcessorParametres() {
+    public void initProcessorParameters() {
         System.out.println("Process apple...");
         product.setProcessorParametres(APPLE_PROCESSING_TEMPERATURE, APPLE_CHEMICAL_PROCESSING_DEGREE);
     }
