@@ -80,8 +80,11 @@ public abstract class AbstractParty implements Party {
      */
     protected String partyName;
 
+    /**
+     * Type of party in chain.
+     */
+    protected PartyType partyType;
 
-    /* Double spending detection */
     /**
      * Flag depicts if the party was trying to commit double-spending problem.
      */
@@ -160,8 +163,8 @@ public abstract class AbstractParty implements Party {
         if (receivedMoney.equals(currentRequestedProduct.getPrice())) {
             moneyReceived = true;
             transaction.setSuccessful(true);
-            System.out.println(transaction.getReceiver().getPartyName()+
-                    " has received money: "+receivedMoney);
+            System.out.println(transaction.getReceiver().getPartyType().toString() +
+                    " has received money: " + receivedMoney);
         }
         else {
             System.out.println("Not enough money!");
@@ -188,19 +191,19 @@ public abstract class AbstractParty implements Party {
      * @param sender the sender who sent request.
      */
     private void getRequest(String productName, Party sender) {
-        if ((this.getPartyName()).equalsIgnoreCase("customer")) {
+        if (this.getPartyType() == PartyType.CUSTOMER) {
             System.out.println("Customer doesn't get requests!");
             return;
         }
         currentRequestingParty = sender;
-        System.out.println("Current requested party: "+currentRequestingParty.getPartyName());
+        System.out.println("Current requested party: " + currentRequestingParty.getPartyType().toString());
         if (productsList != null) {
             for (Product p : productsList) {
                 if (p.getName().equalsIgnoreCase(productName)) {
                     if (!p.getCurrentlyProcessingParties().contains(this)) {
                         p.addCurrentlyProcessingParties(this);
                     }
-                    System.out.println(this.getPartyName()+" already has "+p.getName());
+                    System.out.println(this.getPartyType().toString() +" already has " + p.getName());
                     currentRequestedProduct = p;
                     currentRequestedProduct.setIsReadyToTransmit(true);
                     return;
@@ -373,6 +376,14 @@ public abstract class AbstractParty implements Party {
      */
     public ImmutableList<Product> getProductsList() {
         return productsList;
+    }
+
+    /**
+     * Get type of party.
+     * @return enum party type.
+     */
+    public PartyType getPartyType() {
+        return partyType;
     }
 
     /**

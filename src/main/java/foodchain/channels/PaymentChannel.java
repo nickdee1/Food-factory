@@ -1,7 +1,6 @@
 package foodchain.channels;
 
 import foodchain.transactions.MoneyTransaction;
-import foodchain.transactions.Transaction;
 import foodchain.parties.Party;
 
 /**
@@ -28,11 +27,7 @@ public class PaymentChannel implements Channel<MoneyTransaction> {
      * @return result if transmission was successful, null otherwise
      */
     public MoneyTransaction makeTransmission(MoneyTransaction transaction) {
-        if ((transaction.getSender().getPartyName()).equalsIgnoreCase("farmer")) {
-            System.err.println("Farmer doesn't send money!");
-            return null;
-        }
-        System.out.println("Money transaction is being made to "+transaction.getReceiver().getPartyName());
+        System.out.println("Money transaction is being made to " + transaction.getReceiver().getPartyType().toString());
         receiver.receiveMoney(transaction);
         return transaction;
     }

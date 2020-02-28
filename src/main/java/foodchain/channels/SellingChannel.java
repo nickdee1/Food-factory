@@ -1,5 +1,6 @@
 package foodchain.channels;
 
+import foodchain.parties.PartyType;
 import foodchain.security_history.SecurityHistory;
 import foodchain.transactions.ProductTransaction;
 import foodchain.parties.Party;
@@ -44,7 +45,7 @@ public class SellingChannel implements Channel<ProductTransaction> {
 
             /* Reset products of each Party by stream */
             product.getCurrentlyProcessingParties().stream()
-                    .filter(party -> !party.getPartyName().equals("Customer"))
+                    .filter(party -> !(party.getPartyType() == PartyType.CUSTOMER))
                     .forEach(party -> party.removeProduct(product));
 
             product.clearPartyList();

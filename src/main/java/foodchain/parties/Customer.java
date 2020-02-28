@@ -20,6 +20,7 @@ public class Customer extends AbstractParty {
         demoOwnTransactionsList = new ArrayList<>();
         demoProductsList = new ArrayList<>();
         partyName = "Customer";
+        partyType = PartyType.CUSTOMER;
         moneyReceived = false; // customer doesn't receive money
     }
 

@@ -36,7 +36,7 @@ public class ProductTransaction extends Transaction {
      * PRODUCT transaction flag to distinguish transaction type.
      * @return transaction flag.
      */
-    public String getTransactionFlag() {
-        return "PRODUCT";
+    public TransactionType getTransactionFlag() {
+        return TransactionType.PRODUCT;
     }
 }

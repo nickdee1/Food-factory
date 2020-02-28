@@ -22,9 +22,9 @@ public class PartiesReporter extends Reporter {
      */
     public void generateForAll(AbstractParty start) {
         String output_file = "parties";
-        Map<String, Object> outputMap = new LinkedHashMap<String, Object>();
+        Map<String, Object> outputMap = new LinkedHashMap<>();
 
-        List<Map> arrayOfParties = new ArrayList<Map>();
+        List<Map> arrayOfParties = new ArrayList<>();
         PartiesIterator it = start.iterator();
 
         arrayOfParties.add(generateMapForParty(start));
@@ -42,7 +42,7 @@ public class PartiesReporter extends Reporter {
      * @param party the party report is generated for.
      */
     public void generateReportForParty(AbstractParty party) {
-        String name = party.getPartyName();
+        String name = party.getPartyType().toString();
         Map outputMap = generateMapForParty(party);
 
         generateJSON(new JSONObject(outputMap), name);
@@ -56,8 +56,8 @@ public class PartiesReporter extends Reporter {
      * @return generated Map with necessary attributes.
      */
     private Map<String, Object> generateMapForParty(AbstractParty party) {
-        Map<String, Object> outputMap = new LinkedHashMap<String, Object>();
-        outputMap.put("name", party.getPartyName());
+        Map<String, Object> outputMap = new LinkedHashMap<>();
+        outputMap.put("name", party.getPartyType().toString());
 
         ProductReporter productReporter = new ProductReporter(party.getProductsList());
         TransactionReporter transactionReporter = new TransactionReporter(party.getTransactionsList());
@@ -68,13 +68,13 @@ public class PartiesReporter extends Reporter {
         try {
             productMaps = productReporter.generateMapsForAll();
         } catch (NullPointerException e) {
-            productMaps = new ArrayList<Map>();
+            productMaps = new ArrayList<>();
         }
 
         try {
             transactionMaps = transactionReporter.generateMapsForAll();
         } catch (NullPointerException e) {
-            transactionMaps = new ArrayList<Map>();
+            transactionMaps = new ArrayList<>();
         }
 
 

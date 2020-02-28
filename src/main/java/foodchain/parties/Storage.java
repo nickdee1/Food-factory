@@ -3,7 +3,6 @@ package foodchain.parties;
 import foodchain.transactions.MoneyTransaction;
 import foodchain.products.Product;
 import foodchain.transactions.ProductTransaction;
-import foodchain.transactions.Transaction;
 
 import java.util.ArrayList;
 
@@ -16,11 +15,12 @@ public class Storage extends AbstractParty {
      * Construct storage party.
      */
     public Storage() {
-        demoTransactionsList = new ArrayList<Transaction>();
-        demoOwnTransactionsList = new ArrayList<Transaction>();
-        demoProductsList = new ArrayList<Product>();
+        demoTransactionsList = new ArrayList<>();
+        demoOwnTransactionsList = new ArrayList<>();
+        demoProductsList = new ArrayList<>();
         moneyReceived = false;
         partyName = "Storage";
+        partyType = PartyType.STORAGE;
     }
 
     /**
@@ -32,7 +32,7 @@ public class Storage extends AbstractParty {
         System.out.println("Product state in storage is "+product.getState().getStateName());
         chooseStrategy(product);
         strategy.initStorageParameters();
-        System.out.println(product.getName()+" storage parametres: "+product.getStorageParametres().toString());
+        System.out.println(product.getName()+" storage parameters: "+product.getStorageParametres().toString());
         addProduct(product);
     }
 

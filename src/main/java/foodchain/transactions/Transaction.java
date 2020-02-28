@@ -32,8 +32,8 @@ public abstract class Transaction implements Observable {
         this.receiver = receiver;
         this.sender = sender;
         this.timestamp = generateTimestamp();
-        this.hashCode = generateHashCode(receiver.getPartyName(), sender.getPartyName());
-        observingParties = new HashSet<Party>();
+        this.hashCode = generateHashCode(receiver.getPartyType().toString(), sender.getPartyType().toString());
+        observingParties = new HashSet<>();
     }
 
     /**
@@ -42,8 +42,7 @@ public abstract class Transaction implements Observable {
      * @param party the party to be added into observing list.
      */
     public void addParty(Party party) {
-        if (!observingParties.contains(party))
-            observingParties.add(party);
+        observingParties.add(party);
     }
 
     /**
@@ -139,8 +138,8 @@ public abstract class Transaction implements Observable {
 
     /**
      * Get transaction flag of current transaction (MONEY / PRODUCT).
-     * @return string type of transaction.
+     * @return enum type of transaction.
      */
-    public abstract String getTransactionFlag();
+    public abstract TransactionType getTransactionFlag();
 
 }

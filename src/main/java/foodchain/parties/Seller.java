@@ -16,10 +16,11 @@ public class Seller extends AbstractParty {
      * Construct seller party.
      */
     public Seller() {
-        demoTransactionsList = new ArrayList<Transaction>();
-        demoOwnTransactionsList = new ArrayList<Transaction>();
-        demoProductsList = new ArrayList<Product>();
+        demoTransactionsList = new ArrayList<>();
+        demoOwnTransactionsList = new ArrayList<>();
+        demoProductsList = new ArrayList<>();
         partyName = "Seller";
+        partyType = PartyType.PROCESSOR;
     }
 
     /**

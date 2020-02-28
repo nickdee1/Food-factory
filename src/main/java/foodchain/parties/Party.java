@@ -90,4 +90,10 @@ public interface Party {
      * Set boolean flag representing attempt to double spending to 'true'.
      */
     void setDoubleSpending();
+
+    /**
+     * Get type of party.
+     * @return enum party type.
+     */
+    PartyType getPartyType();
 }

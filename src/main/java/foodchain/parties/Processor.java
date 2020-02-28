@@ -19,6 +19,7 @@ public class Processor extends AbstractParty {
         demoOwnTransactionsList = new ArrayList<>();
         demoProductsList = new ArrayList<>();
         partyName = "Processor";
+        partyType = PartyType.PROCESSOR;
     }
 
     /**

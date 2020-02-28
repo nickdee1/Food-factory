@@ -35,7 +35,7 @@ public class MoneyTransaction extends Transaction {
      * MONEY transaction flag to distinguish transaction type.
      * @return transaction flag.
      */
-    public String getTransactionFlag() {
-        return "MONEY";
+    public TransactionType getTransactionFlag() {
+        return TransactionType.MONEY;
     }
 }

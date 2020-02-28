@@ -20,6 +20,7 @@ public class Distributor extends AbstractParty {
         demoOwnTransactionsList = new ArrayList<>();
         demoProductsList = new ArrayList<>();
         partyName = "Distributor";
+        partyType = PartyType.DISTRIBUTOR;
     }
 
     /**

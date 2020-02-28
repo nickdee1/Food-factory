@@ -3,6 +3,7 @@ package foodchain.reporters;
 import foodchain.transactions.MoneyTransaction;
 import foodchain.transactions.ProductTransaction;
 import foodchain.transactions.Transaction;
+import foodchain.transactions.TransactionType;
 import org.json.JSONObject;
 import java.util.*;
 
@@ -29,7 +30,7 @@ public class TransactionReporter extends Reporter {
      * Method generates JSON report for all products from transactionList list.
      */
     public void generateForAll() {
-        Map<String, List> outputMap = new LinkedHashMap<String, List>();
+        Map<String, List> outputMap = new LinkedHashMap<>();
         String output_file = "transactions";
 
         List<Map> allTransactionsReport = generateMapsForAll();
@@ -45,9 +46,9 @@ public class TransactionReporter extends Reporter {
      * @return generated List with necessary attributes.
      */
     List<Map> generateMapsForAll() {
-        List<Map> arrayOfTransactions = new ArrayList<Map>();
+        List<Map> arrayOfTransactions = new ArrayList<>();
         for (Transaction t : transactionList) {
-            if (t.getTransactionFlag().equals("MONEY")) {
+            if (t.getTransactionFlag() == TransactionType.MONEY) {
                 Map moneyTransaction = generateMapForMoneyTransaction( (MoneyTransaction) t );
                 arrayOfTransactions.add(moneyTransaction);
             } else {
@@ -66,9 +67,9 @@ public class TransactionReporter extends Reporter {
      * @return map covering all transaction attributes.
      */
      private Map<String, Object> generateMapForMoneyTransaction(MoneyTransaction transaction) {
-        Map<String, Object> map = new LinkedHashMap<String, Object>();
-        map.put("receiver", transaction.getReceiver().getPartyName());
-        map.put("sender", transaction.getSender().getPartyName());
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("receiver", transaction.getReceiver().getPartyType().toString());
+        map.put("sender", transaction.getSender().getPartyType().toString());
         map.put("timestamp", transaction.getTimestamp());
         map.put("hashcode", transaction.getHashCode());
         map.put("successful", transaction.isSuccessful());
@@ -84,9 +85,9 @@ public class TransactionReporter extends Reporter {
      * @return map covering all transaction attributes.
      */
     private Map<String, Object> generateMapProductTransaction(ProductTransaction transaction) {
-        Map<String, Object> map = new LinkedHashMap<String, Object>();
-        map.put("receiver", transaction.getReceiver().getPartyName());
-        map.put("sender", transaction.getSender().getPartyName());
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("receiver", transaction.getReceiver().getPartyType().toString());
+        map.put("sender", transaction.getSender().getPartyType().toString());
         map.put("timestamp", transaction.getTimestamp());
         map.put("hashcode", transaction.getHashCode());
         map.put("successful", transaction.isSuccessful());

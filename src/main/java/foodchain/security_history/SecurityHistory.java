@@ -53,7 +53,7 @@ public class SecurityHistory {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String reportedMessage = "Attempt to commit transaction with the product that was already sold";
         SecurityMessage message = new SecurityMessage(
-                product, sender.getPartyName(), receiver.getPartyName(), dateFormat.format(currentDate), reportedMessage
+                product, sender.getPartyType().toString(), receiver.getPartyType().toString(), dateFormat.format(currentDate), reportedMessage
         );
         messages.add(message);
     }

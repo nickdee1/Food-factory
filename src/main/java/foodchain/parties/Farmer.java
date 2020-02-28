@@ -18,12 +18,13 @@ public class Farmer extends AbstractParty {
      * Construct farmer party.
      */
     public Farmer() {
-        demoTransactionsList = new ArrayList<Transaction>();
-        demoOwnTransactionsList = new ArrayList<Transaction>();
-        demoProductsList = new ArrayList<Product>();
+        demoTransactionsList = new ArrayList<>();
+        demoOwnTransactionsList = new ArrayList<>();
+        demoProductsList = new ArrayList<>();
         balance = 0;
         moneyReceived = false;
         partyName = "Farmer";
+        partyType = PartyType.FARMER;
     }
 
     /**
@@ -32,7 +33,7 @@ public class Farmer extends AbstractParty {
      */
     @Override
     public void makeTransaction(Integer money) {
-        System.out.println("Farmer does not pay for anything!");
+        System.err.println("Farmer does not pay for anything!");
     }
 
     /**
@@ -41,7 +42,7 @@ public class Farmer extends AbstractParty {
      */
     @Override
     public void receiveProduct(ProductTransaction transaction) {
-        System.out.println("Farmer does not receive, but produces!");
+        System.err.println("Farmer does not receive, but produces!");
     }
     
     /**
